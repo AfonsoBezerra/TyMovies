@@ -12,7 +12,7 @@ export const ContainerPoster = styled.div`
     width: auto;
     height: 100%;
     min-width: 170px;
-    min-height: 260px;
+    min-height: 380px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -22,7 +22,6 @@ export const ContainerPoster = styled.div`
       height: 100%;
 
       img {
-        min-height: 143px;
         margin-bottom: 1rem;
         border-radius: 10px;
       }
@@ -48,6 +47,7 @@ export const ContainerPoster = styled.div`
     }
     @media (max-width: 768px) {
       min-width: auto;
+      min-height: 250px;
     }
   }
   .title {
@@ -63,7 +63,7 @@ export const ContainerPoster = styled.div`
           .icon {
             visibility: visible;
             color: #fc0303;
-            transform: scale(105%);
+            transform: scale(150%);
             box-shadow: 0 0 10px #fc0303;
           }
         }
