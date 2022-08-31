@@ -14,12 +14,19 @@ interface iPropsButton {
 }
 
 export const Button = ({ children, onClick, marginTop }: iPropsButton) => {
+  if (marginTop) {
+    return (
+      <ContainerButton
+        type="button"
+        style={{ marginTop: '1rem' }}
+        onClick={() => onClick()}
+      >
+        <h4>{children}</h4>
+      </ContainerButton>
+    );
+  }
   return (
-    <ContainerButton
-      type="button"
-      style={marginTop && { marginTop: '1rem' }}
-      onClick={onClick ? () => onClick() : null}
-    >
+    <ContainerButton type="button" onClick={() => onClick()}>
       <h4>{children}</h4>
     </ContainerButton>
   );
@@ -27,10 +34,7 @@ export const Button = ({ children, onClick, marginTop }: iPropsButton) => {
 
 const ButtonTrailer = ({ children, onClick, iconPlay }: iPropsTrailer) => {
   return (
-    <ContainerButtonTrailer
-      type="button"
-      onClick={onClick ? () => onClick() : null}
-    >
+    <ContainerButtonTrailer type="button" onClick={() => onClick()}>
       <span>{iconPlay && <PlayIcon />}</span>
       <h4>{children}</h4>
     </ContainerButtonTrailer>

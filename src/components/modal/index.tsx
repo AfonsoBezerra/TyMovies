@@ -8,7 +8,6 @@ interface iPropsModal {
 }
 
 const ModalComponent = ({ setModalOpen, values, openModal }: iPropsModal) => {
-  console.log(values);
   return (
     <Modal toggle={() => setModalOpen(!openModal)} isOpen={openModal}>
       <ModalBody>

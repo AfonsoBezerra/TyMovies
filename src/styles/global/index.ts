@@ -2,15 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const ColorsCSS = createGlobalStyle`
   :root {
-    --color-primary: ${({ theme }) => theme.colors.primary};
-    --color-secondary: ${({ theme }) => theme.colors.secondary};
-    --color-text: ${({ theme }) => theme.colors.text};
     --color-background: ${({ theme }) => theme.colors.background};
-    --color-shadow: ${({ theme }) => theme.colors.shadow};
-    --color-error: ${({ theme }) => theme.colors.error};
-    --color-footer-bottom: ${({ theme }) => theme.colors.footerBottom};
-    --color-document-text-background: ${({ theme }) =>
-      theme.colors.documentTextBackground};
   }
 `;
 const FontsCSS = createGlobalStyle`
