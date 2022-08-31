@@ -5,7 +5,7 @@ export const Hero = styled.div``;
 export const Container = styled.div`
   padding: 9rem 0;
   width: 100%;
-  height: 85vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +86,7 @@ export const Container = styled.div`
       }
 
       width: 60%;
-      height: 70%;
+      height: 85%;
     }
   }
 `;
