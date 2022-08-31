@@ -42,7 +42,7 @@ export const ContainerPoster = styled.div`
           visibility: hidden;
           color: transparent;
           transition: all 0.5s ease-in-out;
-          box-shadow: 0 0 10px transparent;
+          box-shadow: 0 0 5px transparent;
         }
       }
     }
@@ -65,8 +65,8 @@ export const ContainerPoster = styled.div`
             border-radius: 50%;
             visibility: visible;
             color: #fc0303;
-            transform: scale(160%);
-            box-shadow: 0 0 10px #fc0303;
+            transform: scale(170%);
+            box-shadow: 0 0 5px #fc0303;
           }
         }
       }
