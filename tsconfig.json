@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@utils/*": ["utils/*"],
+      "@contexts/*": ["contexts/*"],
+      "@services/*": ["services/*"],
+      "@components/*": ["components/*"],
+      "@stylesComponents/*": ["styles/components/*"],
+      "@stylesPages/*": ["styles/pages/*"],
+      "@globalStyles": ["styles/global/index.ts"],
+      "@globalStyles/*": ["styles/global/*"],
+    },
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/services/api/axiosClient.jsx"],
+  "exclude": ["node_modules"]
+}
