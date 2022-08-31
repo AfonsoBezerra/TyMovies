@@ -35,12 +35,12 @@ export const ContainerPoster = styled.div`
         align-items: center;
         border-radius: 10px;
         background-color: rgba(0, 0, 0, 0%);
-        transition: all 0.5s ease-in-out;
+        transition: all 0.3s ease-in-out;
         cursor: pointer;
         .icon {
           visibility: hidden;
           color: transparent;
-          transition: all 0.3s ease-in-out;
+          transition: all 0.5s ease-in-out;
           box-shadow: 0 0 10px transparent;
         }
       }
