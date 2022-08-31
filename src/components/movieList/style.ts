@@ -56,23 +56,25 @@ export const ContainerPoster = styled.div`
     transition: all 0.5s ease;
     cursor: pointer;
   }
-  :hover {
-    .posterMain {
-      .poster {
-        .hover {
-          background-color: rgba(0, 0, 0, 70%);
-          .icon {
-            border-radius: 50%;
-            visibility: visible;
-            color: #fc0303;
-            transform: scale(170%);
-            box-shadow: 0 0 5px #fc0303;
+  @media (min-width: 1024px) {
+    :hover {
+      .posterMain {
+        .poster {
+          .hover {
+            background-color: rgba(0, 0, 0, 70%);
+            .icon {
+              border-radius: 50%;
+              visibility: visible;
+              color: #fc0303;
+              transform: scale(180%);
+              box-shadow: 0 0 5px #fc0303;
+            }
           }
         }
       }
-    }
-    .title {
-      color: #fc0303;
+      .title {
+        color: #fc0303;
+      }
     }
   }
 `;
