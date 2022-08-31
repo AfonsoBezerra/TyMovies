@@ -61,6 +61,7 @@ export const ContainerPoster = styled.div`
         .hover {
           background-color: rgba(0, 0, 0, 70%);
           .icon {
+            border-radius: 50%;
             visibility: visible;
             color: #fc0303;
             transform: scale(150%);
