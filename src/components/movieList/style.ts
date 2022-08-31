@@ -38,6 +38,7 @@ export const ContainerPoster = styled.div`
         transition: all 0.3s ease-in-out;
         cursor: pointer;
         .icon {
+          border-radius: 50%;
           visibility: hidden;
           color: transparent;
           transition: all 0.5s ease-in-out;
@@ -64,7 +65,7 @@ export const ContainerPoster = styled.div`
             border-radius: 50%;
             visibility: visible;
             color: #fc0303;
-            transform: scale(150%);
+            transform: scale(160%);
             box-shadow: 0 0 10px #fc0303;
           }
         }
