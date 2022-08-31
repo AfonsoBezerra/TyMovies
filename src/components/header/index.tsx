@@ -1,5 +1,3 @@
-import { Logo } from '@stylesComponents/ilustrations';
-import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { Container } from './style';
 
@@ -17,12 +15,6 @@ const Header = () => {
     });
   }, []);
 
-  return (
-    <Container ref={headerRef}>
-      <Logo>
-        <Image src="/logo.png" layout="fill" alt="logo" />
-      </Logo>
-    </Container>
-  );
+  return <Container ref={headerRef} />;
 };
 export default Header;
