@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ContainerButton = styled.button`
   border: 1px solid white;
   padding: 0.4rem;
-  max-height: 30px;
+  max-height: 40px;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -14,13 +14,16 @@ export const ContainerButton = styled.button`
   transition: all 0.3s ease-in-out;
   h4 {
     margin: 0;
-    font-size: 13px;
+    font-size: 20px;
     white-space: nowrap;
+    @media (max-width: 1024px) {
+      font-size: 13px;
+    }
   }
   :hover {
-    color: #fff;
-    background-color: #ad2bfdd9;
-    border-color: #ad2bfdd9;
+    color: #fc0303;
+    background-color: transparent;
+    border-color: #fc0303;
     box-shadow: 0 0 10px rgba(0, 0, 0, 70%);
   }
 `;
@@ -29,8 +32,9 @@ export const ContainerButtonTrailer = styled.button`
   border: 1px solid #fc0303;
   width: 100%;
   padding: 0 0.4rem;
-  max-height: 30px;
+  max-height: 40px;
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: #fc0303;
   box-shadow: 0 0 10px #fc0303;
@@ -44,7 +48,10 @@ export const ContainerButtonTrailer = styled.button`
   }
   h4 {
     margin: 0;
-    font-size: 13px;
+    font-size: 20px;
     white-space: nowrap;
+    @media (max-width: 1024px) {
+      font-size: 13px;
+    }
   }
 `;

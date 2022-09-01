@@ -25,28 +25,40 @@ export const Container = styled.div`
     position: absolute;
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
+    gap: 4rem;
     background-color: transparent;
-    width: 50%;
+    width: 60%;
     height: 60%;
 
     .hero_slide_item_info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 100%;
       height: 100%;
       .title {
         color: #fff;
-        font-size: 30px;
+        font-size: 60px;
+        font-weight: bold;
+        @media (max-width: 1024px) {
+          font-size: 22px;
+        }
       }
       .overview {
         padding: 1rem 0 0 0;
         width: 100%;
         color: #fff;
-        font-size: 12px;
+        font-size: 16px;
+        @media (max-width: 1024px) {
+          font-size: 13px;
+        }
       }
       .btns {
         display: flex;
+        margin-top: 1rem;
         .BtnTrailer {
-          width: 88px;
+          width: 140px;
           margin-left: 1rem;
           display: flex;
           transition: all 0.3s ease-in-out;
@@ -65,26 +77,39 @@ export const Container = styled.div`
               }
             }
           }
+          @media (max-width: 1024px) {
+            width: 90px;
+          }
+        }
+        @media (max-width: 1024px) {
+          margin-top: 0;
         }
       }
     }
     .hero_slide_poster {
-      width: 100%;
+      width: 75%;
       height: 100%;
       position: relative;
       box-shadow: 0 0 20px rgba(0, 0, 0, 70%);
       border-radius: 15px;
-      transform: translateY(-10%);
       img {
         border-radius: 15px;
+      }
+      @media (max-width: 1024px) {
+        width: 100%;
       }
     }
     @media (max-width: 1024px) {
       flex-direction: column;
+      .hero_slide_item_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
       .hero_slide_poster {
         transform: translateY(0);
       }
-
+      gap: 2rem;
       width: 60%;
       height: 85%;
     }

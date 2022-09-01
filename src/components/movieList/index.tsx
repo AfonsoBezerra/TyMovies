@@ -52,13 +52,13 @@ const MovieList = ({ category, type }: iPropsMovie) => {
   useEffect(() => {
     const { width } = window.screen;
     if (width >= 760 && width < 1440) {
-      setScreenSize(4);
+      setScreenSize(3.5);
     } else if (width >= 1440 && width < 1920) {
-      setScreenSize(6);
+      setScreenSize(4.5);
     } else if (width >= 1920) {
-      setScreenSize(6);
+      setScreenSize(6.5);
     } else {
-      setScreenSize(2);
+      setScreenSize(1.5);
     }
   }, []);
 
@@ -68,6 +68,8 @@ const MovieList = ({ category, type }: iPropsMovie) => {
         modules={[Autoplay]}
         slidesPerView={screenSize}
         loop
+        centeredSlides={false}
+        grabCursor
         spaceBetween={8}
       >
         {data.map((item: any) => (
