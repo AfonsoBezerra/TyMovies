@@ -111,7 +111,7 @@ export const Container = styled.div`
       }
       gap: 2rem;
       width: 60%;
-      height: 85%;
+      height: 90%;
     }
   }
 `;
