@@ -64,6 +64,7 @@ export const Container = styled.div`
             width: 100%;
             max-height: 220px;
             border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 80%);
           }
           span {
             margin-top: 0.5rem;
@@ -84,7 +85,7 @@ export const Container = styled.div`
       }
     }
     .hero_slide_poster {
-      width: 60%;
+      width: 70%;
       height: 100%;
       position: relative;
       box-shadow: 0 0 20px rgba(0, 0, 0, 70%);
@@ -94,6 +95,9 @@ export const Container = styled.div`
       }
       @media (max-width: 1024px) {
         width: 100%;
+      }
+      @media (max-width: 767px) {
+        display: none;
       }
     }
     @media (max-width: 1024px) {
@@ -128,8 +132,5 @@ export const Container = styled.div`
     to {
       transform: translateY(0);
     }
-  }
-  @media (max-width: 1024px) {
-    height: 120vh;
   }
 `;
