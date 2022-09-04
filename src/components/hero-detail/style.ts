@@ -134,6 +134,6 @@ export const Container = styled.div`
     }
   }
   @media (max-width: 600px) {
-    height: 120vh;
+    height: 130vh;
   }
 `;
