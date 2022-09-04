@@ -1,8 +1,10 @@
 export interface MovieList {
   adult: boolean;
   backdrop_path: string;
+  genres: [];
   genre_ids: [];
   id: number;
+  name: string;
   original_language: string;
   original_title: string;
   overview: string;

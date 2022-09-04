@@ -2,6 +2,7 @@ import apiConfig from '@services/api/apiConfig';
 import requestsApi from '@services/api/requestsApi';
 import { PlayIconCircle } from '@stylesComponents/icons';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,10 +13,14 @@ interface iPropsMovie {
   category: string;
 }
 
-const MoviePoster = ({ props }: any) => {
+const MoviePoster = ({ props, category }: any) => {
+  const router = useRouter();
   const bg = apiConfig.w500Image(props.poster_path);
+  const sendMovie = () => {
+    router.push(`/${category}/${props.id}`);
+  };
   return (
-    <ContainerPoster>
+    <ContainerPoster arial-hidden onClick={sendMovie}>
       <div className="posterMain">
         <div className="poster">
           <Image src={bg} alt="img" layout="fill" />
@@ -31,7 +36,7 @@ const MoviePoster = ({ props }: any) => {
 
 const MovieList = ({ category, type }: iPropsMovie) => {
   const [data, setData] = useState([]);
-  const [screenSize, setScreenSize] = useState(2);
+  const [screenSize, setScreenSize] = useState(1.5);
   SwiperCore.use([Autoplay]);
 
   useEffect(() => {
@@ -74,7 +79,7 @@ const MovieList = ({ category, type }: iPropsMovie) => {
       >
         {data.map((item: any) => (
           <SwiperSlide key={item.id}>
-            <MoviePoster props={item} />
+            <MoviePoster props={item} category={category} />
           </SwiperSlide>
         ))}
       </Swiper>

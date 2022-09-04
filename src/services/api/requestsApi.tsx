@@ -30,6 +30,14 @@ const requestsApi = {
     const url = `tv/${type}`;
     return axiosClient.get(url, params);
   },
+  detail: (cate: any, id: any) => {
+    const url = `${cate}/${id}`;
+    return axiosClient.get(url, { params: {} });
+  },
+  credits: (cate: any, id: any) => {
+    const url = `${cate}/${id}/credits`;
+    return axiosClient.get(url, { params: {} });
+  },
 };
 
 export default requestsApi;

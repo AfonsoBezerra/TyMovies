@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
-export const Hero = styled.div``;
-
 export const Container = styled.div`
-  padding: 9rem 0;
   width: 100%;
-  height: 90vh;
+  height: 95vh;
+  background-color: aqua;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +16,6 @@ export const Container = styled.div`
   }
 
   .hero_slide_item_content {
-    opacity: 0;
     position: absolute;
     display: flex;
     justify-content: space-between;
@@ -27,9 +24,8 @@ export const Container = styled.div`
     background-color: transparent;
     width: 60%;
     height: 60%;
-    transition: all 2s ease;
+    animation: animationFade 1.5s;
     .hero_slide_item_info {
-      transform: translateY(-100px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -53,35 +49,37 @@ export const Container = styled.div`
           font-size: 13px;
         }
       }
-      .btns {
+      .credits {
+        margin-top: 1.5rem;
+        max-width: 680px;
+        height: auto;
+        background-color: transparent;
+        color: white;
         display: flex;
-        margin-top: 1rem;
-        .BtnTrailer {
-          width: 140px;
-          margin-left: 1rem;
+        position: relative;
+        .img {
           display: flex;
-          transition: all 0.3s ease-in-out;
-          :hover {
-            padding: 0 calc(100px - 45px) 0 0;
-            button {
-              color: #fff;
-              background-color: #fc0303;
-              border-color: #fc0303;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 70%);
-              span {
-                display: block;
-              }
-              h4 {
-                display: none;
-              }
-            }
+          flex-direction: column;
+          img {
+            width: 100%;
+            max-height: 220px;
+            border-radius: 15px;
           }
-          @media (max-width: 1024px) {
-            width: 90px;
+          span {
+            margin-top: 0.5rem;
           }
         }
-        @media (max-width: 1024px) {
-          margin-top: 0;
+        @media (min-width: 1025px) {
+          max-width: 300px;
+        }
+        @media (min-width: 1440px) {
+          max-width: 500px;
+        }
+        @media (min-width: 1440px) {
+          max-width: 500px;
+        }
+        @media (min-width: 1900px) {
+          max-width: 680px;
         }
       }
     }
@@ -113,12 +111,25 @@ export const Container = styled.div`
       height: 90%;
     }
   }
-  &.active {
-    .hero_slide_item_content {
-      opacity: 1;
-      .hero_slide_item_info {
-        transform: translateY(0);
-      }
+
+  @keyframes animationFade {
+    from {
+      opacity: 0;
     }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes animationTranslate {
+    from {
+      transform: translateY(-100px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @media (max-width: 1024px) {
+    height: 120vh;
   }
 `;

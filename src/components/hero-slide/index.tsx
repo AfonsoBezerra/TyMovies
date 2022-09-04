@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import SwiperCore, { Autoplay } from 'swiper';
 import requestsApi, { category, movieType } from '@services/api/requestsApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import apiConfig from '@services/api/apiConfig';
@@ -7,6 +6,7 @@ import { MovieList } from 'types';
 import Image from 'next/image';
 import ButtonTrailer, { Button } from '@components/buttons';
 import ModalComponent from '@components/modal';
+import { useRouter } from 'next/router';
 import { Container, Hero } from './style';
 
 interface PropsHero {
@@ -17,6 +17,7 @@ interface PropsHero {
 const HeroSlideItem = (props: PropsHero) => {
   const [valueModal, setModal] = useState<any>([]);
   const [openModal, setOpenModal] = useState(false);
+  const router = useRouter();
   const { item, className } = props;
   const background = apiConfig.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path,
@@ -28,6 +29,10 @@ const HeroSlideItem = (props: PropsHero) => {
     setOpenModal(true);
   };
 
+  const sendMovie = () => {
+    router.push(`/movie/${item.id}`);
+  };
+
   return (
     <Container className={className}>
       <Image src={background} alt="hero_img" layout="fill" />
@@ -37,7 +42,7 @@ const HeroSlideItem = (props: PropsHero) => {
           <div className="overview">{item.overview}</div>
           <div className="btns">
             <div className="BtnMore">
-              <Button marginTop onClick={setModalActive}>
+              <Button marginTop onClick={sendMovie}>
                 See more
               </Button>
             </div>
@@ -68,7 +73,6 @@ const HeroSlideItem = (props: PropsHero) => {
 };
 
 const HeroSlide = () => {
-  SwiperCore.use([Autoplay]);
   const [movieItems, setMovieItems] = useState([]);
 
   useEffect(() => {
@@ -78,7 +82,7 @@ const HeroSlide = () => {
         const response = await requestsApi.getMoviesList(movieType.popular, {
           params,
         });
-        setMovieItems(response.data.results.slice(1, 5));
+        setMovieItems(response.data.results.slice(1, 6));
       } catch (error) {
         console.log(error);
       }
@@ -89,18 +93,25 @@ const HeroSlide = () => {
   return (
     <Hero>
       <Swiper
-        modules={[Autoplay]}
         grabCursor
         spaceBetween={0}
         slidesPerView={1}
         loop
+        effect="fade"
+        autoplay={{
+          delay: 7000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
       >
         {movieItems.map((item: any) => (
           <SwiperSlide key={item.id}>
-            <HeroSlideItem
-              item={item}
-              className={`${item.id ? 'active' : ''}`}
-            />
+            {({ isActive }) => (
+              <HeroSlideItem
+                item={item}
+                className={`${isActive ? 'active' : ''}`}
+              />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
