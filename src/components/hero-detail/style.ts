@@ -133,4 +133,7 @@ export const Container = styled.div`
       transform: translateY(0);
     }
   }
+  @media (max-width: 600px) {
+    height: 120vh;
+  }
 `;

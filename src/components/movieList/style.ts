@@ -47,7 +47,7 @@ export const ContainerPoster = styled.div`
       }
     }
     @media (max-width: 768px) {
-      min-width: auto;
+      max-width: 190px;
       min-height: 250px;
     }
   }
