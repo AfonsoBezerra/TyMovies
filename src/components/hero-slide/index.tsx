@@ -61,6 +61,7 @@ const HeroSlideItem = (props: PropsHero) => {
           />
         </div>
       </div>
+
       {openModal && (
         <ModalComponent
           setModalOpen={setOpenModal}
@@ -74,7 +75,7 @@ const HeroSlideItem = (props: PropsHero) => {
 
 const HeroSlide = () => {
   const [movieItems, setMovieItems] = useState([]);
-
+  const [onLoad, setOnload] = useState(false);
   useEffect(() => {
     const getMoviesBanners = async () => {
       const params = { page: 1 };
@@ -83,6 +84,7 @@ const HeroSlide = () => {
           params,
         });
         setMovieItems(response.data.results.slice(1, 6));
+        setOnload(true);
       } catch (error) {
         console.log(error);
       }
@@ -91,31 +93,40 @@ const HeroSlide = () => {
   }, []);
 
   return (
-    <Hero>
-      <Swiper
-        grabCursor
-        spaceBetween={0}
-        slidesPerView={1}
-        loop
-        effect="fade"
-        autoplay={{
-          delay: 7000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-      >
-        {movieItems.map((item: any) => (
-          <SwiperSlide key={item.id}>
-            {({ isActive }) => (
-              <HeroSlideItem
-                item={item}
-                className={`${isActive ? 'active' : ''}`}
-              />
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Hero>
+    <>
+      {!onLoad && (
+        <div
+          style={{ width: '100vw', height: '100vh', background: '#222323' }}
+        />
+      )}
+      {onLoad && (
+        <Hero>
+          <Swiper
+            grabCursor
+            spaceBetween={0}
+            slidesPerView={1}
+            loop
+            effect="fade"
+            autoplay={{
+              delay: 7000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+          >
+            {movieItems.map((item: any) => (
+              <SwiperSlide key={item.id}>
+                {({ isActive }) => (
+                  <HeroSlideItem
+                    item={item}
+                    className={`${isActive ? 'active' : ''}`}
+                  />
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Hero>
+      )}
+    </>
   );
 };
 

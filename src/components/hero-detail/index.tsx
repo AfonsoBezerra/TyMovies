@@ -2,7 +2,7 @@ import apiConfig from '@services/api/apiConfig';
 import { MovieList } from 'types';
 import Image from 'next/image';
 import Tags from '@components/Tags';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import requestsApi from '@services/api/requestsApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Container } from './style';
@@ -28,7 +28,7 @@ const HeroDetail = ({ item, type }: iMovie) => {
     const getMoviesCredits = async () => {
       try {
         const response = await requestsApi.credits(type, item.id);
-        setMovieCredits(response.data.cast.slice(0, 10));
+        setMovieCredits(response.data.cast.slice(0, 20));
       } catch (error) {
         console.log(error);
       }
@@ -68,16 +68,35 @@ const HeroDetail = ({ item, type }: iMovie) => {
           <div className="overview">{item.overview}</div>
           <Tags items={item.genres} />
           <div className="credits">
-            <Swiper slidesPerView={screenSize} spaceBetween={20}>
-              {movieCredits.map((credits: any) => (
-                <SwiperSlide key={item.id}>
-                  <ActorsCredits
-                    nameActor={credits.name}
-                    profileImg={credits.profile_path}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {movieCredits.length >= 5 ? (
+              <Swiper slidesPerView={screenSize} spaceBetween={20}>
+                {movieCredits.map((credits: any) => (
+                  <React.Fragment key={item.id}>
+                    {credits.profile_path && (
+                      <SwiperSlide>
+                        <ActorsCredits
+                          nameActor={credits.name}
+                          profileImg={credits.profile_path}
+                        />
+                      </SwiperSlide>
+                    )}
+                  </React.Fragment>
+                ))}
+              </Swiper>
+            ) : (
+              <>
+                {movieCredits.map((credits: any) => (
+                  <div key={item.id} style={{ marginRight: '10px' }}>
+                    {credits.profile_path && (
+                      <ActorsCredits
+                        nameActor={credits.name}
+                        profileImg={credits.profile_path}
+                      />
+                    )}
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>

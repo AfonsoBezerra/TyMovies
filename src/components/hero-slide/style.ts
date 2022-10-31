@@ -13,8 +13,9 @@ export const Container = styled.div`
   background-color: var(--color-background);
   box-shadow: inset 0px -31px 50px -9px #000000;
   > span img {
-    opacity: 15%;
+    opacity: 25%;
     object-fit: cover;
+    animation: fadeIn 2s ease-in-out;
   }
 
   .hero_slide_item_content {
@@ -119,6 +120,14 @@ export const Container = styled.div`
       .hero_slide_item_info {
         transform: translateY(0);
       }
+    }
+  }
+  @keyframes fadeIn {
+    to {
+      opacity: 25%;
+    }
+    from {
+      opacity: 0%;
     }
   }
 `;

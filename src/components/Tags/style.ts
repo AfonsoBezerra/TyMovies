@@ -11,6 +11,8 @@ export const Container = styled.div`
     border: 1px solid white;
     color: white;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
     font-size: 15px;
   }
 `;

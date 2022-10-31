@@ -37,6 +37,7 @@ const MoviePoster = ({ props, category }: any) => {
 const MovieList = ({ category, type }: iPropsMovie) => {
   const [data, setData] = useState([]);
   const [screenSize, setScreenSize] = useState(1.5);
+  const [onLoad, setOnload] = useState(false);
   SwiperCore.use([Autoplay]);
 
   useEffect(() => {
@@ -45,10 +46,12 @@ const MovieList = ({ category, type }: iPropsMovie) => {
       const params = {};
       if (category === 'movie') {
         response = await requestsApi.getMoviesList(type, { params });
-        setData(response.data.results.slice(2, 10));
+        setData(response.data.results.slice(2, 20));
+        setOnload(true);
       } else {
         response = await requestsApi.getTvList(type, { params });
-        setData(response.data.results.slice(2, 10));
+        setData(response.data.results.slice(2, 20));
+        setOnload(true);
       }
     };
     getMovieList();
@@ -68,22 +71,30 @@ const MovieList = ({ category, type }: iPropsMovie) => {
   }, []);
 
   return (
-    <Container>
-      <Swiper
-        modules={[Autoplay]}
-        slidesPerView={screenSize}
-        loop
-        centeredSlides={false}
-        grabCursor
-        spaceBetween={8}
-      >
-        {data.map((item: any) => (
-          <SwiperSlide key={item.id}>
-            <MoviePoster props={item} category={category} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Container>
+    <>
+      {!onLoad && (
+        <div
+          style={{ width: '100vw', height: '100vh', background: '#222323' }}
+        />
+      )}
+      {onLoad && (
+        <Container>
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={screenSize}
+            centeredSlides={false}
+            grabCursor
+            spaceBetween={8}
+          >
+            {data.map((item: any) => (
+              <SwiperSlide key={item.id}>
+                <MoviePoster props={item} category={category} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Container>
+      )}
+    </>
   );
 };
 
