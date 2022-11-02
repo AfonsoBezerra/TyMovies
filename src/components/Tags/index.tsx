@@ -8,7 +8,7 @@ interface iProps {
 const Tags = ({ items }: iProps) => {
   return (
     <Container>
-      {items.map((item: any) => (
+      {items?.map((item: any) => (
         <span key={item.id}>{item.name}</span>
       ))}
     </Container>

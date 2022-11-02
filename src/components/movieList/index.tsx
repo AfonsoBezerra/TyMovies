@@ -13,11 +13,11 @@ interface iPropsMovie {
   category: string;
 }
 
-const MoviePoster = ({ props, category }: any) => {
+const MoviePoster = ({ props, category, type }: any) => {
   const router = useRouter();
   const bg = apiConfig.w500Image(props.poster_path);
   const sendMovie = () => {
-    router.push(`/${category}/${props.id}`);
+    router.push(`/${category}/${type}/${props.id}`);
   };
   return (
     <ContainerPoster arial-hidden onClick={sendMovie}>
@@ -88,7 +88,7 @@ const MovieList = ({ category, type }: iPropsMovie) => {
           >
             {data.map((item: any) => (
               <SwiperSlide key={item.id}>
-                <MoviePoster props={item} category={category} />
+                <MoviePoster props={item} category={category} type={type} />
               </SwiperSlide>
             ))}
           </Swiper>

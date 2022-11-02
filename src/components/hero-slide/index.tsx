@@ -30,7 +30,7 @@ const HeroSlideItem = (props: PropsHero) => {
   };
 
   const sendMovie = () => {
-    router.push(`/movie/${item.id}`);
+    router.push(`/movie/popular/${item.id}`);
   };
 
   return (

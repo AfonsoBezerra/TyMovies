@@ -27,7 +27,7 @@ const HeroDetail = ({ item, type }: iMovie) => {
   useEffect(() => {
     const getMoviesCredits = async () => {
       try {
-        const response = await requestsApi.credits(type, item.id);
+        const response = await requestsApi.credits(type, item?.id);
         setMovieCredits(response.data.cast.slice(0, 20));
       } catch (error) {
         console.log(error);
@@ -36,7 +36,7 @@ const HeroDetail = ({ item, type }: iMovie) => {
     getMoviesCredits();
   }, []);
   const background = apiConfig.originalImage(
-    item.backdrop_path ? item.backdrop_path : item.poster_path,
+    item?.backdrop_path ? item?.backdrop_path : item?.poster_path,
   );
 
   useEffect(() => {
@@ -58,35 +58,34 @@ const HeroDetail = ({ item, type }: iMovie) => {
       <div className="hero_slide_item_content">
         <div className="hero_slide_poster">
           <Image
-            src={apiConfig.w500Image(item.poster_path)}
+            src={apiConfig.w500Image(item?.poster_path)}
             alt="hero_img"
             layout="fill"
           />
         </div>
         <div className="hero_slide_item_info">
-          <h1 className="title">{item.title || item.name}</h1>
-          <div className="overview">{item.overview}</div>
-          <Tags items={item.genres} />
+          <h1 className="title">{item?.title || item?.name}</h1>
+          <div className="overview">{item?.overview}</div>
+          <Tags items={item?.genres} />
           <div className="credits">
             {movieCredits.length >= 5 ? (
               <Swiper slidesPerView={screenSize} spaceBetween={20}>
-                {movieCredits.map((credits: any) => (
-                  <React.Fragment key={item.id}>
-                    {credits.profile_path && (
-                      <SwiperSlide>
+                {movieCredits.map(
+                  (credits: any) =>
+                    credits.profile_path && (
+                      <SwiperSlide key={credits.id}>
                         <ActorsCredits
                           nameActor={credits.name}
                           profileImg={credits.profile_path}
                         />
                       </SwiperSlide>
-                    )}
-                  </React.Fragment>
-                ))}
+                    ),
+                )}
               </Swiper>
             ) : (
               <>
                 {movieCredits.map((credits: any) => (
-                  <div key={item.id} style={{ marginRight: '10px' }}>
+                  <div key={credits.id} style={{ marginRight: '10px' }}>
                     {credits.profile_path && (
                       <ActorsCredits
                         nameActor={credits.name}
