@@ -2,7 +2,7 @@ import apiConfig from '@services/api/apiConfig';
 import { MovieList } from 'types';
 import Image from 'next/image';
 import Tags from '@components/Tags';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import requestsApi from '@services/api/requestsApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Container } from './style';
