@@ -34,7 +34,7 @@ export const Container = styled.div`
       transition: all 1.5s ease;
       .title {
         color: #fff;
-        font-size: 60px;
+        font-size: 40px;
         font-weight: bold;
         @media (max-width: 1024px) {
           font-size: 22px;
