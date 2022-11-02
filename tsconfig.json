@@ -26,6 +26,6 @@
       "@globalStyles/*": ["styles/global/*"],
     },
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/services/api/axiosClient.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/services/api/axiosClient.jsx"],
   "exclude": ["node_modules"]
 }

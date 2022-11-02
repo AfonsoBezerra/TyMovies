@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import requestsApi, { category, movieType } from '@services/api/requestsApi';
+import requestsApi, { category } from '@services/api/requestsApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import apiConfig from '@services/api/apiConfig';
 import { MovieList } from 'types';
@@ -12,13 +12,20 @@ import { Container, Hero } from './style';
 interface PropsHero {
   item: MovieList;
   className?: string;
+  typeHero: string;
+  rating: string;
+}
+
+interface iHero {
+  rating: string;
+  typeHero: string;
 }
 
 const HeroSlideItem = (props: PropsHero) => {
   const [valueModal, setModal] = useState<any>([]);
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
-  const { item, className } = props;
+  const { item, className, typeHero, rating } = props;
   const background = apiConfig.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path,
   );
@@ -30,7 +37,7 @@ const HeroSlideItem = (props: PropsHero) => {
   };
 
   const sendMovie = () => {
-    router.push(`/movie/popular/${item.id}`);
+    router.push(`/${typeHero}/${rating}/${item.id}`);
   };
 
   return (
@@ -38,7 +45,7 @@ const HeroSlideItem = (props: PropsHero) => {
       <Image src={background} alt="hero_img" layout="fill" />
       <div className="hero_slide_item_content">
         <div className="hero_slide_item_info">
-          <h1 className="title">{item.title}</h1>
+          <h1 className="title">{item.title || item.name}</h1>
           <div className="overview">{item.overview}</div>
           <div className="btns">
             <div className="BtnMore">
@@ -73,23 +80,39 @@ const HeroSlideItem = (props: PropsHero) => {
   );
 };
 
-const HeroSlide = () => {
-  const [movieItems, setMovieItems] = useState([]);
+const HeroSlide = ({ rating, typeHero }: iHero) => {
+  const [movieTvItems, setMovieTvItems] = useState([]);
   const [onLoad, setOnload] = useState(false);
   useEffect(() => {
     const getMoviesBanners = async () => {
       const params = { page: 1 };
       try {
-        const response = await requestsApi.getMoviesList(movieType.popular, {
+        const response = await requestsApi.getMoviesList(rating, {
           params,
         });
-        setMovieItems(response.data.results.slice(1, 6));
+        setMovieTvItems(response.data.results.slice(1, 6));
         setOnload(true);
       } catch (error) {
         console.log(error);
       }
     };
-    getMoviesBanners();
+    const getTvBanners = async () => {
+      const params = { page: 1 };
+      try {
+        const response = await requestsApi.getTvList(rating, {
+          params,
+        });
+        setMovieTvItems(response.data.results.slice(1, 6));
+        setOnload(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (typeHero === 'movie') {
+      getMoviesBanners();
+    } else {
+      getTvBanners();
+    }
   }, []);
 
   return (
@@ -113,11 +136,13 @@ const HeroSlide = () => {
               pauseOnMouseEnter: true,
             }}
           >
-            {movieItems.map((item: any) => (
+            {movieTvItems.map((item: any) => (
               <SwiperSlide key={item.id}>
                 {({ isActive }) => (
                   <HeroSlideItem
                     item={item}
+                    typeHero={typeHero}
+                    rating={rating}
                     className={`${isActive ? 'active' : ''}`}
                   />
                 )}

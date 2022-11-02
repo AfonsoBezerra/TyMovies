@@ -15,7 +15,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return {
       params: {
         category: 'movie',
-        movieTv: ['popular', `${movies.id}`],
+        rating: 'popular',
+        movieTv: `${movies.id}`,
       },
     };
   });
@@ -27,7 +28,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const data = await requestsApi
-    .detail(context.params?.category, context.params?.movieTv?.[1])
+    .detail(context.params?.category, context.params?.movieTv)
     .then((res) => res)
     .catch(() => null);
   if (!data) {
@@ -38,6 +39,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       },
     };
   }
+
   return { props: { movie: data.data, type: context.params?.category } };
 };
 

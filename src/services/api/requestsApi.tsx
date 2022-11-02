@@ -1,4 +1,4 @@
-import axiosClient from '@services/api/axiosClient';
+import axiosClient from './axiosClient';
 
 export const category = {
   movie: 'movie',
