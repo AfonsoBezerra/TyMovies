@@ -51,7 +51,7 @@ const HeroDetail = ({ item, type }: iMovie) => {
       setScreenSize(2.5);
     }
   }, []);
-  console.log(movieCredits.length);
+
   return (
     <Container className="active">
       <Image src={background} alt="hero_img" layout="fill" />
