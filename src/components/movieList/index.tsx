@@ -16,16 +16,20 @@ interface iPropsMovie {
 export const MoviePoster = ({ props, category, type, viewButton }: any) => {
   const router = useRouter();
   const bg = apiConfig.w500Image(props.poster_path);
-  const [routerState, setRouter] = useState(`/${category}/${type}/${props.id}`);
-  useEffect(() => {
-    if (viewButton) {
-      setRouter(`/${props.id}`);
-    } else {
-      setRouter(`/${category}/${type}/${props.id}`);
-    }
-  }, [viewButton]);
+  let sendMovie = `/${category}/${type}/${props.id}`;
+  if (viewButton) {
+    sendMovie = `/${props.id}`;
+  } else {
+    sendMovie = `/${category}/${type}/${props.id}`;
+  }
   return (
-    <ContainerPoster arial-hidden onClick={() => router.push(routerState)}>
+    <ContainerPoster
+      arial-hidden
+      onClick={() => {
+        console.log(sendMovie);
+        router.push(sendMovie);
+      }}
+    >
       <div className="posterMain">
         <div className="poster">
           <Image src={bg} alt="img" layout="fill" />
