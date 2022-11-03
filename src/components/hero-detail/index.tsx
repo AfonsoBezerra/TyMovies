@@ -48,10 +48,10 @@ const HeroDetail = ({ item, type }: iMovie) => {
     } else if (width >= 1920) {
       setScreenSize(4.5);
     } else {
-      setScreenSize(1.5);
+      setScreenSize(2.5);
     }
   }, []);
-
+  console.log(movieCredits.length);
   return (
     <Container className="active">
       <Image src={background} alt="hero_img" layout="fill" />
@@ -86,6 +86,7 @@ const HeroDetail = ({ item, type }: iMovie) => {
               <>
                 {movieCredits.map((credits: any) => (
                   <div key={credits.id} style={{ marginRight: '10px' }}>
+                    {console.log('toaqu')}
                     {credits.profile_path && (
                       <ActorsCredits
                         nameActor={credits.name}

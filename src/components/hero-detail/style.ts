@@ -111,7 +111,7 @@ export const Container = styled.div`
         transform: translateY(0);
       }
       gap: 2rem;
-      width: 60%;
+      width: 80%;
       height: 90%;
     }
   }
