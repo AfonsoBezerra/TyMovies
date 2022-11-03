@@ -12,7 +12,7 @@ export const ContainerPoster = styled.div`
     width: auto;
     height: 100%;
     min-width: 170px;
-    min-height: 380px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -47,8 +47,9 @@ export const ContainerPoster = styled.div`
       }
     }
     @media (max-width: 768px) {
-      max-width: 190px;
-      min-height: 250px;
+      max-width: 100%;
+      min-height: 300px;
+      height: 100%;
     }
   }
   .title {

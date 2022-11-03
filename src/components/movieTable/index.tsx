@@ -1,6 +1,8 @@
 import Header from '@components/header';
 import HeroSlide from '@components/hero-slide';
+import { MoviePoster } from '@components/movieList';
 import { ContainerTable } from '@stylesComponents/containerTable';
+import { SearchIcon } from '@stylesComponents/icons';
 import { MovieTableStyle } from './style';
 
 interface iMovieTable {
@@ -10,7 +12,6 @@ interface iMovieTable {
 }
 
 const MovieTable = ({ movies, type, rating }: iMovieTable) => {
-  console.log(movies);
   const splitRating = rating.split('_');
   const tratedType = type[0].toUpperCase() + type.substr(1);
   let tratedRating;
@@ -28,11 +29,33 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
       <MovieTableStyle>
         <ContainerTable>
           <div className="Header">
-            <span />
-            <h1>
-              {tratedType} {tratedRating}
-            </h1>
-            <span />
+            <div className="title">
+              <span />
+              <h1>
+                {tratedType} {tratedRating}
+              </h1>
+              <span />
+            </div>
+            <div className="inputIcon">
+              <input type="text" placeholder="Search..." />
+              <SearchIcon onClick={() => console.log('alo')} />
+            </div>
+          </div>
+          <div className="allPosters">
+            {movies.map((element: any) => {
+              return (
+                <div className="posters" key={element.id}>
+                  {element.poster_path && (
+                    <MoviePoster
+                      props={element}
+                      category={rating}
+                      type={type}
+                      viewButton
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </ContainerTable>
       </MovieTableStyle>

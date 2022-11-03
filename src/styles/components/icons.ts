@@ -10,6 +10,7 @@ import { HomeRepairService } from '@styled-icons/material/HomeRepairService';
 import { Bricks } from '@styled-icons/bootstrap/Bricks';
 import { ContactSupport } from '@styled-icons/material-outlined/ContactSupport';
 import { PlayFill } from '@styled-icons/bootstrap/PlayFill';
+import { Search } from '@styled-icons/bootstrap/Search';
 
 export const Facebookicon = styled(Facebook)`
   width: 22px;
@@ -79,4 +80,10 @@ export const PlayIconCircle = styled(PlayCircle)`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+`;
+
+export const SearchIcon = styled(Search)`
+  width: 15px;
+  height: 15px;
+  color: white;
 `;

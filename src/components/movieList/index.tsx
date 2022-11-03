@@ -13,14 +13,19 @@ interface iPropsMovie {
   category: string;
 }
 
-const MoviePoster = ({ props, category, type }: any) => {
+export const MoviePoster = ({ props, category, type, viewButton }: any) => {
   const router = useRouter();
   const bg = apiConfig.w500Image(props.poster_path);
-  const sendMovie = () => {
-    router.push(`/${category}/${type}/${props.id}`);
-  };
+  const [routerState, setRouter] = useState(`/${category}/${type}/${props.id}`);
+  useEffect(() => {
+    if (viewButton) {
+      setRouter(`/${props.id}`);
+    } else {
+      setRouter(`/${category}/${type}/${props.id}`);
+    }
+  }, [viewButton]);
   return (
-    <ContainerPoster arial-hidden onClick={sendMovie}>
+    <ContainerPoster arial-hidden onClick={() => router.push(routerState)}>
       <div className="posterMain">
         <div className="poster">
           <Image src={bg} alt="img" layout="fill" />
@@ -29,7 +34,6 @@ const MoviePoster = ({ props, category, type }: any) => {
           </div>
         </div>
       </div>
-      <div className="title">{props.title || props.name}</div>
     </ContainerPoster>
   );
 };
@@ -88,7 +92,12 @@ const MovieList = ({ category, type }: iPropsMovie) => {
           >
             {data.map((item: any) => (
               <SwiperSlide key={item.id}>
-                <MoviePoster props={item} category={category} type={type} />
+                <MoviePoster
+                  viewButton={false}
+                  props={item}
+                  category={category}
+                  type={type}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
