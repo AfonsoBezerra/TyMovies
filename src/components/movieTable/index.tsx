@@ -50,7 +50,6 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
                       props={element}
                       category={rating}
                       type={type}
-                      viewButton
                     />
                   )}
                 </div>

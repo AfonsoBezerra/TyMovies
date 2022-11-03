@@ -27,7 +27,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('id', context.params?.movieTv);
   const data = await requestsApi
     .detail(context.params?.category, context.params?.movieTv)
     .then((res) => res)

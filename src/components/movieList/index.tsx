@@ -13,21 +13,15 @@ interface iPropsMovie {
   category: string;
 }
 
-export const MoviePoster = ({ props, category, type, viewButton }: any) => {
+export const MoviePoster = ({ props, category, type }: any) => {
   const router = useRouter();
   const bg = apiConfig.w500Image(props.poster_path);
-  let sendMovie = `/${category}/${type}/${props.id}`;
-  if (viewButton) {
-    sendMovie = `/${props.id}`;
-  } else {
-    sendMovie = `/${category}/${type}/${props.id}`;
-  }
+
   return (
     <ContainerPoster
       arial-hidden
       onClick={() => {
-        console.log(sendMovie);
-        router.push(sendMovie);
+        router.push(`/${category}/${type}/${props.id}`);
       }}
     >
       <div className="posterMain">
