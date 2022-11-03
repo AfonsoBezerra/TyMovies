@@ -48,8 +48,8 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
                   {element.poster_path && (
                     <MoviePoster
                       props={element}
-                      category={rating}
-                      type={type}
+                      type={rating}
+                      category={type}
                     />
                   )}
                 </div>

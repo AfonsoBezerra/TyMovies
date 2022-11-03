@@ -16,7 +16,6 @@ interface iPropsMovie {
 export const MoviePoster = ({ props, category, type }: any) => {
   const router = useRouter();
   const bg = apiConfig.w500Image(props.poster_path);
-
   return (
     <ContainerPoster
       arial-hidden

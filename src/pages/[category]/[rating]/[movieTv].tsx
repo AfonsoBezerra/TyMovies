@@ -31,6 +31,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .detail(context.params?.category, context.params?.movieTv)
     .then((res) => res)
     .catch(() => null);
+  console.log(data, `data`);
   if (!data) {
     return {
       redirect: {
