@@ -86,7 +86,6 @@ const HeroDetail = ({ item, type }: iMovie) => {
               <>
                 {movieCredits.map((credits: any) => (
                   <div key={credits.id} style={{ marginRight: '10px' }}>
-                    {console.log('toaqu')}
                     {credits.profile_path && (
                       <ActorsCredits
                         nameActor={credits.name}
