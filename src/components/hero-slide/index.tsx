@@ -42,7 +42,13 @@ const HeroSlideItem = (props: PropsHero) => {
 
   return (
     <Container className={className}>
-      <Image src={background} alt="hero_img" layout="fill" />
+      <Image
+        src={background}
+        alt="hero_img"
+        layout="fill"
+        blurDataURL={background}
+        placeholder="blur"
+      />
       <div className="hero_slide_item_content">
         <div className="hero_slide_item_info">
           <h1 className="title">{item.title || item.name}</h1>
@@ -119,7 +125,12 @@ const HeroSlide = ({ rating, typeHero }: iHero) => {
     <>
       {!onLoad && (
         <div
-          style={{ width: '100vw', height: '100vh', background: '#222323' }}
+          style={{
+            width: '100vw',
+            height: '400vh',
+            background:
+              'linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%)',
+          }}
         />
       )}
       {onLoad && (

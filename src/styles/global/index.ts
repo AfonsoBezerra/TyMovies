@@ -29,12 +29,17 @@ const RootCSS = createGlobalStyle`
   }
   html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
+
+  html.normal-scroll {
+    scroll-behavior: auto;
+  }
+  
   body {
     padding: 0 !important;
     color: var(--color-text);
     font-family: var(--font-primary);
-    background: rgb(0,0,0);
     background: linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%);
     .modal{
       top: 10%;

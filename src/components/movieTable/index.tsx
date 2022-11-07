@@ -20,6 +20,16 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
   );
   return (
     <>
+      {!filter && (
+        <div
+          style={{
+            width: '100vw',
+            height: '400vh',
+            background:
+              'linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%)',
+          }}
+        />
+      )}
       <Header />
       <HeroSlide rating={rating} typeHero={type} />
       <MovieTableStyle>

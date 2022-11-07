@@ -17,7 +17,13 @@ const Home = () => {
         <div className="tendence">
           <div className="headerTendence">
             <h1>Tranding movies</h1>
-            <Button onClick={() => router.push('/movie/popular')}>
+            <Button
+              onClick={() =>
+                router.push({ pathname: '/movie/popular' }, undefined, {
+                  scroll: true,
+                })
+              }
+            >
               View more
             </Button>
           </div>

@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: auto;
 `;
 
-export const ContainerPoster = styled.div`
+export const ContainerPoster = styled.a`
   width: 100%;
   height: 100%;
   .posterMain {

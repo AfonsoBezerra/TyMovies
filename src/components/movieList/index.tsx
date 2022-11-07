@@ -20,7 +20,11 @@ export const MoviePoster = ({ props, category, type }: any) => {
     <ContainerPoster
       arial-hidden
       onClick={() => {
-        router.push(`/${category}/${type}/${props.id}`);
+        router.push(
+          { pathname: `/${category}/${type}/${props.id}` },
+          undefined,
+          { scroll: false },
+        );
       }}
     >
       <div className="posterMain">
@@ -31,6 +35,7 @@ export const MoviePoster = ({ props, category, type }: any) => {
             layout="fill"
             blurDataURL={bg}
             placeholder="blur"
+            loading="lazy"
           />
           <div className="hover">
             <PlayIconCircle className="icon" />
@@ -81,7 +86,12 @@ const MovieList = ({ category, type }: iPropsMovie) => {
     <>
       {!onLoad && (
         <div
-          style={{ width: '100vw', height: '100vh', background: '#222323' }}
+          style={{
+            width: '100vw',
+            height: '100vh',
+            background:
+              'linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%)',
+          }}
         />
       )}
       {onLoad && (
