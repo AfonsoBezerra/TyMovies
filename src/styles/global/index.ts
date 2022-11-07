@@ -35,7 +35,8 @@ const RootCSS = createGlobalStyle`
     padding: 0 !important;
     color: var(--color-text);
     font-family: var(--font-primary);
-    background-color: rgba(0,0,0, 90%);
+    background: rgb(0,0,0);
+    background: linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%);
     .modal{
       top: 10%;
     .modal-content{
