@@ -68,7 +68,7 @@ export const ContainerTable = styled.div`
         outline: none;
         padding: 0.3rem 0.5rem;
       }
-      > svg {
+      > button {
         position: absolute;
         right: 0.4rem;
       }

@@ -3,6 +3,7 @@ import HeroSlide from '@components/hero-slide';
 import { MoviePoster } from '@components/movieList';
 import { ContainerTable } from '@stylesComponents/containerTable';
 import { SearchIcon } from '@stylesComponents/icons';
+import { useMovieTable } from 'hooks/use-movie-table';
 import { MovieTableStyle } from './style';
 
 interface iMovieTable {
@@ -12,16 +13,11 @@ interface iMovieTable {
 }
 
 const MovieTable = ({ movies, type, rating }: iMovieTable) => {
-  const splitRating = rating.split('_');
-  const tratedType = type[0].toUpperCase() + type.substr(1);
-  let tratedRating;
-  if (splitRating.length <= 1) {
-    tratedRating = splitRating[0][0].toUpperCase() + splitRating[0].substr(1);
-  } else {
-    tratedRating = `${
-      splitRating[0][0].toUpperCase() + splitRating[0].substr(1)
-    } ${splitRating[1][0].toUpperCase()}${splitRating[1].substr(1)}`;
-  }
+  const { Ffilter, filter, tratedRating, tratedType } = useMovieTable(
+    movies,
+    type,
+    rating,
+  );
   return (
     <>
       <Header />
@@ -36,13 +32,15 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
               </h1>
               <span />
             </div>
-            <div className="inputIcon">
-              <input type="text" placeholder="Search..." />
-              <SearchIcon onClick={() => console.log('alo')} />
-            </div>
+            <form onSubmit={(e) => Ffilter(e)} className="inputIcon">
+              <input name="filmefilter" placeholder="Search..." />
+              <button type="submit">
+                <SearchIcon />
+              </button>
+            </form>
           </div>
           <div className="allPosters">
-            {movies.map((element: any) => {
+            {filter.map((element: any) => {
               return (
                 <div className="posters" key={element.id}>
                   {element.poster_path && (
