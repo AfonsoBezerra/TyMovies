@@ -30,6 +30,7 @@ export const MoviePoster = ({ props, category, type }: any) => {
             alt="img"
             layout="fill"
             blurDataURL="blur"
+            loading="lazy"
             placeholder="blur"
           />
           <div className="hover">
