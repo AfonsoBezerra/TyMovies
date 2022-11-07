@@ -94,6 +94,7 @@ export const ContainerTable = styled.div`
       height: 100%;
       .posterMain {
         min-height: 250px;
+        max-height: 266px;
       }
     }
     @media (min-width: 768px) {
