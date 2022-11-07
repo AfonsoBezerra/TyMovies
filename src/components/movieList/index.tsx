@@ -25,7 +25,13 @@ export const MoviePoster = ({ props, category, type }: any) => {
     >
       <div className="posterMain">
         <div className="poster">
-          <Image src={bg} alt="img" layout="fill" blurDataURL="blur" />
+          <Image
+            src={bg}
+            alt="img"
+            layout="fill"
+            blurDataURL="blur"
+            placeholder="blur"
+          />
           <div className="hover">
             <PlayIconCircle className="icon" />
           </div>
