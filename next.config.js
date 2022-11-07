@@ -5,6 +5,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
+    unoptmized: true,
     domains: ['image.tmdb.org'],
   },
 };
