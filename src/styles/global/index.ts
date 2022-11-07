@@ -29,7 +29,6 @@ const RootCSS = createGlobalStyle`
   }
   html {
     overflow-x: hidden;
-    scroll-behavior: smooth;
   }
   body {
     padding: 0 !important;
