@@ -150,12 +150,15 @@ const HeroSlide = ({ rating, typeHero }: iHero) => {
             {movieTvItems.map((item: any) => (
               <SwiperSlide key={item.id}>
                 {({ isActive }) => (
-                  <HeroSlideItem
-                    item={item}
-                    typeHero={typeHero}
-                    rating={rating}
-                    className={`${isActive ? 'active' : ''}`}
-                  />
+                  <>
+                    <HeroSlideItem
+                      item={item}
+                      typeHero={typeHero}
+                      rating={rating}
+                      className={`${isActive ? 'active' : ''}`}
+                    />
+                    <div className="transition" />
+                  </>
                 )}
               </SwiperSlide>
             ))}

@@ -40,7 +40,7 @@ const RootCSS = createGlobalStyle`
     padding: 0 !important;
     color: var(--color-text);
     font-family: var(--font-primary);
-    background: linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%);
+    background-image: linear-gradient(to left top, #240930, #20092a, #1d0923, #19081d, #140717, #110714, #0e0710, #0a070c, #09080b, #09080b, #09090a, #090909);
     .modal{
       top: 10%;
     .modal-content{
@@ -50,15 +50,7 @@ const RootCSS = createGlobalStyle`
       }
     }
   }
-  .effect {
-    background-color: rgba(0,0,0, 90%);
-    height: 55px;
-    padding: 0.1rem 1rem 0 1rem;
-    a{
-      width: 41px;
-      height: 48px;
-    }
-  }
+
   }
   button {
     cursor: pointer;

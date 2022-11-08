@@ -8,6 +8,7 @@ export const ContainerTable = styled.div`
   justify-content: start;
   align-items: center;
   color: white;
+  z-index: 999;
   @media (max-width: 1024px) {
     width: 100%;
   }
@@ -34,7 +35,7 @@ export const ContainerTable = styled.div`
         margin: 0 0.5rem;
         letter-spacing: 1px;
         font-weight: bold;
-        filter: drop-shadow(0 0 1px rgba(252, 3, 3, 0.4));
+        filter: drop-shadow(0 0 1px rgba(99, 40, 131, 0.4));
         @media (min-width: 1024px) {
           font-size: 20px;
           margin: 0 0.5rem;
@@ -43,9 +44,9 @@ export const ContainerTable = styled.div`
       span {
         width: 10%;
         height: 1px;
-        background-color: #fc0303;
+        background-color: #632883;
         margin: 0 1rem;
-        box-shadow: 0 0 10px #fc0303;
+        box-shadow: 0 0 10px #632883;
         border-radius: 2px;
         @media (max-width: 1024px) {
           width: 10%;

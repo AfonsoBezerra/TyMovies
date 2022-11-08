@@ -1,9 +1,10 @@
+import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { useEffect, useRef } from 'react';
 import { Container } from './style';
 
 const Header = () => {
   const headerRef = useRef<HTMLElement>(null);
-
+  const { signOut } = useAuthContext();
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const top = window.scrollY;
@@ -15,6 +16,12 @@ const Header = () => {
     });
   }, []);
 
-  return <Container ref={headerRef} />;
+  return (
+    <Container ref={headerRef}>
+      <button type="button" onClick={() => signOut()}>
+        Deslogar
+      </button>
+    </Container>
+  );
 };
 export default Header;

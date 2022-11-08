@@ -1,6 +1,34 @@
 import styled from 'styled-components';
 
-export const Hero = styled.div``;
+export const Hero = styled.div`
+  width: 100%;
+  position: relative;
+  .transition {
+    width: 100vw;
+    height: 700px;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0) 62.03%,
+      rgba(0, 0, 0, 0.008) 64.56%,
+      rgba(0, 0, 0, 0.035) 67.09%,
+      rgba(0, 0, 0, 0.082) 69.62%,
+      rgba(0, 0, 0, 0.15) 72.16%,
+      rgba(0, 0, 0, 0.23) 74.69%,
+      rgba(0, 0, 0, 0.333) 77.22%,
+      rgba(0, 0, 0, 0.443) 79.75%,
+      rgba(0, 0, 0, 0.557) 82.28%,
+      rgba(0, 0, 0, 0.667) 84.81%,
+      rgba(0, 0, 0, 0.77) 87.34%,
+      rgba(0, 0, 0, 0.85) 89.87%,
+      rgba(0, 0, 0, 0.918) 92.41%,
+      rgba(0, 0, 0, 0.965) 94.94%,
+      rgba(0, 0, 0, 0.992) 97.47%,
+      rgb(0, 0, 0) 100%
+    );
+  }
+`;
 
 export const Container = styled.div`
   padding: 9rem 0;
@@ -11,7 +39,7 @@ export const Container = styled.div`
   align-items: center;
   position: relative;
   background-color: var(--color-background);
-  box-shadow: inset 0px -31px 50px -9px #000000;
+  box-shadow: inset 0px -80px 80px 10px #000;
   > span img {
     opacity: 25%;
     object-fit: cover;
@@ -28,6 +56,7 @@ export const Container = styled.div`
     background-color: transparent;
     width: 60%;
     height: 60%;
+    z-index: 999;
     transition: all 2s ease;
     .hero_slide_item_info {
       transform: translateY(-100px);
@@ -92,6 +121,7 @@ export const Container = styled.div`
       position: relative;
       box-shadow: 0 0 20px rgba(0, 0, 0, 70%);
       border-radius: 15px;
+
       img {
         border-radius: 15px;
       }

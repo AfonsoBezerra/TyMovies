@@ -33,6 +33,7 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
       <Header />
       <HeroSlide rating={rating} typeHero={type} />
       <MovieTableStyle>
+        <div className="transition" />
         <ContainerTable>
           <div className="Header">
             <div className="title">

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { LayoutProvider } from '@contexts/Layout';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { AuthProvider } from '@contexts/Auth';
 
 function useNormalScrollRoutes() {
   const router = useRouter();
@@ -30,9 +31,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
         <title>TyMovie</title>
       </Head>
-      <LayoutProvider>
-        <Component {...pageProps} />
-      </LayoutProvider>
+      <AuthProvider>
+        <LayoutProvider>
+          <Component {...pageProps} />
+        </LayoutProvider>
+      </AuthProvider>
     </>
   );
 };
