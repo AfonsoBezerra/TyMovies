@@ -53,7 +53,7 @@ export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   if (cookie) {
     return {
       redirect: {
-        destination: '/main',
+        destination: '/home',
         permanent: false,
       },
     };

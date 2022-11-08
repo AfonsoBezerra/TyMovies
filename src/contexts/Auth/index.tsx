@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         })
         .then(() => {
           setLoading(false);
-          router.push('/main');
+          router.push('/home');
         })
         .catch(() => {
           // catch error
