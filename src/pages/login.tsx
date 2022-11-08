@@ -7,17 +7,32 @@ import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 
 const Login = () => {
-  const { signInGoogle } = useAuthContext();
+  const { signInGoogle, signInWithEmailAndPassword } = useAuthContext();
+
   return (
     <>
       <Header />
       <FormStyle>
         <h1>Entrar</h1>
         <div className="containerForm">
-          <form onSubmit={(e) => console.log(e)}>
+          <form
+            autoComplete="none"
+            onSubmit={(e: any) => {
+              e.preventDefault();
+              signInWithEmailAndPassword(
+                e.target.email.value,
+                e.target.pass.value,
+              );
+            }}
+          >
             <span>Você tem uma conta da TyMovies?</span>
-            <input type="email" placeholder="Endereco de e-mail" />
-            <input type="password" placeholder="Senha" />
+            <input
+              type="email"
+              required
+              placeholder="Endereco de e-mail"
+              name="email"
+            />
+            <input type="password" required placeholder="Senha" name="pass" />
             <div className="buttonsForm">
               <button
                 style={{ color: 'white', marginRight: '1rem' }}

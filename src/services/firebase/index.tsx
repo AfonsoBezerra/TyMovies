@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
 if (!getApps().length) {
@@ -28,4 +29,5 @@ export const Auth = {
   GoogleProvider,
   signInWithPopup,
   signOut,
+  createUserWithEmailAndPassword,
 };

@@ -1,5 +1,6 @@
 import { delCookie, setCookie } from '@services/cookies';
 import { Auth } from '@services/firebase';
+import axios from 'axios';
 import { NextOrObserver, User } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { createContext, useEffect, useMemo, useState } from 'react';
@@ -17,6 +18,11 @@ interface iAuthContext {
   signOut: () => void;
   user: null | iUser;
   loading: boolean;
+  createUserWithEmailAndPassword: (
+    email: string,
+    password: string,
+    name: string,
+  ) => void;
 }
 const AuthContext = createContext<iAuthContext>({} as iAuthContext);
 
@@ -26,11 +32,11 @@ interface iAuthProvider {
 
 export const AUTH_COOKIE_NAME = '__HOST_TYMOVIES_USER_COOKIE';
 
-const FormatUser = (user: User) =>
+const FormatUser = (user: User, others: { name: string; img: string }) =>
   ({
     email: user.email,
-    name: user.displayName,
     uid: user.uid,
+    ...others,
   } as iUser);
 
 export const AuthProvider = ({ children }: iAuthProvider) => {
@@ -49,27 +55,62 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     }
   };
 
-  const handleUser = (currentUser: User | undefined) => {
+  const handleUser = async (currentUser: User | undefined) => {
     if (currentUser) {
-      const formattedUser = FormatUser(currentUser);
-      setUser(formattedUser);
-      setSession(currentUser.refreshToken);
+      await axios.get(`/api/user/${currentUser.uid}`).then((res) => {
+        const formattedUser = FormatUser(currentUser, {
+          name: res.data.name,
+          img: res.data.img,
+        });
+        setUser(formattedUser);
+        setSession(currentUser.refreshToken);
+      });
       return currentUser.email;
     }
     setUser(null);
     setSession(undefined);
     return false;
   };
+
+  const createUserWithEmailAndPassword = (
+    email: string,
+    password: string,
+    name: string,
+  ) => {
+    try {
+      setLoading(true);
+      const img = '';
+      Auth.createUserWithEmailAndPassword(Auth.auth, email, password)
+        .then(async ({ user: userFirebase }) => {
+          await axios.post(`/api/user/${userFirebase.uid}`, {
+            email,
+            name,
+            img,
+          });
+          handleUser(userFirebase);
+        })
+        .then(() => {
+          setLoading(false);
+          router.push('/home');
+        });
+    } finally {
+      // always runs
+    }
+  };
+
   const signInWithEmailAndPassword = (email: string, password: string) => {
     try {
       setLoading(true);
-      Auth.signInWithEmailAndPassword(Auth.auth, email, password).then(
-        ({ user: userFirebase }) => {
-          handleUser(userFirebase);
-        },
-      );
+      Auth.signInWithEmailAndPassword(Auth.auth, email, password)
+        .then(async ({ user: userFirebase }) => {
+          await handleUser(userFirebase);
+        })
+        .then(() => {
+          setLoading(false);
+          router.push('/home');
+        });
     } finally {
-      setLoading(false);
+      // always runs
     }
   };
 
@@ -77,7 +118,12 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     try {
       setLoading(true);
       Auth.signInWithPopup(Auth.auth, Auth.GoogleProvider)
-        .then(({ user: userFirebase }) => {
+        .then(async ({ user: userFirebase }) => {
+          await axios.post(`/api/user/${userFirebase.uid}`, {
+            email: userFirebase.email,
+            name: userFirebase.displayName,
+            img: '',
+          });
           handleUser(userFirebase);
         })
         .then(() => {
@@ -119,6 +165,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       signOut,
       user,
       loading,
+      createUserWithEmailAndPassword,
     }),
     [user, loading],
   );

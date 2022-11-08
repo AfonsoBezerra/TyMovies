@@ -4,6 +4,7 @@ import Header from '@components/header';
 import HeroSlide from '@components/hero-slide/';
 import MovieList from '@components/movieList';
 import { AUTH_COOKIE_NAME } from '@contexts/Auth';
+import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { category, movieType, tvType } from '@services/api/requestsApi';
 import { getCookie } from '@services/cookies';
 import { Container } from '@stylesComponents/containers';
@@ -12,6 +13,9 @@ import { useRouter } from 'next/router';
 
 const Main = () => {
   const router = useRouter();
+  const { user } = useAuthContext();
+  console.log(user);
+  // axios.put(`/api/user/${user?.uid}`, { img: '233423' });
   return (
     <div>
       <Header />
