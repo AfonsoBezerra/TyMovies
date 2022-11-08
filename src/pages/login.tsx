@@ -4,6 +4,7 @@ import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { getCookie } from '@services/cookies';
 import { FormStyle } from '@stylesComponents/containerForm';
 import { GetServerSidePropsContext } from 'next';
+import Link from 'next/link';
 
 const Login = () => {
   const { signInGoogle } = useAuthContext();
@@ -14,7 +15,7 @@ const Login = () => {
         <h1>Entrar</h1>
         <div className="containerForm">
           <form onSubmit={(e) => console.log(e)}>
-            <label>Você tem uma conta da TyMovies?</label>
+            <span>Você tem uma conta da TyMovies?</span>
             <input type="email" placeholder="Endereco de e-mail" />
             <input type="password" placeholder="Senha" />
             <div className="buttonsForm">
@@ -24,7 +25,7 @@ const Login = () => {
               >
                 Entrar
               </button>
-              <a>Esqueceu sua senha?</a>
+              <Link href="/">Esqueceu sua senha?</Link>
             </div>
           </form>
           <div className="separator">
