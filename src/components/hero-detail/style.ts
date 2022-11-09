@@ -63,7 +63,7 @@ export const Container = styled.div`
           flex-direction: column;
           img {
             width: 100%;
-            max-height: 300px;
+            max-height: 400px;
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 80%);
           }
@@ -78,10 +78,17 @@ export const Container = styled.div`
         @media (min-width: 1440px) {
           max-width: 600px;
         }
+        @media (min-width: 1700px) {
+          max-width: 1000px;
+        }
+      }
+      @media (max-width: 600px) {
+        margin-top: 0;
+        justify-content: start;
       }
     }
     .hero_slide_poster {
-      width: 70%;
+      width: 80%;
       height: 100%;
       position: relative;
       box-shadow: 0 0 20px rgba(0, 0, 0, 70%);
@@ -89,11 +96,15 @@ export const Container = styled.div`
       img {
         border-radius: 15px;
       }
+      @media (min-width: 1500px) {
+        width: 40%;
+      }
       @media (max-width: 1020px) {
         width: 80%;
       }
       @media (max-width: 767px) {
-        display: none;
+        width: 70%;
+        height: 50%;
       }
     }
     @media (max-width: 1020px) {
@@ -106,12 +117,13 @@ export const Container = styled.div`
       .hero_slide_poster {
         transform: translateY(0);
       }
-      gap: 2rem;
+      gap: 0rem;
       height: 90%;
     }
 
     @media (max-width: 700px) {
       width: 90%;
+      gap: 0;
     }
     @media (min-width: 1024px) {
       width: 90%;

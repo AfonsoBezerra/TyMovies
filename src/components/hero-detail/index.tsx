@@ -42,9 +42,9 @@ const HeroDetail = ({ item, type }: iMovie) => {
   useEffect(() => {
     const { width } = window.screen;
     if (width >= 760 && width < 1440) {
-      setScreenSize(3.5);
+      setScreenSize(2.5);
     } else if (width >= 1440 && width < 1920) {
-      setScreenSize(4.5);
+      setScreenSize(3.5);
     } else if (width >= 1920) {
       setScreenSize(4.5);
     } else {
