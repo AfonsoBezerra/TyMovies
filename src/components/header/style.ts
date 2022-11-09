@@ -1,17 +1,40 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.header`
+interface iContainer {
+  justCenter: boolean;
+}
+
+export const Container = styled.header<iContainer>`
   width: 100%;
-  height: 50px;
+  height: auto;
   position: fixed;
   background-color: transparent;
   display: flex;
-  justify-content: center;
+  ${({ justCenter }) =>
+    justCenter
+      ? css`
+          justify-content: space-between;
+        `
+      : css`
+          justify-content: center;
+        `}
   align-items: center;
   z-index: 9;
-  padding: 0 1rem 0rem 1rem;
+  padding: 1rem;
   transition: all 0.5s ease;
+  color: white;
+  button {
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255, 0.9);
+    text-transform: uppercase;
+  }
   @media (max-width: 1024px) {
-    justify-content: center;
+    padding: 0.5rem;
+    justify-content: space-between;
   }
 `;

@@ -54,10 +54,11 @@ export const FormStyle = styled.div`
         font-style: normal;
         font-size: 16px;
         letter-spacing: 0px;
+        margin-bottom: 0.5rem;
       }
       .buttonsForm {
         display: flex;
-        justify-content: start;
+        justify-content: space-between;
         align-items: center;
         margin-top: 1.4rem;
         button {
@@ -103,9 +104,22 @@ export const FormStyle = styled.div`
       margin-top: 1.5rem;
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       button img {
         width: 200px;
+      }
+      .cadas {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 1rem 3rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: rgb(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        margin-right: 0;
       }
     }
     @media (max-width: 768px) {
@@ -131,6 +145,9 @@ export const FormStyle = styled.div`
       .buttonGoogle {
         button img {
           width: 180px;
+        }
+        .cadas {
+          font-size: 0.7rem;
         }
       }
     }

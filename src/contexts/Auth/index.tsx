@@ -16,8 +16,10 @@ interface iAuthContext {
   signInWithEmailAndPassword: (email: string, password: string) => void;
   signInGoogle: () => void;
   signOut: () => void;
+  setErroLogin: (value: boolean) => void;
   user: null | iUser;
   loading: boolean;
+  errorLogin: boolean;
   createUserWithEmailAndPassword: (
     email: string,
     password: string,
@@ -41,6 +43,7 @@ const FormatUser = (user: User, others: { name: string; img: string }) =>
 
 export const AuthProvider = ({ children }: iAuthProvider) => {
   const [user, setUser] = useState<null | iUser>(null);
+  const [errorLogin, setErroLogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -90,9 +93,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
           handleUser(userFirebase);
         })
         .then(() => {
-          setLoading(false);
           router.push('/home');
-        });
+        })
+        .then(() => setTimeout(() => setLoading(false), 1000));
     } finally {
       // always runs
     }
@@ -106,8 +109,12 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
           await handleUser(userFirebase);
         })
         .then(() => {
-          setLoading(false);
           router.push('/home');
+        })
+        .then(() => setTimeout(() => setLoading(false), 1000))
+        .catch(() => {
+          setLoading(false);
+          setErroLogin(true);
         });
     } finally {
       // always runs
@@ -127,11 +134,11 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
           handleUser(userFirebase);
         })
         .then(() => {
-          setLoading(false);
           router.push('/home');
         })
+        .then(() => setTimeout(() => setLoading(false), 1000))
         .catch(() => {
-          // catch error
+          setLoading(false);
         });
     } finally {
       // always runs
@@ -165,9 +172,11 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       signOut,
       user,
       loading,
+      errorLogin,
+      setErroLogin,
       createUserWithEmailAndPassword,
     }),
-    [user, loading],
+    [user, loading, errorLogin],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

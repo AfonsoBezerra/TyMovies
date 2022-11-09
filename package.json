@@ -29,6 +29,7 @@
     "query-string": "^7.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-loading-dot": "^1.0.6",
     "reactstrap": "^9.1.4",
     "styled-components": "^5.3.5",
     "swiper": "^8.3.2"

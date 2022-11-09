@@ -51,7 +51,13 @@ const RootCSS = createGlobalStyle`
     }
   }
 
+  .effect {
+    background-color: rgba(0,0,0,.9);
+    z-index: 9999;
   }
+}
+
+
   button {
     cursor: pointer;
     border: none;

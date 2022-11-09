@@ -5,7 +5,7 @@ export const Hero = styled.div`
   position: relative;
   .transition {
     width: 100vw;
-    height: 700px;
+    height: 450px;
     position: absolute;
     bottom: 0;
     z-index: 1;
@@ -54,7 +54,7 @@ export const Container = styled.div`
     align-items: center;
     gap: 4rem;
     background-color: transparent;
-    width: 60%;
+    width: 70%;
     height: 60%;
     z-index: 999;
     transition: all 2s ease;
@@ -68,7 +68,7 @@ export const Container = styled.div`
       transition: all 1.5s ease;
       .title {
         color: #fff;
-        font-size: 60px;
+        font-size: 40px;
         font-weight: bold;
         @media (max-width: 1024px) {
           font-size: 22px;
@@ -116,7 +116,7 @@ export const Container = styled.div`
       }
     }
     .hero_slide_poster {
-      width: 60%;
+      width: 80%;
       height: 100%;
       position: relative;
       box-shadow: 0 0 20px rgba(0, 0, 0, 70%);
@@ -125,23 +125,24 @@ export const Container = styled.div`
       img {
         border-radius: 15px;
       }
-      @media (max-width: 1024px) {
+      @media (max-width: 760px) {
         width: 100%;
       }
     }
-    @media (max-width: 1024px) {
+    @media (max-width: 1000px) {
       flex-direction: column;
       .hero_slide_item_info {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin-top: 20px;
       }
       .hero_slide_poster {
         transform: translateY(0);
       }
       gap: 2rem;
       width: 60%;
-      height: 90%;
+      height: 85%;
     }
   }
   &.active {

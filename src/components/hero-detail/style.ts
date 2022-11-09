@@ -27,6 +27,7 @@ export const Container = styled.div`
     animation: animationFade 1.5s;
     .hero_slide_item_info {
       display: flex;
+      margin-top: 30px;
       flex-direction: column;
       justify-content: center;
       width: 100%;
@@ -71,6 +72,7 @@ export const Container = styled.div`
           }
         }
         @media (min-width: 1025px) {
+          margin-top: 0px;
           max-width: 300px;
         }
         @media (min-width: 1440px) {
