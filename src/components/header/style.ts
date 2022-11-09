@@ -25,12 +25,12 @@ export const Container = styled.header<iContainer>`
   color: white;
   button {
     width: auto;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 0.8rem;
     border-radius: 5px;
     font-size: 0.7rem;
     font-weight: bold;
-    color: rgb(255, 255, 255, 0.9);
+    color: rgb(255, 255, 255, 1);
     text-transform: uppercase;
   }
   @media (max-width: 1024px) {
