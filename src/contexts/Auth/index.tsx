@@ -10,6 +10,8 @@ interface iUser {
   name?: string;
   uid: string;
   img?: string;
+  userVerified: boolean;
+  pin: string;
 }
 
 interface iAuthContext {
@@ -83,12 +85,14 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     try {
       setLoading(true);
       const img = '';
+      const userVerified = false;
       Auth.createUserWithEmailAndPassword(Auth.auth, email, password)
         .then(async ({ user: userFirebase }) => {
           await axios.post(`/api/user/${userFirebase.uid}`, {
             email,
             name,
             img,
+            userVerified,
           });
           handleUser(userFirebase);
         })

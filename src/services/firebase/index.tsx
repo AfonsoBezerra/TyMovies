@@ -7,6 +7,8 @@ import {
   signInWithPopup,
   signOut,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
+  applyActionCode,
 } from 'firebase/auth';
 
 if (!getApps().length) {
@@ -30,4 +32,6 @@ export const Auth = {
   signInWithPopup,
   signOut,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
+  applyActionCode,
 };
