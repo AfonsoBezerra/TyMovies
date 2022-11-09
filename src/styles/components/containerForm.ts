@@ -69,7 +69,7 @@ export const FormStyle = styled.div`
           padding: 1rem 3rem;
           margin-right: 2rem !important;
           border-radius: 5px;
-          font-size: 1rem;
+          font-size: 0.8rem;
           font-weight: bold;
           color: rgb(255, 255, 255, 0.7);
           text-transform: uppercase;
