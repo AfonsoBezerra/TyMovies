@@ -128,11 +128,14 @@ export const Container = styled.div`
       @media (max-width: 760px) {
         width: 100%;
       }
+      @media (min-width: 761px) {
+        width: 50%;
+      }
       @media (min-width: 1400px) {
         width: 75%;
       }
-      @media (min-width: 1900px) {
-        width: 60%;
+      @media (min-width: 1700px) {
+        width: 50%;
       }
       @media (min-width: 2000px) {
         width: 40%;
