@@ -28,11 +28,11 @@ const Header = () => {
         <TyMoviesLogo />
       ) : (
         <>
-          <span>User</span>
-          <TyMoviesLogo />
           <button type="button" onClick={() => signOut()}>
             Sair
           </button>
+          <TyMoviesLogo />
+          <span>User</span>
         </>
       )}
     </Container>
