@@ -5,7 +5,7 @@ interface iContainer {
 }
 
 export const Container = styled.header<iContainer>`
-  width: 100vw;
+  width: 100%;
   height: auto;
   position: fixed;
   background-color: transparent;
@@ -14,7 +14,7 @@ export const Container = styled.header<iContainer>`
     justCenter
       ? css`
           justify-content: space-between;
-          padding: 1rem;
+          padding: 2rem;
         `
       : css`
           justify-content: center;
@@ -37,7 +37,9 @@ export const Container = styled.header<iContainer>`
   @media (max-width: 1024px) {
     ${({ justCenter }) =>
       justCenter
-        ? css``
+        ? css`
+            padding: 1rem;
+          `
         : css`
             justify-content: center;
             padding: 1.5rem 1rem;

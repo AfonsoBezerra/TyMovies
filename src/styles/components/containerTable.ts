@@ -98,6 +98,25 @@ export const ContainerTable = styled.div`
         max-height: 266px;
       }
     }
+    .nothingFilter {
+      width: 100vw;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        padding-top: 2rem;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      @media (max-width: 1024px) {
+        h1 {
+          font-size: 15px;
+        }
+      }
+    }
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr 1fr;
       .posters {

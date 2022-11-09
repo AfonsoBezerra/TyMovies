@@ -51,19 +51,29 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
             </form>
           </div>
           <div className="allPosters">
-            {filter.map((element: any) => {
-              return (
-                <div className="posters" key={element.id}>
-                  {element.poster_path && (
-                    <MoviePoster
-                      props={element}
-                      type={rating}
-                      category={type}
-                    />
-                  )}
-                </div>
-              );
-            })}
+            {filter.length ? (
+              filter.map((element: any) => {
+                return (
+                  <div className="posters" key={element.id}>
+                    {element.poster_path && (
+                      <MoviePoster
+                        props={element}
+                        type={rating}
+                        category={type}
+                      />
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <div className="nothingFilter">
+                <h1>
+                  {tratedType === 'Movie'
+                    ? 'Nenhum filme encontrado :('
+                    : 'Nenhuma serie encontrada :('}
+                </h1>
+              </div>
+            )}
           </div>
         </ContainerTable>
       </MovieTableStyle>
