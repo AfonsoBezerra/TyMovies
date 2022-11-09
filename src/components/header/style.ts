@@ -5,7 +5,7 @@ interface iContainer {
 }
 
 export const Container = styled.header<iContainer>`
-  width: 100%;
+  width: 100vw;
   height: auto;
   position: fixed;
   background-color: transparent;
@@ -14,13 +14,14 @@ export const Container = styled.header<iContainer>`
     justCenter
       ? css`
           justify-content: space-between;
+          padding: 1rem;
         `
       : css`
           justify-content: center;
+          padding: 2rem 1rem;
         `}
   align-items: center;
   z-index: 9;
-  padding: 1rem;
   transition: all 0.5s ease;
   color: white;
   button {
@@ -34,7 +35,12 @@ export const Container = styled.header<iContainer>`
     text-transform: uppercase;
   }
   @media (max-width: 1024px) {
-    padding: 0.5rem;
-    justify-content: space-between;
+    ${({ justCenter }) =>
+      justCenter
+        ? css``
+        : css`
+            justify-content: center;
+            padding: 1.5rem 1rem;
+          `}
   }
 `;

@@ -124,6 +124,7 @@ export const FormStyle = styled.div`
     }
     @media (max-width: 768px) {
       width: 90%;
+      padding: 2rem;
       form {
         input {
           height: 46px;
@@ -144,12 +145,15 @@ export const FormStyle = styled.div`
       }
       .buttonGoogle {
         button img {
-          width: 180px;
+          width: 150px;
         }
         .cadas {
           font-size: 0.7rem;
         }
       }
     }
+  }
+  @media (max-width: 768px) {
+    padding-top: 6rem;
   }
 `;

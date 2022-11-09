@@ -50,7 +50,11 @@ const RootCSS = createGlobalStyle`
       }
     }
   }
-
+   
+  a {
+    text-decoration: none;
+  }
+  
   .effect {
     background-color: rgba(0,0,0,.9);
     z-index: 9999;
