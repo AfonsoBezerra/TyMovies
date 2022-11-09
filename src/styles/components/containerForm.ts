@@ -115,7 +115,7 @@ export const FormStyle = styled.div`
         background-color: rgba(255, 255, 255, 0.1);
         padding: 1rem 3rem;
         border-radius: 5px;
-        font-size: 1rem;
+        font-size: 0.8rem;
         font-weight: bold;
         color: rgb(255, 255, 255, 0.7);
         text-transform: uppercase;
