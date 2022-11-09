@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const FormStyle = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding-top: 5rem;
+  padding: 10rem 0 5rem 0;
   color: white;
   background-image: linear-gradient(
     to left top,
