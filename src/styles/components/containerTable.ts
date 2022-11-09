@@ -143,8 +143,8 @@ export const ContainerTable = styled.div`
         }
       }
     }
-    @media (min-width: 1920px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    @media (min-width: 1800px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       gap: 1.5rem;
       .posters {
         .posterMain {
@@ -153,8 +153,6 @@ export const ContainerTable = styled.div`
       }
     }
     @media (min-width: 2000px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      gap: 1.5rem;
       .posters {
         .posterMain {
           min-height: 450px;
