@@ -12,7 +12,7 @@ export function setCookie(
   value: string,
   options: any,
 ) {
-  return nookies.set(ctx, key, value, options);
+  return nookies.set(ctx, key, value, { ...options, httpOnly: true });
 }
 
 export const cookie = {
