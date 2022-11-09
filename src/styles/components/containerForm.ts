@@ -7,7 +7,7 @@ export const FormStyle = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding-top: 10rem;
+  padding-top: 5rem;
   color: white;
   background-image: linear-gradient(
     to left top,
