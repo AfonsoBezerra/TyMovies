@@ -32,10 +32,17 @@ export const FormStyle = styled.div`
   .containerForm {
     width: 50%;
     height: auto;
-    margin-top: 2rem;
+    margin-top: 1rem;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(255, 255, 255, 0.05);
     padding: 3rem;
+    backdrop-filter: blur(5px);
+    .error {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
 
     form {
       display: flex;

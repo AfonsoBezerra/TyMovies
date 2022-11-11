@@ -10,8 +10,6 @@ interface iUser {
   name?: string;
   uid: string;
   img?: string;
-  userVerified: boolean;
-  pin: string;
 }
 
 interface iAuthContext {
@@ -68,7 +66,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
           img: res.data.img,
         });
         setUser(formattedUser);
-        setSession(currentUser.refreshToken);
+        if (Auth.auth.currentUser?.emailVerified) {
+          setSession(currentUser.refreshToken);
+        }
       });
       return currentUser.email;
     }
@@ -85,21 +85,24 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     try {
       setLoading(true);
       const img = '';
-      const userVerified = false;
       Auth.createUserWithEmailAndPassword(Auth.auth, email, password)
         .then(async ({ user: userFirebase }) => {
-          await axios.post(`/api/user/${userFirebase.uid}`, {
-            email,
-            name,
-            img,
-            userVerified,
+          await Auth.sendEmailVerification(userFirebase).then(async () => {
+            await axios.post(`/api/user/${userFirebase.uid}`, {
+              email,
+              name,
+              img,
+            });
           });
-          handleUser(userFirebase);
         })
         .then(() => {
-          router.push('/home');
+          router.push('/authentication');
         })
-        .then(() => setTimeout(() => setLoading(false), 1000));
+        .then(() => setTimeout(() => setLoading(false), 1000))
+        .catch(() => {
+          setLoading(false);
+          setErroLogin(true);
+        });
     } finally {
       // always runs
     }
@@ -110,7 +113,12 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       setLoading(true);
       Auth.signInWithEmailAndPassword(Auth.auth, email, password)
         .then(async ({ user: userFirebase }) => {
-          await handleUser(userFirebase);
+          if (!Auth.auth.currentUser?.emailVerified) {
+            setLoading(false);
+            setErroLogin(true);
+          } else {
+            await handleUser(userFirebase);
+          }
         })
         .then(() => {
           router.push('/home');
