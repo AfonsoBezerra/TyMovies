@@ -22,15 +22,9 @@ const Header = () => {
   return (
     <Container
       ref={headerRef}
-      justCenter={
-        asPath !== '/login' &&
-        asPath !== '/signin' &&
-        asPath !== '/authentication'
-      }
+      justCenter={asPath !== '/login' && asPath !== '/signin'}
     >
-      {asPath === '/login' ||
-      asPath === '/signin' ||
-      asPath === '/authentication' ? (
+      {asPath === '/login' || asPath === '/signin' ? (
         <TyMoviesLogo />
       ) : (
         <>

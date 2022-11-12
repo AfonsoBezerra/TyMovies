@@ -96,7 +96,11 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
           });
         })
         .then(() => {
-          router.push('/authentication');
+          setCookie(undefined, '__SEND_EMAIL_MSG_COOKIE', 'true', {
+            maxAge: 1000 * 60 * 5,
+            path: '/',
+          });
+          router.push(`/signin/authentication/emailsend`);
         })
         .then(() => setTimeout(() => setLoading(false), 1000))
         .catch(() => {
