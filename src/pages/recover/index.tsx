@@ -3,12 +3,18 @@ import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { Alert, Snackbar } from '@mui/material';
 import { PageRecover } from '@stylesComponents/containerRecover';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { Loading } from 'react-loading-dot';
 
 const ChangePass = () => {
   const router = useRouter();
   const { recoverPass, errorAuth, setErroAuth, loading, sucess, setSucess } =
     useAuthContext();
+
+  useEffect(() => {
+    setErroAuth(false);
+  }, []);
+
   return (
     <>
       <Snackbar
