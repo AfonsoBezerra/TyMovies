@@ -11,6 +11,7 @@ import { Bricks } from '@styled-icons/bootstrap/Bricks';
 import { ContactSupport } from '@styled-icons/material-outlined/ContactSupport';
 import { PlayFill } from '@styled-icons/bootstrap/PlayFill';
 import { Search } from '@styled-icons/bootstrap/Search';
+import { Close } from '@styled-icons/ionicons-solid/Close';
 
 export const Facebookicon = styled(Facebook)`
   width: 22px;
@@ -86,4 +87,10 @@ export const SearchIcon = styled(Search)`
   width: 20px;
   height: 20px;
   color: white;
+`;
+
+export const CloseIcon = styled(Close)`
+  width: 20px;
+  height: 20px;
+  color: black;
 `;

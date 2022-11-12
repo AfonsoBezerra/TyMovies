@@ -14,13 +14,13 @@ const Login = () => {
   const {
     signInGoogle,
     signInWithEmailAndPassword,
-    errorLogin,
-    setErroLogin,
+    errorAuth,
+    setErroAuth,
     loading,
   } = useAuthContext();
 
   useEffect(() => {
-    setErroLogin(false);
+    setErroAuth(false);
   }, []);
 
   const router = useRouter();
@@ -52,10 +52,10 @@ const Login = () => {
                     required
                     placeholder="Endereco de e-mail"
                     name="email"
-                    style={errorLogin ? { border: '1px solid red' } : {}}
-                    onInput={() => setErroLogin(false)}
+                    style={errorAuth ? { border: '1px solid red' } : {}}
+                    onInput={() => setErroAuth(false)}
                   />
-                  {errorLogin && (
+                  {errorAuth && (
                     <InputError>Email ou senha incorretos</InputError>
                   )}
                 </label>
@@ -67,10 +67,10 @@ const Login = () => {
                     placeholder="Senha"
                     name="pass"
                     autoComplete="off"
-                    style={errorLogin ? { border: '1px solid red' } : {}}
-                    onInput={() => setErroLogin(false)}
+                    style={errorAuth ? { border: '1px solid red' } : {}}
+                    onInput={() => setErroAuth(false)}
                   />
-                  {errorLogin && (
+                  {errorAuth && (
                     <InputError>Email ou senha incorretos</InputError>
                   )}
                 </label>
@@ -82,7 +82,7 @@ const Login = () => {
                   >
                     Entrar
                   </button>
-                  <Link href="/">Esqueceu sua senha?</Link>
+                  <Link href="/recover">Esqueceu sua senha?</Link>
                 </div>
               </form>
               <div className="separator">

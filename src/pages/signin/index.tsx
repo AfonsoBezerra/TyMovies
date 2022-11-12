@@ -14,13 +14,13 @@ const SignIn = () => {
     signInGoogle,
     createUserWithEmailAndPassword,
     loading,
-    errorLogin,
-    setErroLogin,
+    errorAuth,
+    setErroAuth,
   } = useAuthContext();
   const [error, setError] = useState<number>();
   const router = useRouter();
   useEffect(() => {
-    setErroLogin(false);
+    setErroAuth(false);
   }, []);
   return (
     <>
@@ -32,7 +32,7 @@ const SignIn = () => {
           <>
             <h1>Cadastrar</h1>
             <div className="containerForm">
-              {errorLogin && (
+              {errorAuth && (
                 <div className="error">
                   <InputError>Email ja cadastrado! Use outro...</InputError>
                 </div>
@@ -69,8 +69,8 @@ const SignIn = () => {
                   placeholder="Nome de usuario"
                   name="name"
                   autoComplete="off"
-                  style={errorLogin ? { border: '1px solid red' } : {}}
-                  onInput={() => setErroLogin(false)}
+                  style={errorAuth ? { border: '1px solid red' } : {}}
+                  onInput={() => setErroAuth(false)}
                 />
                 <input
                   type="email"
@@ -78,8 +78,8 @@ const SignIn = () => {
                   placeholder="Endereco de e-mail"
                   name="email"
                   autoComplete="off"
-                  style={errorLogin ? { border: '1px solid red' } : {}}
-                  onInput={() => setErroLogin(false)}
+                  style={errorAuth ? { border: '1px solid red' } : {}}
+                  onInput={() => setErroAuth(false)}
                 />
                 <label htmlFor="pass">
                   <input
@@ -90,14 +90,14 @@ const SignIn = () => {
                     name="pass"
                     autoComplete="off"
                     style={
-                      error === 2 || error === 3 || errorLogin
+                      error === 2 || error === 3 || errorAuth
                         ? { border: '1px solid red' }
                         : {}
                     }
                     onInput={() =>
                       (error === 2 && setError(0)) ||
                       (error === 3 && setError(0)) ||
-                      setErroLogin(false)
+                      setErroAuth(false)
                     }
                   />
                   {error === 2 && <InputError>Senhas não coincidem</InputError>}
@@ -114,14 +114,14 @@ const SignIn = () => {
                     name="passConfirm"
                     autoComplete="off"
                     style={
-                      error === 2 || error === 3 || errorLogin
+                      error === 2 || error === 3 || errorAuth
                         ? { border: '1px solid red' }
                         : {}
                     }
                     onInput={() =>
                       (error === 2 && setError(0)) ||
                       (error === 3 && setError(0)) ||
-                      setErroLogin(false)
+                      setErroAuth(false)
                     }
                   />
                   {error === 2 && <InputError>Senhas não coincidem</InputError>}

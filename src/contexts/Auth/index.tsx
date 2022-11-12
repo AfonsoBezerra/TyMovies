@@ -16,15 +16,18 @@ interface iAuthContext {
   signInWithEmailAndPassword: (email: string, password: string) => void;
   signInGoogle: () => void;
   signOut: () => void;
-  setErroLogin: (value: boolean) => void;
+  setSucess: (value: boolean) => void;
+  sucess: boolean;
+  setErroAuth: (value: boolean) => void;
   user: null | iUser;
   loading: boolean;
-  errorLogin: boolean;
+  errorAuth: boolean;
   createUserWithEmailAndPassword: (
     email: string,
     password: string,
     name: string,
   ) => void;
+  recoverPass: (email: string) => void;
 }
 const AuthContext = createContext<iAuthContext>({} as iAuthContext);
 
@@ -43,8 +46,9 @@ const FormatUser = (user: User, others: { name: string; img: string }) =>
 
 export const AuthProvider = ({ children }: iAuthProvider) => {
   const [user, setUser] = useState<null | iUser>(null);
-  const [errorLogin, setErroLogin] = useState(false);
+  const [errorAuth, setErroAuth] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [sucess, setSucess] = useState(false);
   const router = useRouter();
 
   const setSession = (session: undefined | string) => {
@@ -105,7 +109,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         .then(() => setTimeout(() => setLoading(false), 1000))
         .catch(() => {
           setLoading(false);
-          setErroLogin(true);
+          setErroAuth(true);
         });
     } finally {
       // always runs
@@ -119,7 +123,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         .then(async ({ user: userFirebase }) => {
           if (!Auth.auth.currentUser?.emailVerified) {
             setLoading(false);
-            setErroLogin(true);
+            setErroAuth(true);
           } else {
             await handleUser(userFirebase);
           }
@@ -130,7 +134,24 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         .then(() => setTimeout(() => setLoading(false), 1000))
         .catch(() => {
           setLoading(false);
-          setErroLogin(true);
+          setErroAuth(true);
+        });
+    } finally {
+      // always runs
+    }
+  };
+
+  const recoverPass = (email: string) => {
+    try {
+      setLoading(true);
+      Auth.sendPasswordResetEmail(Auth.auth, email)
+        .then(() => {
+          setLoading(false);
+          setSucess(true);
+        })
+        .catch(() => {
+          setLoading(false);
+          setErroAuth(true);
         });
     } finally {
       // always runs
@@ -164,9 +185,13 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   const signOut = () => {
     try {
       setLoading(true);
-      Auth.signOut(Auth.auth).then(() => {
-        handleUser(undefined);
-      });
+      Auth.signOut(Auth.auth)
+        .then(() => {
+          handleUser(undefined);
+        })
+        .catch(() => {
+          setErroAuth(true);
+        });
     } finally {
       setLoading(false);
       router.push('/');
@@ -188,11 +213,14 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       signOut,
       user,
       loading,
-      errorLogin,
-      setErroLogin,
+      errorAuth,
+      setErroAuth,
       createUserWithEmailAndPassword,
+      recoverPass,
+      sucess,
+      setSucess,
     }),
-    [user, loading, errorLogin],
+    [user, loading, errorAuth, sucess],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
