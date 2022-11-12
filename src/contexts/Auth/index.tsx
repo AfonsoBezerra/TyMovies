@@ -144,20 +144,15 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   const recoverPass = (email: string) => {
     try {
       setLoading(true);
-      if (Auth.auth.currentUser?.emailVerified) {
-        Auth.sendPasswordResetEmail(Auth.auth, email)
-          .then(() => {
-            setLoading(false);
-            setSucess(true);
-          })
-          .catch(() => {
-            setLoading(false);
-            setErroAuth(true);
-          });
-      } else {
-        setLoading(false);
-        setErroAuth(true);
-      }
+      Auth.sendPasswordResetEmail(Auth.auth, email)
+        .then(() => {
+          setLoading(false);
+          setSucess(true);
+        })
+        .catch(() => {
+          setLoading(false);
+          setErroAuth(true);
+        });
     } finally {
       // always runs
     }
