@@ -43,7 +43,7 @@ export const Container = styled.div`
       padding: 0 2rem;
       z-index: 999;
       h1 {
-        font-size: 20px;
+        font-size: 25px;
         font-weight: bold;
       }
       .buttons {
@@ -218,7 +218,6 @@ export const Container = styled.div`
         .img {
           width: 100%;
           height: 150px;
-          background-color: black;
           border-radius: 5px;
           img {
             width: 100%;
