@@ -6,11 +6,7 @@ import { useEffect, useState } from 'react';
 import requestsApi from '@services/api/requestsApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ButtonTrailer from '@components/buttons';
-import {
-  RecentActorsIcons,
-  StarFillIcon,
-  StarIcon,
-} from '@stylesComponents/icons';
+import { RecentActorsIcons, StarIcon } from '@stylesComponents/icons';
 import { Pagination } from 'swiper';
 import ModalComponent from '@components/modal';
 
@@ -22,24 +18,13 @@ interface iMovie {
 }
 
 const Stars = ({ nota }: any) => {
-  const notas = Math.round(nota) / 2;
-  const IconsStar = [];
-  for (let i = 0; i < 5; i++) {
-    if (i < notas) {
-      IconsStar.push({ value: true, id: i });
-    } else {
-      IconsStar.push({ value: false, id: i });
-    }
-  }
-
+  const fixedNota = parseFloat(nota).toFixed(1);
   return (
     <div className="starIcons">
-      {IconsStar.map((icons: any) => {
-        if (icons.value) {
-          return <StarFillIcon key={icons.id} />;
-        }
-        return <StarIcon key={icons.id} />;
-      })}
+      <StarIcon />
+      <h3>
+        {`${fixedNota} `}/<span>10</span>
+      </h3>
     </div>
   );
 };

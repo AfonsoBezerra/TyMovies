@@ -53,9 +53,19 @@ export const Container = styled.div`
         align-items: center;
         padding: 1rem 0;
         .starIcons {
-          width: 100px;
+          width: 120px;
+          height: 50px;
           display: flex;
           justify-content: space-evenly;
+          align-items: center;
+          h3 {
+            font-size: 22px;
+            margin: 0;
+            padding: 0;
+          }
+          span {
+            font-size: 15px;
+          }
         }
       }
       @media (min-width: 1024px) {
