@@ -51,11 +51,11 @@ const HeroDetail = ({ item, type }: iMovie) => {
 
   useEffect(() => {
     const { width } = window.screen;
-    if (width >= 760 && width < 1440) {
+    if (width >= 760 && width < 1300) {
       setScreenSize(3.5);
-    } else if (width >= 1440 && width < 1920) {
+    } else if (width >= 1300 && width < 1760) {
       setScreenSize(5.5);
-    } else if (width >= 1920) {
+    } else if (width >= 1760) {
       setScreenSize(6.5);
     } else {
       setScreenSize(2.5);
@@ -112,12 +112,16 @@ const HeroDetail = ({ item, type }: iMovie) => {
                 credits.profile_path && (
                   <SwiperSlide key={credits.id}>
                     <div className="img">
-                      <img
+                      <Image
                         src={apiConfig.w500Image(credits.profile_path)}
                         alt="profile"
+                        layout="fill"
+                        blurDataURL={apiConfig.w500Image(credits.profile_path)}
+                        placeholder="blur"
+                        loading="lazy"
                       />
                     </div>
-                    <span>{credits.name}</span>
+                    <span className="namemovie">{credits.name}</span>
                   </SwiperSlide>
                 ),
             )}

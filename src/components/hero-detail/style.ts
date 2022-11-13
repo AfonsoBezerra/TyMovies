@@ -219,26 +219,24 @@ export const Container = styled.div`
           width: 100%;
           height: 150px;
           border-radius: 5px;
-          img {
-            width: 100%;
-            height: 100%;
+          span {
+            width: 100% !important;
+            height: 100% !important;
             border-radius: 5px;
-            object-fit: cover;
+            object-fit: cover !important;
+            position: inherit !important;
+            img {
+              position: inherit !important;
+            }
           }
           @media (min-width: 768px) {
             height: 250px;
           }
           @media (min-width: 1024px) {
-            height: 400px;
-          }
-          @media (min-width: 1440px) {
             height: 350px;
           }
-          @media (min-width: 1920px) {
-            height: 400px;
-          }
         }
-        span {
+        .namemovie {
           font-size: 14px;
           color: white;
         }
