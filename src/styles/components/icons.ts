@@ -72,9 +72,17 @@ export const ContactSupportIcon = styled(ContactSupport)`
 `;
 
 export const PlayIcon = styled(PlayFill)`
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   color: #fff;
+  @media (min-width: 1024px) {
+    width: 20px;
+    height: 20px;
+  }
+  @media (min-width: 1444px) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 export const PlayIconCircle = styled(PlayCircle)`

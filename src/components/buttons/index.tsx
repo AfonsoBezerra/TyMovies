@@ -2,8 +2,7 @@ import { PlayIcon } from '@stylesComponents/icons';
 import { ContainerButton, ContainerButtonTrailer } from './style';
 
 interface iPropsTrailer {
-  children: React.ReactNode;
-  onClick: any;
+  onClick?: any;
   iconPlay: boolean;
 }
 
@@ -32,11 +31,10 @@ export const Button = ({ children, onClick, marginTop }: iPropsButton) => {
   );
 };
 
-const ButtonTrailer = ({ children, onClick, iconPlay }: iPropsTrailer) => {
+const ButtonTrailer = ({ onClick, iconPlay }: iPropsTrailer) => {
   return (
     <ContainerButtonTrailer type="button" onClick={() => onClick()}>
       <span>{iconPlay && <PlayIcon />}</span>
-      <h4>{children}</h4>
     </ContainerButtonTrailer>
   );
 };

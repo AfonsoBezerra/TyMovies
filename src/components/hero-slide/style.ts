@@ -31,140 +31,75 @@ export const Hero = styled.div`
 `;
 
 export const Container = styled.div`
-  padding: 9rem 0;
+  padding: 2rem 0;
   width: 100%;
   height: 90vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   position: relative;
-  background-color: var(--color-background);
-  box-shadow: inset 0px -80px 80px 10px #000;
+  background-color: transparent;
   > span img {
     opacity: 25%;
     object-fit: cover;
     animation: fadeIn 2s ease-in-out;
+    @media (min-width: 1444px) {
+      object-fit: fill;
+    }
   }
 
-  .hero_slide_item_content {
-    opacity: 0;
-    position: absolute;
+  .hero-detail {
+    width: 90%;
+    height: auto;
+    color: white;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    gap: 4rem;
-    background-color: transparent;
-    width: 70%;
-    height: 60%;
-    z-index: 999;
-    transition: all 2s ease;
-    .hero_slide_item_info {
-      transform: translateY(-100px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    span {
+      display: block;
+      display: -webkit-box;
+      max-width: 100%;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      font-size: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+    .buttons {
       width: 100%;
-      height: 100%;
-      transition: all 1.5s ease;
-      .title {
-        color: #fff;
-        font-size: 40px;
-        font-weight: bold;
-        @media (max-width: 1024px) {
-          font-size: 22px;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    @media (min-width: 1024px) {
+      align-items: start;
+      h1 {
+        font-size: 30px;
       }
-      .overview {
-        padding: 1rem 0 0 0;
-        width: 100%;
-        color: #fff;
-        font-size: 16px;
-        @media (max-width: 1024px) {
-          font-size: 13px;
-        }
+      span {
+        text-align: start;
+        max-width: 70%;
+        font-size: 15px;
       }
-      .btns {
-        display: flex;
-        margin-top: 1rem;
-        .BtnTrailer {
-          width: 140px;
-          margin-left: 1rem;
-          display: flex;
-          transition: all 0.3s ease-in-out;
-          :hover {
-            padding: 0 calc(100px - 45px) 0 0;
-            button {
-              color: #fff;
-              background-color: #fc0303;
-              border-color: #fc0303;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 70%);
-              span {
-                display: block;
-              }
-              h4 {
-                display: none;
-              }
-            }
-          }
-          @media (max-width: 1024px) {
-            width: 90px;
-          }
-        }
-        @media (max-width: 1024px) {
-          margin-top: 0;
-        }
+      .buttons {
+        justify-content: start;
       }
     }
-    .hero_slide_poster {
-      width: 80%;
-      height: 100%;
-      position: relative;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 70%);
-      border-radius: 15px;
+    @media (min-width: 1444px) {
+      align-items: start;
+      span {
+        max-width: 60%;
+        font-size: 17px;
+      }
+    }
+  }
 
-      img {
-        border-radius: 15px;
-      }
-      @media (max-width: 760px) {
-        width: 100%;
-      }
-      @media (min-width: 761px) {
-        width: 50%;
-      }
-      @media (min-width: 1400px) {
-        width: 75%;
-      }
-      @media (min-width: 1700px) {
-        width: 40%;
-      }
-      @media (min-width: 2000px) {
-        width: 40%;
-      }
-    }
-    @media (max-width: 1000px) {
-      flex-direction: column;
-      .hero_slide_item_info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 20px;
-      }
-      .hero_slide_poster {
-        transform: translateY(0);
-      }
-      gap: 2rem;
-      width: 60%;
-      height: 85%;
-    }
-  }
-  &.active {
-    .hero_slide_item_content {
-      opacity: 1;
-      .hero_slide_item_info {
-        transform: translateY(0);
-      }
-    }
-  }
   @keyframes fadeIn {
     to {
       opacity: 25%;

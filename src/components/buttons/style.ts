@@ -8,50 +8,64 @@ export const ContainerButton = styled.button`
   align-items: center;
   background-color: transparent;
   color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   transition: inherit;
   transition: all 0.3s ease-in-out;
+  z-index: 99;
   h4 {
     margin: 0;
-    font-size: 20px;
+    font-size: 16px;
     white-space: nowrap;
     @media (max-width: 1024px) {
       font-size: 13px;
     }
+    @media (min-width: 1444px) {
+      font-size: 17px;
+    }
   }
   :hover {
-    color: #fc0303;
+    color: #8026a1;
     background-color: transparent;
-    border-color: #fc0303;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 70%);
+    border-color: #8026a1;
+    box-shadow: 0 0 5px #8026a1;
+  }
+  @media (min-width: 1444px) {
+    padding: 1rem;
   }
 `;
 
 export const ContainerButtonTrailer = styled.button`
-  border: 1px solid #fc0303;
-  width: 100%;
-  padding: 0 0.4rem;
-  max-height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fc0303;
-  box-shadow: 0 0 10px #fc0303;
-  color: white;
-  margin-top: 1rem;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: inherit;
-  span {
-    display: none;
+  transition: all 0.5s;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    to right top,
+    #8026a1,
+    #5c2d83,
+    #402c63,
+    #2c2640,
+    #1d1d1d
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 999;
+  margin-right: 1rem;
+  @media (min-width: 1024px) {
+    opacity: 0.5;
+    width: 50px;
+    height: 50px;
   }
-  h4 {
-    margin: 0;
-    font-size: 20px;
-    white-space: nowrap;
-    @media (max-width: 1024px) {
-      font-size: 13px;
-    }
+  @media (min-width: 1444px) {
+    width: 60px;
+    height: 60px;
+    margin-right: 2rem;
+  }
+  :hover {
+    border: 1px solid #8026a1;
+    opacity: 1;
   }
 `;

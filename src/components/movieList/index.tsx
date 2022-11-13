@@ -71,10 +71,14 @@ const MovieList = ({ category, type }: iPropsMovie) => {
 
   useEffect(() => {
     const { width } = window.screen;
-    if (width >= 760 && width < 1440) {
+    if (width >= 760 && width < 1250) {
       setScreenSize(3.5);
-    } else if (width >= 1440 && width < 1920) {
+    } else if (width >= 1250 && width < 1440) {
       setScreenSize(4.5);
+    } else if (width >= 1440 && width < 1600) {
+      setScreenSize(4.5);
+    } else if (width >= 1600 && width < 1920) {
+      setScreenSize(5.5);
     } else if (width >= 1920) {
       setScreenSize(6.5);
     } else {

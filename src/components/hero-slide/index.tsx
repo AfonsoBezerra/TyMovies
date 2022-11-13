@@ -49,29 +49,12 @@ const HeroSlideItem = (props: PropsHero) => {
         blurDataURL={background}
         placeholder="blur"
       />
-      <div className="hero_slide_item_content">
-        <div className="hero_slide_item_info">
-          <h1 className="title">{item.title || item.name}</h1>
-          <div className="overview">{item.overview}</div>
-          <div className="btns">
-            <div className="BtnMore">
-              <Button marginTop onClick={sendMovie}>
-                See more
-              </Button>
-            </div>
-            <div className="BtnTrailer">
-              <ButtonTrailer onClick={setModalActive} iconPlay>
-                Watch trailer
-              </ButtonTrailer>
-            </div>
-          </div>
-        </div>
-        <div className="hero_slide_poster">
-          <Image
-            src={apiConfig.w500Image(item.poster_path)}
-            alt="hero_img"
-            layout="fill"
-          />
+      <div className="hero-detail">
+        <h1>{item.name || item.title}</h1>
+        <span>{item.overview}</span>
+        <div className="buttons">
+          <ButtonTrailer iconPlay onClick={() => setModalActive()} />
+          <Button onClick={() => sendMovie()}>View More</Button>
         </div>
       </div>
 
