@@ -7,9 +7,9 @@ import requestsApi from '@services/api/requestsApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ButtonTrailer from '@components/buttons';
 import { RecentActorsIcons, StarIcon } from '@stylesComponents/icons';
-import { Pagination } from 'swiper';
 import ModalComponent from '@components/modal';
 
+import Header from '@components/header';
 import { Container } from './style';
 
 interface iMovie {
@@ -31,9 +31,10 @@ const Stars = ({ nota }: any) => {
 
 const HeroDetail = ({ item, type }: iMovie) => {
   const [movieCredits, setMovieCredits] = useState<any>([]);
-  const [screenSize, setScreenSize] = useState(2);
+  const [screenSize, setScreenSize] = useState(2.5);
   const [openModal, setOpenModal] = useState(false);
   const [valueModal, setModal] = useState<any>([]);
+
   useEffect(() => {
     const getMoviesCredits = async () => {
       try {
@@ -57,8 +58,6 @@ const HeroDetail = ({ item, type }: iMovie) => {
       setScreenSize(5.5);
     } else if (width >= 1760) {
       setScreenSize(6.5);
-    } else {
-      setScreenSize(2.5);
     }
   }, []);
 
@@ -69,67 +68,88 @@ const HeroDetail = ({ item, type }: iMovie) => {
   };
 
   return (
-    <Container className="active">
-      <div className="hero">
-        <Image src={background} alt="hero_img" layout="fill" />
-        <div className="hero-detail">
-          <h1>{item.name || item.title}</h1>
-          <div className="buttons">
-            <ButtonTrailer iconPlay onClick={() => setModalActive()} />
-            <Stars nota={item.vote_average} />
-          </div>
-        </div>
-        <div className="transition" />
-      </div>
-      {openModal && (
-        <ModalComponent
-          setModalOpen={setOpenModal}
-          openModal={openModal}
-          values={valueModal}
+    <>
+      {!movieCredits && (
+        <div
+          style={{
+            width: '100vw',
+            height: '400vh',
+            background:
+              'linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%)',
+          }}
         />
       )}
-      <div className="informations">
-        <div className="transitionInformations" />
-        <div className="Texts">
-          <span>{item.overview}</span>
-          <Tags items={item.genres} />
-        </div>
-        <div className="Actors">
-          <div className="title">
-            <h2>Main Actors</h2>
-            <RecentActorsIcons />
+      <Header />
+      <Container>
+        <div className="hero">
+          <Image
+            src={background}
+            alt="hero_img"
+            layout="fill"
+            blurDataURL={background}
+            placeholder="blur"
+            loading="lazy"
+          />
+          <div className="hero-detail">
+            <h1>{item.name || item.title}</h1>
+            <div className="buttons">
+              <ButtonTrailer iconPlay onClick={() => setModalActive()} />
+              <Stars nota={item.vote_average} />
+            </div>
           </div>
-
-          <Swiper
-            grabCursor
-            spaceBetween={20}
-            slidesPerView={screenSize}
-            effect="fade"
-            modules={[Pagination]}
-          >
-            {movieCredits.map(
-              (credits: any) =>
-                credits.profile_path && (
-                  <SwiperSlide key={credits.id}>
-                    <div className="img">
-                      <Image
-                        src={apiConfig.w500Image(credits.profile_path)}
-                        alt="profile"
-                        layout="fill"
-                        blurDataURL={apiConfig.w500Image(credits.profile_path)}
-                        placeholder="blur"
-                        loading="lazy"
-                      />
-                    </div>
-                    <span className="namemovie">{credits.name}</span>
-                  </SwiperSlide>
-                ),
-            )}
-          </Swiper>
+          <div className="transition" />
         </div>
-        <div />
-      </div>
-    </Container>
+        {openModal && (
+          <ModalComponent
+            setModalOpen={setOpenModal}
+            openModal={openModal}
+            values={valueModal}
+          />
+        )}
+        <div className="informations">
+          <div className="transitionInformations" />
+          <div className="Texts">
+            <span>{item.overview}</span>
+            <Tags items={item.genres} />
+          </div>
+          <div className="Actors">
+            <div className="title">
+              <h2>Main Actors</h2>
+              <RecentActorsIcons />
+            </div>
+
+            <Swiper
+              grabCursor
+              spaceBetween={20}
+              slidesPerView={screenSize}
+              effect="fade"
+            >
+              {movieCredits.map(
+                (credits: any) =>
+                  credits.profile_path && (
+                    <SwiperSlide key={credits.id}>
+                      <div className="img">
+                        <Image
+                          src={apiConfig.w500Image(credits.profile_path)}
+                          alt="profile"
+                          layout="fill"
+                          blurDataURL={apiConfig.w500Image(
+                            credits.profile_path,
+                          )}
+                          placeholder="blur"
+                          loading="lazy"
+                        />
+                      </div>
+                      <span className="namemovie">{credits.name}</span>
+                    </SwiperSlide>
+                  ),
+              )}
+            </Swiper>
+          </div>
+          <div />
+        </div>
+      </Container>
+    </>
   );
 };
 

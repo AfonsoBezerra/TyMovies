@@ -20,11 +20,7 @@ export const MoviePoster = ({ props, category, type }: any) => {
     <ContainerPoster
       arial-hidden
       onClick={() => {
-        router.push(
-          { pathname: `/${category}/${type}/${props.id}` },
-          undefined,
-          { scroll: false },
-        );
+        router.push({ pathname: `/${category}/${type}/${props.id}` });
       }}
     >
       <div className="posterMain">
