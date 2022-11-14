@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const ContainerButton = styled.button`
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   padding: 0.4rem;
   max-height: 40px;
   display: flex;
   align-items: center;
   background-color: transparent;
-  color: white;
   border-radius: 5px;
   overflow: hidden;
   transition: inherit;
@@ -17,6 +16,7 @@ export const ContainerButton = styled.button`
     margin: 0;
     font-size: 16px;
     white-space: nowrap;
+    color: rgba(255, 255, 255, 0.8);
     @media (max-width: 1024px) {
       font-size: 13px;
     }

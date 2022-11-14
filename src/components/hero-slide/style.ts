@@ -59,6 +59,7 @@ export const Container = styled.div`
     h1 {
       font-size: 20px;
       font-weight: bold;
+      color: rgba(255, 255, 255, 0.8);
     }
     span {
       display: block;
@@ -68,8 +69,10 @@ export const Container = styled.div`
       -webkit-box-orient: vertical;
       font-size: 15px;
       overflow: hidden;
+      color: rgba(255, 255, 255, 0.8);
       text-overflow: ellipsis;
       text-align: center;
+      font-size: 14px;
     }
     .buttons {
       width: 100%;
@@ -81,12 +84,12 @@ export const Container = styled.div`
     @media (min-width: 1024px) {
       align-items: start;
       h1 {
-        font-size: 30px;
+        font-size: 33px;
       }
       span {
         text-align: start;
         max-width: 70%;
-        font-size: 15px;
+        font-size: 17px;
       }
       .buttons {
         justify-content: start;
@@ -96,7 +99,7 @@ export const Container = styled.div`
       align-items: start;
       span {
         max-width: 60%;
-        font-size: 17px;
+        font-size: 18px;
       }
     }
   }
