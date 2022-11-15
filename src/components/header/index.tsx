@@ -9,6 +9,7 @@ const Header = () => {
   const { signOut, user, imgProp, setImgProp } = useAuthContext();
   const [profile, setProfile] = useState<any>();
   const props = user?.img;
+  const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
   const { asPath } = useRouter();
   useEffect(() => {
@@ -43,11 +44,15 @@ const Header = () => {
             Sair
           </button>
           <TyMoviesLogo />
-          <div className="containerProfile">
+          <button
+            type="button"
+            className="containerProfile"
+            onClick={() => router.push('/user')}
+          >
             <div className="imgFundo">
               {profile && <ProfileImg props={profile} teste />}
             </div>
-          </div>
+          </button>
         </>
       )}
     </Container>
