@@ -176,6 +176,11 @@
     "@babel/helper-validator-identifier" "^7.18.6"
     to-fast-properties "^2.0.0"
 
+"@bigheads/core@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@bigheads/core/-/core-0.3.3.tgz#158b1ba6c53417841ee30c5df62a5209ba0ee9b0"
+  integrity sha512-lu+TbgFR3IRPQR539td47935SwujzT4OQJdqReksVPJ9f3Tn80kpemIsdmO4yYm9FWW7eAGV+a5bFKC4/1jpLA==
+
 "@commitlint/cli@^17.0.2":
   version "17.0.2"
   resolved "https://registry.npmjs.org/@commitlint/cli/-/cli-17.0.2.tgz"

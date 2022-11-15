@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Whatsapp } from '@styled-icons/bootstrap/Whatsapp';
 import { Facebook } from '@styled-icons/bootstrap/Facebook';
 import { Instagram } from '@styled-icons/bootstrap/Instagram';
-import { PlusMedical } from '@styled-icons/boxicons-regular/PlusMedical';
+import { Plus } from '@styled-icons/bootstrap/Plus';
 import { Mention } from '@styled-icons/fluentui-system-filled/Mention';
 import { PlayCircle } from '@styled-icons/fluentui-system-filled/PlayCircle';
 import { Business } from '@styled-icons/ionicons-solid/Business';
@@ -27,11 +27,10 @@ export const Instagramicon = styled(Instagram)`
   margin: 0 0.5rem;
 `;
 
-export const Plusicon = styled(PlusMedical)`
-  width: 13px;
+export const Plusicon = styled(Plus)`
+  width: 20px;
   color: #fff;
-  position: absolute;
-  right: 8px;
+  margin-right: 5px;
   z-index: 0;
 `;
 

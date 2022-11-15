@@ -66,11 +66,20 @@ const Main = () => {
 export default Main;
 
 export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
+  const imgVerify = getCookie(ctx, '__VERIFY_LOGIN_IMG_COOKIE');
   const cookie = getCookie(ctx, AUTH_COOKIE_NAME);
   if (!cookie) {
     return {
       redirect: {
         destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+  if (imgVerify) {
+    return {
+      redirect: {
+        destination: '/user',
         permanent: false,
       },
     };

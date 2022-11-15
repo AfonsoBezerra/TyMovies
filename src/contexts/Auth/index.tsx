@@ -2,6 +2,7 @@ import { delCookie, setCookie } from '@services/cookies';
 import { Auth } from '@services/firebase';
 import axios from 'axios';
 import { NextOrObserver, User } from 'firebase/auth';
+
 import { useRouter } from 'next/router';
 import { createContext, useEffect, useMemo, useState } from 'react';
 
@@ -71,6 +72,13 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         });
         setUser(formattedUser);
         if (Auth.auth.currentUser?.emailVerified) {
+          if (!formattedUser.img) {
+            setCookie(undefined, '__VERIFY_LOGIN_IMG_COOKIE', 'true', {
+              maxAge: 1000 * 60 * 1,
+              path: '/',
+            });
+            setSession(currentUser.refreshToken);
+          }
           setSession(currentUser.refreshToken);
         }
       });
@@ -88,14 +96,13 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   ) => {
     try {
       setLoading(true);
-      const img = '';
       Auth.createUserWithEmailAndPassword(Auth.auth, email, password)
         .then(async ({ user: userFirebase }) => {
           await Auth.sendEmailVerification(userFirebase).then(async () => {
             await axios.post(`/api/user/${userFirebase.uid}`, {
               email,
               name,
-              img,
+              img: '',
             });
           });
         })
@@ -166,12 +173,11 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
           await axios.post(`/api/user/${userFirebase.uid}`, {
             email: userFirebase.email,
             name: userFirebase.displayName,
-            img: '',
           });
           handleUser(userFirebase);
         })
         .then(() => {
-          router.push('/home');
+          router.push('/user');
         })
         .then(() => setTimeout(() => setLoading(false), 1000))
         .catch(() => {

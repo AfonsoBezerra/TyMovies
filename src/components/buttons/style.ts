@@ -12,11 +12,11 @@ export const ContainerButton = styled.button`
   transition: inherit;
   transition: all 0.3s ease-in-out;
   z-index: 99;
+  color: rgba(255, 255, 255, 0.8);
   h4 {
     margin: 0;
     font-size: 16px;
     white-space: nowrap;
-    color: rgba(255, 255, 255, 0.8);
     @media (max-width: 1024px) {
       font-size: 13px;
     }
