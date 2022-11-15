@@ -75,7 +75,7 @@ const SignIn = () => {
                 <input
                   type="email"
                   required
-                  placeholder="Endereco de e-mail"
+                  placeholder="Endereço de e-mail"
                   name="email"
                   autoComplete="off"
                   style={errorAuth ? { border: '1px solid red' } : {}}
