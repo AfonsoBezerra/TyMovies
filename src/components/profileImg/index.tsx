@@ -62,7 +62,9 @@ const ProfileImg = ({ props, teste }: ProfileImgProps) => {
       setImgProp(img);
     }
   }, []);
+  console.log(props, teste, 'values');
   if (!props && !teste) {
+    console.log('to aqui');
     return <BigHead {...imgProp} />;
   }
 
@@ -70,6 +72,7 @@ const ProfileImg = ({ props, teste }: ProfileImgProps) => {
     return null;
   }
   if (teste && props) {
+    console.log('to aqui 2');
     return (
       <ContainerBig>
         <BigHead {...props} />
