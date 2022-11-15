@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Hero = styled.div`
   width: 100%;
   position: relative;
+  animation: fadeIn 2s ease-in-out;
   .transition {
     width: 100vw;
     height: 450px;
@@ -42,7 +43,6 @@ export const Container = styled.div`
   > span img {
     opacity: 30%;
     object-fit: cover;
-    animation: fadeIn 2s ease-in-out;
     @media (min-width: 1444px) {
       object-fit: fill;
     }
@@ -103,13 +103,12 @@ export const Container = styled.div`
       }
     }
   }
-
   @keyframes fadeIn {
-    to {
-      opacity: 25%;
-    }
     from {
-      opacity: 0%;
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 `;

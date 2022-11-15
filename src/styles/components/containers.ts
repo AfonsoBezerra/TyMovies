@@ -5,6 +5,7 @@ export const Container = styled.section`
   height: 100%;
   position: relative;
   z-index: 99;
+
   .transition {
     width: 100vw;
     height: 180px;

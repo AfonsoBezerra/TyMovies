@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 
 const Main = () => {
   const router = useRouter();
-  // axios.put(`/api/user/${user?.uid}`, { img: '233423' });
+
   return (
     <div>
       <Header />

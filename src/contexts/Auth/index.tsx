@@ -11,6 +11,7 @@ interface iUser {
   name?: string;
   uid: string;
   img?: string;
+  userName: string;
 }
 
 interface iAuthContext {
@@ -29,6 +30,9 @@ interface iAuthContext {
     name: string,
   ) => void;
   recoverPass: (email: string) => void;
+  setImgProp: (obj: object | null) => void;
+  imgProp: object | null;
+  // reload: (id: string | undefined) => void;
 }
 const AuthContext = createContext<iAuthContext>({} as iAuthContext);
 
@@ -38,7 +42,10 @@ interface iAuthProvider {
 
 export const AUTH_COOKIE_NAME = '__HOST_TYMOVIES_USER_COOKIE';
 
-const FormatUser = (user: User, others: { name: string; img: string }) =>
+const FormatUser = (
+  user: User,
+  others: { name: string; img: string; userName: string },
+) =>
   ({
     email: user.email,
     uid: user.uid,
@@ -50,6 +57,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   const [errorAuth, setErroAuth] = useState(false);
   const [loading, setLoading] = useState(false);
   const [sucess, setSucess] = useState(false);
+  const [imgProp, setImgProp] = useState({} || null);
   const router = useRouter();
 
   const setSession = (session: undefined | string) => {
@@ -63,12 +71,18 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     }
   };
 
+  // const reload = async (id: string | undefined) => {
+  //   const data = await axios.get(`/api/user/${id}`);
+  //   setUser(data.data);
+  // };
+
   const handleUser = async (currentUser: User | undefined) => {
     if (currentUser) {
       await axios.get(`/api/user/${currentUser.uid}`).then((res) => {
         const formattedUser = FormatUser(currentUser, {
           name: res.data.name,
           img: res.data.img,
+          userName: res.data.name,
         });
         setUser(formattedUser);
         if (Auth.auth.currentUser?.emailVerified) {
@@ -102,6 +116,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
             await axios.post(`/api/user/${userFirebase.uid}`, {
               email,
               name,
+              userName: name,
               img: '',
             });
           });
@@ -170,14 +185,18 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       setLoading(true);
       Auth.signInWithPopup(Auth.auth, Auth.GoogleProvider)
         .then(async ({ user: userFirebase }) => {
-          await axios.post(`/api/user/${userFirebase.uid}`, {
-            email: userFirebase.email,
-            name: userFirebase.displayName,
-          });
+          const responseUser = await axios.get(`/api/user/${userFirebase.uid}`);
+          if (!responseUser.data.userName || !responseUser.data) {
+            await axios.post(`/api/user/${userFirebase.uid}`, {
+              email: userFirebase.email,
+              name: userFirebase.displayName,
+              userName: userFirebase.displayName,
+            });
+          }
           handleUser(userFirebase);
         })
         .then(() => {
-          router.push('/user');
+          router.push('/home');
         })
         .then(() => setTimeout(() => setLoading(false), 1000))
         .catch(() => {
@@ -225,8 +244,10 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       recoverPass,
       sucess,
       setSucess,
+      setImgProp,
+      imgProp,
     }),
-    [user, loading, errorAuth, sucess],
+    [user, loading, errorAuth, sucess, imgProp],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -24,6 +24,7 @@ export const Container = styled.header<iContainer>`
   z-index: 9;
   transition: all 0.5s ease;
   color: white;
+  animation: fadeIn 5s;
   button {
     width: auto;
     background-color: rgba(255, 255, 255, 0.2);
@@ -33,6 +34,38 @@ export const Container = styled.header<iContainer>`
     font-weight: bold;
     color: rgb(255, 255, 255, 1);
     text-transform: uppercase;
+  }
+
+  .containerProfile {
+    width: auto;
+    height: auto;
+    padding: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(
+      to right top,
+      #600292,
+      #823f9e,
+      #9e6bab,
+      #b698b9,
+      #c9c5c9
+    );
+    border-radius: 50%;
+    .imgFundo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @media (max-width: 1024px) {
     ${({ justCenter }) =>

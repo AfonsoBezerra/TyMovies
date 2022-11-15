@@ -1,12 +1,15 @@
 import { useAuthContext } from '@contexts/Auth/useAuthContext';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TyMoviesLogo from 'assets/svg/TYmovies';
 import { useRouter } from 'next/router';
+import ProfileImg from '@components/profileImg';
 import { Container } from './style';
 
 const Header = () => {
+  const { signOut, user, imgProp, setImgProp } = useAuthContext();
+  const [profile, setProfile] = useState<any>();
+  const props = user?.img;
   const headerRef = useRef<HTMLElement>(null);
-  const { signOut } = useAuthContext();
   const { asPath } = useRouter();
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -18,6 +21,14 @@ const Header = () => {
       }
     });
   }, []);
+  useEffect(() => {
+    if (props) {
+      setProfile(props);
+    } else {
+      setProfile(imgProp);
+      setImgProp({});
+    }
+  }, [props]);
 
   return (
     <Container
@@ -32,7 +43,11 @@ const Header = () => {
             Sair
           </button>
           <TyMoviesLogo />
-          <span>User</span>
+          <div className="containerProfile">
+            <div className="imgFundo">
+              {profile && <ProfileImg props={profile} teste />}
+            </div>
+          </div>
         </>
       )}
     </Container>

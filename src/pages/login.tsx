@@ -29,7 +29,7 @@ const Login = () => {
       <Header />
       <FormStyle>
         {loading ? (
-          <Loading background="rgb(57, 19, 76)" />
+          <Loading background="rgb(255, 255,  255)" />
         ) : (
           <>
             <h1>Entrar</h1>

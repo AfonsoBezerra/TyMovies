@@ -1,11 +1,16 @@
 import { BigHead } from '@bigheads/core';
+import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { useRandomption } from 'hooks/use-random-option';
+import { useEffect } from 'react';
+import { ContainerBig } from './style';
 
 interface ProfileImgProps {
   props: any;
+  teste?: boolean;
 }
 
-const ProfileImg = ({ props }: ProfileImgProps) => {
+const ProfileImg = ({ props, teste }: ProfileImgProps) => {
+  const { setImgProp, imgProp } = useAuthContext();
   const {
     skinTone,
     eyes,
@@ -51,10 +56,27 @@ const ProfileImg = ({ props }: ProfileImgProps) => {
     lashes,
     clothing,
   };
-  if (!props) {
-    return <BigHead {...img} />;
+
+  useEffect(() => {
+    if (!props && !teste) {
+      setImgProp(img);
+    }
+  }, []);
+  if (!props && !teste) {
+    return <BigHead {...imgProp} />;
   }
-  return <BigHead {...props} />;
+
+  if (teste && !props) {
+    return null;
+  }
+  if (teste && props) {
+    return (
+      <ContainerBig>
+        <BigHead {...props} />
+      </ContainerBig>
+    );
+  }
+  return null;
 };
 
 export default ProfileImg;

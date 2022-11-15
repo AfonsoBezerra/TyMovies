@@ -10,6 +10,7 @@ export const ContainerUserEdit = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+  animation: fadeIn ease-in-out 1s;
   .title {
     width: 100%;
     display: flex;
@@ -83,6 +84,14 @@ export const ContainerUserEdit = styled.div`
       color: #632883;
       letter-spacing: 1px;
       text-transform: uppercase;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 `;
