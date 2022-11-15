@@ -16,8 +16,8 @@ const UserEdit = () => {
   function clickContinue() {
     if (!props) {
       axios.put(`/api/user/${user?.uid}`, { img: imgProp });
+      setUser((uProps: any) => ({ ...uProps, img: imgProp }));
     }
-    setUser((uProps: any) => ({ ...uProps, img: imgProp }));
     delCookie(undefined, '__VERIFY_LOGIN_IMG_COOKIE');
     router.push('/home');
   }

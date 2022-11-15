@@ -72,11 +72,6 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     }
   };
 
-  // const reload = async (id: string | undefined) => {
-  //   const data = await axios.get(`/api/user/${id}`);
-  //   setUser(data.data);
-  // };
-
   const handleUser = async (currentUser: User | undefined) => {
     if (currentUser) {
       await axios.get(`/api/user/${currentUser.uid}`).then((res) => {

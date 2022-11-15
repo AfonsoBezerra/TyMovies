@@ -7,7 +7,6 @@ import { Container } from './style';
 
 const Header = () => {
   const { signOut, user } = useAuthContext();
-  const props = user?.img;
   const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
   const { asPath } = useRouter();
@@ -21,7 +20,6 @@ const Header = () => {
       }
     });
   }, []);
-
   return (
     <Container
       ref={headerRef}
@@ -41,7 +39,7 @@ const Header = () => {
             onClick={() => router.push('/user')}
           >
             <div className="imgFundo">
-              {props && <ProfileImg props={props} />}
+              {user?.img && <ProfileImg props={user?.img} />}
             </div>
           </button>
         </>

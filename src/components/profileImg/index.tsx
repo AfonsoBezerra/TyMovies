@@ -67,14 +67,11 @@ const ProfileImg = ({ props }: ProfileImgProps) => {
     return <BigHead {...imgProp} />;
   }
 
-  if (props) {
-    return (
-      <ContainerBig>
-        <BigHead {...props} />
-      </ContainerBig>
-    );
-  }
-  return null;
+  return (
+    <ContainerBig>
+      <BigHead {...props} />
+    </ContainerBig>
+  );
 };
 
 export default ProfileImg;
