@@ -1,25 +1,24 @@
 import ProfileImg from '@components/profileImg';
 import { AUTH_COOKIE_NAME } from '@contexts/Auth';
 import { useAuthContext } from '@contexts/Auth/useAuthContext';
-import { getCookie } from '@services/cookies';
+import { delCookie, getCookie } from '@services/cookies';
 import { ContainerUserEdit } from '@stylesComponents/containerUserEdit';
 import axios from 'axios';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
-import { destroyCookie } from 'nookies';
 import { Loading } from 'react-loading-dot';
 
 const UserEdit = () => {
-  const { user, imgProp, setImgProp } = useAuthContext();
+  const { user, imgProp, setUser } = useAuthContext();
   const props = user?.img;
   const router = useRouter();
 
   function clickContinue() {
     if (!props) {
       axios.put(`/api/user/${user?.uid}`, { img: imgProp });
-      setImgProp(imgProp);
     }
-    destroyCookie(undefined, '__VERIFY_LOGIN_IMG_COOKIE');
+    setUser((uProps: any) => ({ ...uProps, img: imgProp }));
+    delCookie(undefined, '__VERIFY_LOGIN_IMG_COOKIE');
     router.push('/home');
   }
 
@@ -46,7 +45,7 @@ const UserEdit = () => {
         <h2>Quem está assistindo?</h2>
         <button type="button" className="img" onClick={clickContinue}>
           <div className="imgFundo">
-            <ProfileImg props={props || null} teste={!!props} />
+            <ProfileImg props={props} />
           </div>
         </button>
         <span>{user?.name}</span>

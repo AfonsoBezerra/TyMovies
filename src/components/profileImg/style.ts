@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ContainerBig = styled.div`
-  animation: fadeIn ease-in-out 4s;
+  animation: fadeIn ease-in-out 2s;
   @keyframes fadeIn {
     from {
       opacity: 0;

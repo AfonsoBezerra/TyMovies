@@ -32,6 +32,7 @@ interface iAuthContext {
   recoverPass: (email: string) => void;
   setImgProp: (obj: object | null) => void;
   imgProp: object | null;
+  setUser: (args: any) => void;
   // reload: (id: string | undefined) => void;
 }
 const AuthContext = createContext<iAuthContext>({} as iAuthContext);
@@ -88,10 +89,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         if (Auth.auth.currentUser?.emailVerified) {
           if (!formattedUser.img) {
             setCookie(undefined, '__VERIFY_LOGIN_IMG_COOKIE', 'true', {
-              maxAge: 1000 * 60 * 1,
+              maxAge: 100,
               path: '/',
             });
-            setSession(currentUser.refreshToken);
           }
           setSession(currentUser.refreshToken);
         }
@@ -238,6 +238,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       signOut,
       user,
       loading,
+      setUser,
       errorAuth,
       setErroAuth,
       createUserWithEmailAndPassword,

@@ -9,7 +9,7 @@ interface ProfileImgProps {
   teste?: boolean;
 }
 
-const ProfileImg = ({ props, teste }: ProfileImgProps) => {
+const ProfileImg = ({ props }: ProfileImgProps) => {
   const { setImgProp, imgProp } = useAuthContext();
   const {
     skinTone,
@@ -58,20 +58,16 @@ const ProfileImg = ({ props, teste }: ProfileImgProps) => {
   };
 
   useEffect(() => {
-    if (!props && !teste) {
+    if (!props) {
       setImgProp(img);
     }
   }, []);
-  if (!props && !teste) {
-    console.log(props, teste, 'to aqui');
+
+  if (!props) {
     return <BigHead {...imgProp} />;
   }
 
-  if (teste && !props) {
-    return null;
-  }
-  if (teste && props) {
-    console.log(props, teste, 'to aqui 2');
+  if (props) {
     return (
       <ContainerBig>
         <BigHead {...props} />

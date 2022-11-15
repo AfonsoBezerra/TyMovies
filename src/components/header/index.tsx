@@ -1,13 +1,12 @@
 import { useAuthContext } from '@contexts/Auth/useAuthContext';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import TyMoviesLogo from 'assets/svg/TYmovies';
 import { useRouter } from 'next/router';
 import ProfileImg from '@components/profileImg';
 import { Container } from './style';
 
 const Header = () => {
-  const { signOut, user, imgProp, setImgProp } = useAuthContext();
-  const [profile, setProfile] = useState<any>();
+  const { signOut, user } = useAuthContext();
   const props = user?.img;
   const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
@@ -22,14 +21,6 @@ const Header = () => {
       }
     });
   }, []);
-  useEffect(() => {
-    if (props) {
-      setProfile(props);
-    } else {
-      setProfile(imgProp);
-      setImgProp({});
-    }
-  }, [props]);
 
   return (
     <Container
@@ -50,7 +41,7 @@ const Header = () => {
             onClick={() => router.push('/user')}
           >
             <div className="imgFundo">
-              {profile && <ProfileImg props={profile} teste />}
+              {props && <ProfileImg props={props} />}
             </div>
           </button>
         </>
