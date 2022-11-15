@@ -46,7 +46,7 @@ const UserEdit = () => {
         <h2>Quem está assistindo?</h2>
         <button type="button" className="img" onClick={clickContinue}>
           <div className="imgFundo">
-            <ProfileImg props={props || null} />
+            <ProfileImg props={props || null} teste={!!props} />
           </div>
         </button>
         <span>{user?.name}</span>
