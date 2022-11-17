@@ -16,8 +16,10 @@ const UserEdit = () => {
   const [bordColor, setBordColor] = useState('');
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [newImg, setNewImg] = useState(user?.img);
   const router = useRouter();
   const nameRef = useRef<any>(null);
+
   const arrayColors = [
     {
       id: 1,
@@ -66,7 +68,29 @@ const UserEdit = () => {
       if (
         bordColor &&
         bordColor !== user?.borderColor &&
-        valueName !== valueInitial
+        valueName !== valueInitial &&
+        newImg !== user?.img
+      ) {
+        setLoading(true);
+        axios.put(`/api/user/${user?.uid}`, {
+          borderColor: bordColor,
+          userName: valueName,
+          img: newImg,
+        });
+        setUser((uProps: any) => ({
+          ...uProps,
+          borderColor: bordColor,
+          userName: valueName,
+          img: newImg,
+        }));
+        setLoading(false);
+        return router.push('/home');
+      }
+      if (
+        bordColor &&
+        bordColor !== user?.borderColor &&
+        valueName !== valueInitial &&
+        newImg === user?.img
       ) {
         setLoading(true);
         axios.put(`/api/user/${user?.uid}`, {
@@ -81,7 +105,7 @@ const UserEdit = () => {
         setLoading(false);
         return router.push('/home');
       }
-      if (!bordColor && valueName !== valueInitial) {
+      if (!bordColor && valueName !== valueInitial && newImg === user?.img) {
         setLoading(true);
         axios.put(`/api/user/${user?.uid}`, {
           userName: valueName,
@@ -93,6 +117,49 @@ const UserEdit = () => {
         setLoading(false);
         return router.push('/home');
       }
+      if (!bordColor && valueName !== valueInitial && newImg !== user?.img) {
+        setLoading(true);
+        axios.put(`/api/user/${user?.uid}`, {
+          userName: valueName,
+          img: newImg,
+        });
+        setUser((uProps: any) => ({
+          ...uProps,
+          userName: valueName,
+          img: newImg,
+        }));
+        setLoading(false);
+        return router.push('/home');
+      }
+      if (!bordColor && valueName === valueInitial && newImg !== user?.img) {
+        setLoading(true);
+        axios.put(`/api/user/${user?.uid}`, {
+          img: newImg,
+        });
+        setUser((uProps: any) => ({
+          ...uProps,
+          img: newImg,
+        }));
+        setLoading(false);
+        return router.push('/home');
+      }
+    } else if (
+      bordColor &&
+      bordColor !== user?.borderColor &&
+      newImg !== user?.img
+    ) {
+      setLoading(true);
+      axios.put(`/api/user/${user?.uid}`, {
+        borderColor: bordColor,
+        img: newImg,
+      });
+      setUser((uProps: any) => ({
+        ...uProps,
+        borderColor: bordColor,
+        img: newImg,
+      }));
+      setLoading(false);
+      return router.push('/home');
     } else if (bordColor && bordColor !== user?.borderColor) {
       setLoading(true);
       axios.put(`/api/user/${user?.uid}`, {
@@ -101,6 +168,32 @@ const UserEdit = () => {
       setUser((uProps: any) => ({
         ...uProps,
         borderColor: bordColor,
+      }));
+      setLoading(false);
+      return router.push('/home');
+    } else if (!bordColor && !valueName && newImg !== user?.img) {
+      setLoading(true);
+      axios.put(`/api/user/${user?.uid}`, {
+        img: newImg,
+      });
+      setUser((uProps: any) => ({
+        ...uProps,
+        img: newImg,
+      }));
+      setLoading(false);
+      return router.push('/home');
+    } else if (
+      bordColor &&
+      bordColor === user?.borderColor &&
+      newImg !== user?.img
+    ) {
+      setLoading(true);
+      axios.put(`/api/user/${user?.uid}`, {
+        img: newImg,
+      });
+      setUser((uProps: any) => ({
+        ...uProps,
+        img: newImg,
       }));
       setLoading(false);
       return router.push('/home');
@@ -113,7 +206,7 @@ const UserEdit = () => {
       <div
         style={{
           width: '100vw',
-          height: '400vh',
+          height: '100vh',
           background:
             'linear-gradient(to left top, #240930, #20092a, #1d0923, #19081d, #140717, #110714, #0e0710, #0a070c, #09080b, #09080b, #09090a, #090909)',
         }}
@@ -127,12 +220,7 @@ const UserEdit = () => {
     <ContainerUserEdit>
       {modal && (
         <div className="fundoModal">
-          <NewModal setModal={setModal} props={user?.img} />
-          <div
-            className="overlay"
-            aria-hidden
-            onClick={() => setModal(false)}
-          />
+          <NewModal setModal={setModal} setNewImg={setNewImg} />
         </div>
       )}
 
@@ -147,7 +235,7 @@ const UserEdit = () => {
           }}
         >
           <div className="imgFundo">
-            <ProfileImg props={user?.img} />
+            <ProfileImg props={!newImg ? user?.img : newImg} />
             <button
               type="button"
               className="iconEdit"

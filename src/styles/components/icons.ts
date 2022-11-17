@@ -15,6 +15,7 @@ import { Close } from '@styled-icons/ionicons-solid/Close';
 import { Star } from '@styled-icons/bootstrap/Star';
 import { RecentActors } from '@styled-icons/material/RecentActors';
 import { ImageEdit } from '@styled-icons/fluentui-system-filled/ImageEdit';
+import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
 
 export const Facebookicon = styled(Facebook)`
   width: 22px;
@@ -126,4 +127,14 @@ export const ImageEditIcon = styled(ImageEdit)`
   width: 25px !important;
   height: 25px !important;
   color: rgba(255, 255, 255, 1);
+`;
+
+export const ArrowBackIcon = styled(ArrowBack)`
+  width: 30px;
+  height: 30px;
+  color: rgba(255, 255, 255, 1);
+  @media (max-width: 767px) {
+    width: 25px;
+    height: 25px;
+  }
 `;
