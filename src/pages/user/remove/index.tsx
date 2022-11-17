@@ -1,15 +1,15 @@
 import ProfileImg from '@components/profileImg';
 import { AUTH_COOKIE_NAME } from '@contexts/Auth';
 import { useAuthContext } from '@contexts/Auth/useAuthContext';
-import { delCookie, getCookie } from '@services/cookies';
-import { ContainerUser } from '@stylesComponents/containerUser';
+import { getCookie } from '@services/cookies';
+import { ContainerUserRemove } from '@stylesComponents/containerUserRemove';
 import axios from 'axios';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { Loading } from 'react-loading-dot';
 
-const User = () => {
-  const { user, imgProp, setUser } = useAuthContext();
+const UserRemove = () => {
+  const { user, signOut, deleteAcount } = useAuthContext();
   const props = user?.img;
   const router = useRouter();
   const arrayColors = [
@@ -21,36 +21,11 @@ const User = () => {
   ];
   const random = Math.floor(Math.random() * arrayColors.length);
   const colorRandom = arrayColors[random];
-  function clickContinue() {
-    if (!props) {
-      axios.put(`/api/user/${user?.uid}`, {
-        img: imgProp,
-        borderColor: colorRandom,
-      });
-      setUser((uProps: any) => ({
-        ...uProps,
-        img: imgProp,
-        borderColor: colorRandom,
-      }));
-    }
-    delCookie(undefined, '__VERIFY_LOGIN_IMG_COOKIE');
-    router.push('/home');
-  }
 
-  function gerenciarPerfil() {
-    if (!props) {
-      axios.put(`/api/user/${user?.uid}`, {
-        img: imgProp,
-        borderColor: colorRandom,
-      });
-      setUser((uProps: any) => ({
-        ...uProps,
-        img: imgProp,
-        borderColor: colorRandom,
-      }));
-    }
-    delCookie(undefined, '__VERIFY_LOGIN_IMG_COOKIE');
-    router.push('/user/edit');
+  function confirmRemove() {
+    deleteAcount();
+    axios.delete(`/api/user/${user?.uid}`);
+    signOut();
   }
 
   if (!user) {
@@ -68,40 +43,44 @@ const User = () => {
     );
   }
   return (
-    <ContainerUser>
+    <ContainerUserRemove>
       <div className="title">
-        <h1>Bem vindo {user?.userName}!</h1>
+        <h1>Excluir {user?.userName}</h1>
       </div>
       <div className="image">
-        <h2>Quem está assistindo?</h2>
-        <button
-          type="button"
+        <span>
+          Se o perfil for excluído, as informações associadas a ele também serão
+          excluídas.
+        </span>
+        <div
           className="img"
           style={{
             backgroundImage: user.borderColor ? user.borderColor : colorRandom,
           }}
-          onClick={clickContinue}
         >
           <div className="imgFundo">
             <ProfileImg props={props} />
           </div>
-        </button>
+        </div>
         <span>{user?.userName}</span>
       </div>
       <div className="buttons">
+        <button type="button" onClick={() => router.back()}>
+          Cancelar
+        </button>
         <button
           type="button"
-          className="gerenciar"
-          onClick={() => gerenciarPerfil()}
+          className="excluir"
+          onClick={() => confirmRemove()}
         >
-          Gerenciar Perfil
+          Excluir
         </button>
       </div>
-    </ContainerUser>
+    </ContainerUserRemove>
   );
 };
 
-export default User;
+export default UserRemove;
 
 export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   const cookie = getCookie(ctx, AUTH_COOKIE_NAME);

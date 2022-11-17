@@ -14,6 +14,7 @@ import { Search } from '@styled-icons/bootstrap/Search';
 import { Close } from '@styled-icons/ionicons-solid/Close';
 import { Star } from '@styled-icons/bootstrap/Star';
 import { RecentActors } from '@styled-icons/material/RecentActors';
+import { ImageEdit } from '@styled-icons/fluentui-system-filled/ImageEdit';
 
 export const Facebookicon = styled(Facebook)`
   width: 22px;
@@ -101,7 +102,7 @@ export const SearchIcon = styled(Search)`
 export const CloseIcon = styled(Close)`
   width: 20px;
   height: 20px;
-  color: black;
+  color: white;
 `;
 
 export const StarIcon = styled(Star)`
@@ -119,4 +120,10 @@ export const RecentActorsIcons = styled(RecentActors)`
     width: 30px;
     height: 30px;
   }
+`;
+
+export const ImageEditIcon = styled(ImageEdit)`
+  width: 25px !important;
+  height: 25px !important;
+  color: rgba(255, 255, 255, 1);
 `;

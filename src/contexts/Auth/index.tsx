@@ -12,6 +12,7 @@ interface iUser {
   uid: string;
   img?: string;
   userName: string;
+  borderColor: string;
 }
 
 interface iAuthContext {
@@ -33,7 +34,7 @@ interface iAuthContext {
   setImgProp: (obj: object | null) => void;
   imgProp: object | null;
   setUser: (args: any) => void;
-  // reload: (id: string | undefined) => void;
+  deleteAcount: () => void;
 }
 const AuthContext = createContext<iAuthContext>({} as iAuthContext);
 
@@ -45,7 +46,7 @@ export const AUTH_COOKIE_NAME = '__HOST_TYMOVIES_USER_COOKIE';
 
 const FormatUser = (
   user: User,
-  others: { name: string; img: string; userName: string },
+  others: { name: string; img: string; userName: string; borderColor: string },
 ) =>
   ({
     email: user.email,
@@ -79,6 +80,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
           name: res.data.name,
           img: res.data.img,
           userName: res.data.name,
+          borderColor: res.data.borderColor,
         });
         setUser(formattedUser);
         if (Auth.auth.currentUser?.emailVerified) {
@@ -113,6 +115,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
               name,
               userName: name,
               img: '',
+              borderColor: '',
             });
           });
         })
@@ -218,6 +221,18 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     }
   };
 
+  const deleteAcount = () => {
+    try {
+      Auth.deleteUser(Auth.auth.currentUser!)
+        .then()
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch {
+      // do someting
+    }
+  };
+
   useEffect(() => {
     const unSubscribe = Auth.onIdTokenChanged(
       Auth.auth,
@@ -242,6 +257,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       setSucess,
       setImgProp,
       imgProp,
+      deleteAcount,
     }),
     [user, loading, errorAuth, sucess, imgProp],
   );

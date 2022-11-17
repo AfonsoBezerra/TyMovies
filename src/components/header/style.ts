@@ -24,7 +24,7 @@ export const Container = styled.header<iContainer>`
   z-index: 9;
   transition: all 0.5s ease;
   color: white;
-  animation: fadeIn 5s;
+  animation: fadeIn 1s;
   button {
     width: auto;
     background-color: rgba(255, 255, 255, 0.2);
@@ -43,14 +43,6 @@ export const Container = styled.header<iContainer>`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(
-      to right top,
-      #600292,
-      #823f9e,
-      #9e6bab,
-      #b698b9,
-      #c9c5c9
-    );
     border-radius: 50%;
     .imgFundo {
       width: 50px;

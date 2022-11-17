@@ -36,6 +36,9 @@ const Header = () => {
           <button
             type="button"
             className="containerProfile"
+            style={{
+              backgroundImage: user?.borderColor,
+            }}
             onClick={() => router.push('/user')}
           >
             <div className="imgFundo">

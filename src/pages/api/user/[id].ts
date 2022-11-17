@@ -21,6 +21,10 @@ export default async function handle(
       const data = await db.in('users').put(id, toSubmit);
       return res.status(201).send(data);
     }
+    if (req.method === 'DELETE') {
+      const data = await db.in('users').del(id);
+      return res.status(201).send(data);
+    }
     return res.status(404).end();
   } catch (e) {
     return res.status(400).end();

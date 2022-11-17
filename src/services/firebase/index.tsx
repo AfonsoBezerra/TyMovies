@@ -10,6 +10,7 @@ import {
   sendEmailVerification,
   applyActionCode,
   sendPasswordResetEmail,
+  deleteUser,
 } from 'firebase/auth';
 
 if (!getApps().length) {
@@ -36,4 +37,5 @@ export const Auth = {
   sendEmailVerification,
   applyActionCode,
   sendPasswordResetEmail,
+  deleteUser,
 };

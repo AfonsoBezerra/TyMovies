@@ -49,6 +49,8 @@
     "@typescript-eslint/no-non-null-assertion": "off",
     "@next/next/no-img-element": "off",
     "react/jsx-no-useless-fragment": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
