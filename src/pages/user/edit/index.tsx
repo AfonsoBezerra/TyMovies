@@ -10,8 +10,6 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { ImageEditIcon } from '@stylesComponents/icons';
 import NewModal from '@components/editUserModal';
-import { ContainerFull } from '@stylesComponents/containerFull';
-import { relative } from 'path';
 
 const UserEdit = () => {
   const { user, setUser } = useAuthContext();
