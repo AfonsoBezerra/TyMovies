@@ -4,6 +4,7 @@ export const ContainerIndex = styled.div`
   width: 100vw;
   min-height: 100vh;
   height: auto;
+
   .video {
     width: 100%;
     height: 100vh;
@@ -35,10 +36,10 @@ export const ContainerIndex = styled.div`
         color: white;
         font-size: 23px;
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: bolder;
         letter-spacing: 1px;
       }
-      span {
+      .line {
         margin-top: 0.5rem;
         width: 90%;
         height: 2px;
@@ -50,10 +51,38 @@ export const ContainerIndex = styled.div`
           width: 400px;
         }
       }
+      .subs {
+        margin-top: 1rem;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0.5rem;
+      }
+      button {
+        margin-top: 1rem;
+        padding: 0.4rem 2.7rem;
+        border-radius: 20px;
+        background: linear-gradient(
+            345deg,
+            rgb(73, 12, 176) 0%,
+            rgb(155, 52, 239) 33%,
+            rgba(255, 255, 255, 0) 66%,
+            rgba(255, 255, 255, 0) 100%
+          )
+          99% 50% / 400% 400%;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.5s;
+        :hover {
+          background: white;
+          color: #140717;
+        }
+      }
     }
     .transition {
       width: 100vw;
-      height: 1800px;
+      height: 2400px;
       position: absolute;
       bottom: 0;
       z-index: 1;
@@ -78,7 +107,131 @@ export const ContainerIndex = styled.div`
   }
   .content {
     width: 100%;
-    height: 100vh;
+    height: auto;
     background-color: rgba(20, 7, 23);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 3rem;
+    .mainMovies {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      gap: 1.5rem;
+      width: 100%;
+      h2 {
+        width: 100%;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 17px;
+        line-height: 30px;
+        @media (min-width: 1024px) {
+          font-size: 24px;
+        }
+      }
+      .carrossel {
+        width: 100%;
+        height: auto;
+        .element {
+          width: 100%;
+          height: 280px;
+          border-radius: 15px;
+          position: relative;
+          img {
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+          }
+          @media (min-width: 760px) {
+            height: 350px;
+          }
+          @media (min-width: 1300px) {
+            height: 400px;
+          }
+        }
+        @media (min-width: 1024px) {
+          width: 70%;
+        }
+        @media (min-width: 1300px) {
+          width: 60%;
+        }
+        @media (min-width: 1440px) {
+          width: 80%;
+        }
+        @media (min-width: 1700px) {
+          width: 60%;
+        }
+        @media (min-width: 2060px) {
+          width: 50%;
+        }
+      }
+      button {
+        margin-top: 1rem;
+        padding: 0.2rem 1.5rem;
+        border-radius: 20px;
+        background: rgb(248, 249, 250);
+        color: rgb(3, 3, 40);
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.5s;
+        border: 2px solid transparent;
+        :hover {
+          background-color: transparent;
+          color: rgb(255, 255, 255);
+          border-color: rgb(255, 255, 255);
+        }
+      }
+    }
+    .personagens {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+      height: auto;
+      .img {
+        width: auto;
+        height: auto;
+        text-align: center;
+        img {
+          width: 100%;
+          height: 100%;
+          margin-bottom: 1rem;
+        }
+        h2 {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 18px;
+          span {
+            font-weight: bold;
+          }
+        }
+        @media (min-width: 1024px) {
+          width: 500px;
+        }
+        @media (min-width: 1440px) {
+          width: 400px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .wood {
+          width: 600px;
+        }
+      }
+      @media (min-width: 1440px) {
+        .wood {
+          width: 500px;
+        }
+      }
+      @media (min-width: 1024px) {
+        align-items: end;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+    }
   }
 `;

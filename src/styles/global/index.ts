@@ -62,6 +62,7 @@ const RootCSS = createGlobalStyle`
   .effectHead {
     background-color: rgba(20, 7, 23, 0.5) !important;
     z-index: 9999;
+    backdrop-filter: blur(1px);
   }
 }
 
