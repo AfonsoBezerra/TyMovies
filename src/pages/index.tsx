@@ -1,12 +1,32 @@
+import Footer from '@components/footer';
+import Faq from '@components/screen/main/faqs';
 import HeaderMain from '@components/screen/main/header';
+import HeaderMainIndex from '@components/screen/main/HeaderMain';
+import { AUTH_COOKIE_NAME } from '@contexts/Auth';
+import { getCookie } from '@services/cookies';
 import { ContainerIndex } from '@stylesComponents/containerIndex';
+import { faqsArray } from 'mock/FaqsArray';
+import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-const Home = () => {
+export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
+  const cookie = getCookie(ctx, AUTH_COOKIE_NAME);
+  if (!cookie) {
+    return {
+      props: { haveCookie: false },
+    };
+  }
+  return { props: { haveCookie: true } };
+};
+
+const Home = (props: any) => {
   const router = useRouter();
   const [screenSize, setScreenSize] = useState(1.5);
+  const [changeImage, setChangeImage] = useState(false);
+  const { haveCookie } = props;
+  const [openRow, setOpenRow] = useState(0);
   useEffect(() => {
     const { width } = window.screen;
     if (width >= 760 && width < 1300) {
@@ -15,9 +35,17 @@ const Home = () => {
       setScreenSize(3.5);
     }
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChangeImage((prev) => !prev);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <ContainerIndex>
-      <HeaderMain />
+      {!haveCookie ? <HeaderMainIndex /> : <HeaderMain />}
       <div className="video">
         <video autoPlay muted loop>
           <source src="/fundo.mp4" type="video/mp4" />
@@ -44,60 +72,238 @@ const Home = () => {
               className="mySwiper"
             >
               <SwiperSlide>
-                <div className="element">
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
                   <img src="/big.webp" alt="img" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="element">
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
                   <img src="/anime.webp" alt="img" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="element">
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
                   <img src="/breaking.webp" alt="img" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="element">
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
                   <img src="/chiriro.webp" alt="img" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="element">
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
                   <img src="/rick.webp" alt="img" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="element">
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
                   <img src="/twd.webp" alt="img" />
                 </div>
               </SwiperSlide>
             </Swiper>
           </div>
-          <button type="button"> explorar mais</button>
+          <button type="button" onClick={() => router.push('/home')}>
+            explorar mais
+          </button>
         </div>
         <div className="personagens">
           <div className="img">
-            <img src="/poo.png" alt="img" />
+            <img src="/poo1.png" alt="img" />
             <h2>
               <span>TyMovies</span> trás entreterimento
             </h2>
           </div>
           <div className="img  wood">
-            <img src="/wood.png" alt="img" />
+            <img src="/wood1.png" alt="img" />
             <h2>
               Diversão para sua <span>CASA</span>
             </h2>
           </div>
           <div className="img ">
-            <img src="/miranha.png" alt="img" />
+            <img src="/miranha1.png" alt="img" />
             <h2>
-              E memórias para <span>marcar</span>
+              E memórias para <span>MARCAR</span>
             </h2>
           </div>
         </div>
+        <div className="telas">
+          <div className="title">
+            <h1>Diversão garantida em todo lugar</h1>
+            <p>
+              Experiências personalizadas para garantir a diversão em qualquer
+              momento.
+            </p>
+          </div>
+          <div className="image">
+            <div className="img">
+              <img src="/devicem.png" alt="device" />
+            </div>
+          </div>
+        </div>
+        <div className="descubra">
+          <div className="title">
+            <p>Descubra novas histórias</p>
+          </div>
+          <div className="carrosel">
+            <Swiper
+              slidesPerView={screenSize}
+              spaceBetween={30}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
+                  <img
+                    src="/jinx.jpg"
+                    className={!changeImage ? 'noActive' : 'active'}
+                    id="image"
+                    alt="img"
+                  />
+                  <img
+                    src="/dory.webp"
+                    className={changeImage ? 'noActive' : 'active'}
+                    id="image"
+                    alt="img"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
+                  <img
+                    src="/batman.jpg"
+                    className={!changeImage ? 'noActive' : 'active'}
+                    id="image"
+                    alt="img"
+                  />
+                  <img
+                    src="/olaf.webp"
+                    className={changeImage ? 'noActive' : 'active'}
+                    id="image"
+                    alt="img"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div
+                  className="element"
+                  aria-hidden
+                  onClick={() => router.push('/home')}
+                >
+                  <img
+                    src="/decku.jpg"
+                    className={!changeImage ? 'noActive' : 'active'}
+                    id="image"
+                    alt="img"
+                  />
+                  <img
+                    src="/rick.jpg"
+                    className={changeImage ? 'noActive' : 'active'}
+                    id="image"
+                    alt="img"
+                  />
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+          <div className="grid">
+            <div
+              className="element"
+              aria-hidden
+              onClick={() => router.push('/home')}
+            >
+              <img src="/jinx.jpg" id="image" alt="img" />
+            </div>
+            <div
+              className="element"
+              aria-hidden
+              onClick={() => router.push('/home')}
+            >
+              <img src="/dory.webp" id="image" alt="img" />
+            </div>
+            <div
+              className="element"
+              aria-hidden
+              onClick={() => router.push('/home')}
+            >
+              <img src="/batman.jpg" id="image" alt="img" />
+            </div>
+            <div
+              className="element"
+              aria-hidden
+              onClick={() => router.push('/home')}
+            >
+              <img src="/olaf.webp" id="image" alt="img" />
+            </div>
+            <div
+              className="element"
+              aria-hidden
+              onClick={() => router.push('/home')}
+            >
+              <img src="/decku.jpg" id="image" alt="img" />
+            </div>
+            <div
+              className="element"
+              aria-hidden
+              onClick={() => router.push('/home')}
+            >
+              <img src="/rick.jpg" id="image" alt="img" />
+            </div>
+          </div>
+          <button type="button" onClick={() => router.push('/home')}>
+            explorar mais
+          </button>
+        </div>
+        <div className="containerFaqs">
+          <div className="title">
+            <h2>Perquntas Frequentes</h2>
+          </div>
+          <div className="allFaqs">
+            {faqsArray.map((faq: any) => (
+              <Faq
+                key={faq.id}
+                title={faq.question}
+                res={faq.res}
+                set={setOpenRow}
+                id={faq.id}
+                openId={openRow}
+              />
+            ))}
+          </div>
+        </div>
       </section>
+      <Footer />
     </ContainerIndex>
   );
 };

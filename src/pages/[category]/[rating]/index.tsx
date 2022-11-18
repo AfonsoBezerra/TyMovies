@@ -26,11 +26,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (!results) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/home',
         permanent: false,
       },
     };
   }
+
   return {
     props: {
       rating: context.params?.rating,
@@ -40,8 +41,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const viewMore = ({ rating, ratingMovie, type }: any) => {
+const ViewMore = ({ rating, ratingMovie, type }: any) => {
+  // const router = useRouter();
+  // useEffect(() => {
+  //   const cookie = getCookie(undefined, AUTH_COOKIE_NAME);
+  //   if (!cookie) {
+  //     router.push('/login');
+  //   }
+  // }, []);
   return <MovieTable movies={ratingMovie[0]} rating={rating} type={type} />;
 };
 
-export default viewMore;
+export default ViewMore;

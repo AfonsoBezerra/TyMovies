@@ -1,7 +1,10 @@
 import InputError from '@components/inputError';
+import { AUTH_COOKIE_NAME } from '@contexts/Auth';
 import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { Alert, Snackbar } from '@mui/material';
+import { getCookie } from '@services/cookies';
 import { PageRecover } from '@stylesComponents/containerRecover';
+import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Loading } from 'react-loading-dot';
@@ -76,3 +79,16 @@ const ChangePass = () => {
 };
 
 export default ChangePass;
+
+export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
+  const cookie = getCookie(ctx, AUTH_COOKIE_NAME);
+  if (cookie) {
+    return {
+      redirect: {
+        destination: '/home',
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
+};

@@ -1,12 +1,10 @@
-import ProfileImg from '@components/profileImg';
-import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import TyMoviesLogo from 'assets/svg/TYmovies';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef } from 'react';
 import { HeaderMainStyle } from './style';
 
-const HeaderMain = () => {
-  const { user } = useAuthContext();
+const HeaderMainIndex = () => {
   const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -23,22 +21,14 @@ const HeaderMain = () => {
   return (
     <HeaderMainStyle ref={headerRef}>
       <TyMoviesLogo />
-      {user && (
-        <button
-          type="button"
-          className="containerProfile"
-          style={{
-            backgroundImage: user?.borderColor,
-          }}
-          onClick={() => router.push('/user')}
-        >
-          <div className="imgFundo">
-            {user?.img && <ProfileImg props={user?.img} />}
-          </div>
+      <div className="buttons">
+        <Link href="/signin">Cadastrar</Link>
+        <button type="button" onClick={() => router.push('/login')}>
+          Entrar
         </button>
-      )}
+      </div>
     </HeaderMainStyle>
   );
 };
 
-export default HeaderMain;
+export default HeaderMainIndex;

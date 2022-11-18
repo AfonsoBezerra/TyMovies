@@ -1,6 +1,8 @@
 import HeroDetail from '@components/hero-detail';
+
 import apiConfig from '@services/api/apiConfig';
 import requestsApi from '@services/api/requestsApi';
+
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 export const getStaticPaths: GetStaticPaths = async () => {
