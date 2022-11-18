@@ -217,7 +217,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         });
     } finally {
       setLoading(false);
-      router.push('/login');
+      router.push('/');
     }
   };
 
