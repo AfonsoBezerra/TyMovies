@@ -194,6 +194,7 @@ export const ContainerIndex = styled.div`
       align-items: center;
       gap: 5rem;
       height: auto;
+      overflow-x: hidden;
       .img {
         width: auto;
         height: auto;
