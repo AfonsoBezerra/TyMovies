@@ -13,7 +13,7 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const top = window.scrollY;
-      if (top > 80) {
+      if (top > 50) {
         headerRef?.current?.classList.add('effect');
       } else {
         headerRef?.current?.classList.remove('effect');
@@ -30,7 +30,7 @@ const Header = () => {
       ) : (
         <>
           <button type="button" onClick={() => signOut()}>
-            Sair
+            Logout
           </button>
           <TyMoviesLogo />
           <button

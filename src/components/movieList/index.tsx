@@ -46,6 +46,7 @@ const MovieList = ({ category, type }: iPropsMovie) => {
   const [data, setData] = useState([]);
   const [screenSize, setScreenSize] = useState(1.5);
   const [onLoad, setOnload] = useState(false);
+
   SwiperCore.use([Autoplay]);
 
   useEffect(() => {
@@ -87,7 +88,7 @@ const MovieList = ({ category, type }: iPropsMovie) => {
       {!onLoad && (
         <div
           style={{
-            width: '100vw',
+            width: '90vw',
             height: '100vh',
             background:
               'linear-gradient(305deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 45%, rgba(0,0,0,1) 100%)',

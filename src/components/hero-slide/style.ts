@@ -4,6 +4,17 @@ export const Hero = styled.div`
   width: 100%;
   position: relative;
   animation: fadeIn 2s ease-in-out;
+  .voltar {
+    position: absolute;
+    top: 6rem;
+    left: 1.7rem;
+    z-index: 99;
+    width: 100px;
+    height: 100px;
+    @media (max-width: 767px) {
+      left: 1rem;
+    }
+  }
   .transition {
     width: 100vw;
     height: 450px;

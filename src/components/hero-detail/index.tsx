@@ -6,10 +6,15 @@ import { useEffect, useState } from 'react';
 import requestsApi from '@services/api/requestsApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ButtonTrailer from '@components/buttons';
-import { RecentActorsIcons, StarIcon } from '@stylesComponents/icons';
+import {
+  ArrowBackIcon,
+  RecentActorsIcons,
+  StarIcon,
+} from '@stylesComponents/icons';
 import ModalComponent from '@components/modal';
 
 import Header from '@components/header';
+import { useRouter } from 'next/router';
 import { Container } from './style';
 
 interface iMovie {
@@ -34,7 +39,7 @@ const HeroDetail = ({ item, type }: iMovie) => {
   const [screenSize, setScreenSize] = useState(2.5);
   const [openModal, setOpenModal] = useState(false);
   const [valueModal, setModal] = useState<any>([]);
-
+  const router = useRouter();
   useEffect(() => {
     const getMoviesCredits = async () => {
       try {
@@ -82,6 +87,9 @@ const HeroDetail = ({ item, type }: iMovie) => {
       <Header />
       <Container>
         <div className="hero">
+          <div className="voltar">
+            <ArrowBackIcon onClick={() => router.back()} />
+          </div>
           <Image
             src={background}
             alt="hero_img"

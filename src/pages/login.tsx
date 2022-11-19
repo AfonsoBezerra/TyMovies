@@ -51,7 +51,7 @@ const Login = () => {
                     type="email"
                     id="email"
                     required
-                    placeholder="Endereco de e-mail"
+                    placeholder="Endereço de e-mail"
                     name="email"
                     style={errorAuth ? { border: '1px solid red' } : {}}
                     onInput={() => setErroAuth(false)}

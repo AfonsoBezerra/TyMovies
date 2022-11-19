@@ -7,6 +7,7 @@ import Image from 'next/image';
 import ButtonTrailer, { Button } from '@components/buttons';
 import ModalComponent from '@components/modal';
 import { useRouter } from 'next/router';
+import { ArrowBackIcon } from '@stylesComponents/icons';
 import { Container, Hero } from './style';
 
 interface PropsHero {
@@ -25,11 +26,11 @@ const HeroSlideItem = (props: PropsHero) => {
   const [valueModal, setModal] = useState<any>([]);
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
+  const { asPath } = useRouter();
   const { item, className, typeHero, rating } = props;
   const background = apiConfig.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path,
   );
-
   const setModalActive = async () => {
     const videos = await requestsApi.getVideos(category.movie, item.id);
     setModal(videos);
@@ -42,6 +43,11 @@ const HeroSlideItem = (props: PropsHero) => {
 
   return (
     <Container className={className}>
+      {asPath !== '/home' && (
+        <div className="voltar">
+          <ArrowBackIcon onClick={() => router.back()} />
+        </div>
+      )}
       <Image
         src={background}
         alt="hero_img"

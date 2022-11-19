@@ -56,7 +56,7 @@ const RootCSS = createGlobalStyle`
   }
   
   .effect {
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(0,0,0,.95);
     z-index: 9999;
   }
   .effectHead {

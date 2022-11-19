@@ -34,6 +34,17 @@ export const Container = styled.div`
       opacity: 30%;
       object-fit: cover;
     }
+    .voltar {
+      position: absolute;
+      top: 6rem;
+      left: 1.7rem;
+      z-index: 99;
+      width: 100px;
+      height: 100px;
+      @media (max-width: 767px) {
+        left: 1rem;
+      }
+    }
 
     .hero-detail {
       width: 90%;
