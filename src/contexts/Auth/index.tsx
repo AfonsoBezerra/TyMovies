@@ -211,7 +211,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       Auth.signOut(Auth.auth)
         .then(() => {
           handleUser(undefined);
-          router.push('/login');
+          router.push('/');
         })
         .catch(() => {
           setErroAuth(true);
