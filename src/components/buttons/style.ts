@@ -54,6 +54,9 @@ export const ContainerButtonTrailer = styled.button`
   border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 999;
   margin-right: 1rem;
+  span {
+    margin-left: 2px;
+  }
   @media (min-width: 1024px) {
     opacity: 0.5;
     width: 50px;

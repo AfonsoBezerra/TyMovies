@@ -4,10 +4,11 @@ import { AUTH_COOKIE_NAME } from '@contexts/Auth';
 import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { getCookie } from '@services/cookies';
 import { FormStyle } from '@stylesComponents/containerForm';
+import { EyeIcon, EyeOffIcon } from '@stylesComponents/icons';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Loading } from 'react-loading-dot';
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
     setErroAuth,
     loading,
   } = useAuthContext();
-
+  const [show, setShow] = useState(false);
   useEffect(() => {
     setErroAuth(false);
   }, []);
@@ -60,19 +61,26 @@ const Login = () => {
                   )}
                 </label>
                 <label htmlFor="pass">
-                  <input
-                    id="pass"
-                    type="password"
-                    required
-                    placeholder="Senha"
-                    name="pass"
-                    autoComplete="off"
-                    style={errorAuth ? { border: '1px solid red' } : {}}
-                    onInput={() => setErroAuth(false)}
-                  />
-                  {errorAuth && (
-                    <InputError>Email ou senha incorretos</InputError>
-                  )}
+                  <div className="passWithIcon">
+                    <input
+                      id="pass"
+                      type={show ? 'text' : 'password'}
+                      required
+                      placeholder="Senha"
+                      name="pass"
+                      autoComplete="off"
+                      style={errorAuth ? { border: '1px solid red' } : {}}
+                      onInput={() => setErroAuth(false)}
+                    />
+                    {errorAuth && (
+                      <InputError>Email ou senha incorretos</InputError>
+                    )}
+                    {!show ? (
+                      <EyeIcon onClick={() => setShow(true)} />
+                    ) : (
+                      <EyeOffIcon onClick={() => setShow(false)} />
+                    )}
+                  </div>
                 </label>
                 <div className="buttonsForm">
                   <button

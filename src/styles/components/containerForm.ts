@@ -48,6 +48,17 @@ export const FormStyle = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      .passWithIcon {
+        display: flex;
+        position: relative;
+        width: 100%;
+        align-items: center;
+        svg {
+          position: absolute;
+          right: 1rem;
+          cursor: pointer;
+        }
+      }
       input {
         align-self: center;
         background-color: rgba(0, 0, 0, 0.2);

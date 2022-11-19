@@ -16,6 +16,8 @@ import { Star } from '@styled-icons/bootstrap/Star';
 import { RecentActors } from '@styled-icons/material/RecentActors';
 import { ImageEdit } from '@styled-icons/fluentui-system-filled/ImageEdit';
 import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
+import { Eye } from '@styled-icons/ionicons-outline/Eye';
+import { EyeOff } from '@styled-icons/ionicons-outline/EyeOff';
 
 export const Facebookicon = styled(Facebook)`
   width: 22px;
@@ -137,4 +139,18 @@ export const ArrowBackIcon = styled(ArrowBack)`
     width: 25px;
     height: 25px;
   }
+`;
+
+export const EyeOffIcon = styled(EyeOff)`
+  width: 18px !important;
+  height: 18px !important;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+`;
+
+export const EyeIcon = styled(Eye)`
+  width: 18px !important;
+  height: 18px !important;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
 `;

@@ -4,6 +4,7 @@ import { AUTH_COOKIE_NAME } from '@contexts/Auth';
 import { useAuthContext } from '@contexts/Auth/useAuthContext';
 import { getCookie } from '@services/cookies';
 import { FormStyle } from '@stylesComponents/containerForm';
+import { EyeIcon, EyeOffIcon } from '@stylesComponents/icons';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -18,10 +19,12 @@ const SignIn = () => {
     setErroAuth,
   } = useAuthContext();
   const [error, setError] = useState<number>();
+  const [show, setShow] = useState(false);
   const router = useRouter();
   useEffect(() => {
     setErroAuth(false);
   }, []);
+
   return (
     <>
       <Header />
@@ -82,48 +85,62 @@ const SignIn = () => {
                   onInput={() => setErroAuth(false)}
                 />
                 <label htmlFor="pass">
-                  <input
-                    id="pass"
-                    type="password"
-                    required
-                    placeholder="Senha"
-                    name="pass"
-                    autoComplete="off"
-                    style={
-                      error === 2 || error === 3 || errorAuth
-                        ? { border: '1px solid red' }
-                        : {}
-                    }
-                    onInput={() =>
-                      (error === 2 && setError(0)) ||
-                      (error === 3 && setError(0)) ||
-                      setErroAuth(false)
-                    }
-                  />
+                  <div className="passWithIcon">
+                    <input
+                      id="pass"
+                      type={show ? 'text' : 'password'}
+                      required
+                      placeholder="Senha"
+                      name="pass"
+                      autoComplete="off"
+                      style={
+                        error === 2 || error === 3 || errorAuth
+                          ? { border: '1px solid red' }
+                          : {}
+                      }
+                      onInput={() =>
+                        (error === 2 && setError(0)) ||
+                        (error === 3 && setError(0)) ||
+                        setErroAuth(false)
+                      }
+                    />
+                    {!show ? (
+                      <EyeIcon onClick={() => setShow(true)} />
+                    ) : (
+                      <EyeOffIcon onClick={() => setShow(false)} />
+                    )}
+                  </div>
                   {error === 2 && <InputError>Senhas não coincidem</InputError>}
                   {error === 3 && (
                     <InputError>Senha de no minimo 8 caracteres</InputError>
                   )}
                 </label>
                 <label htmlFor="passConfim">
-                  <input
-                    id="passConfirm"
-                    type="password"
-                    required
-                    placeholder="Confirmar senha"
-                    name="passConfirm"
-                    autoComplete="off"
-                    style={
-                      error === 2 || error === 3 || errorAuth
-                        ? { border: '1px solid red' }
-                        : {}
-                    }
-                    onInput={() =>
-                      (error === 2 && setError(0)) ||
-                      (error === 3 && setError(0)) ||
-                      setErroAuth(false)
-                    }
-                  />
+                  <div className="passWithIcon">
+                    <input
+                      id="passConfirm"
+                      type={show ? 'text' : 'password'}
+                      required
+                      placeholder="Confirmar senha"
+                      name="passConfirm"
+                      autoComplete="off"
+                      style={
+                        error === 2 || error === 3 || errorAuth
+                          ? { border: '1px solid red' }
+                          : {}
+                      }
+                      onInput={() =>
+                        (error === 2 && setError(0)) ||
+                        (error === 3 && setError(0)) ||
+                        setErroAuth(false)
+                      }
+                    />
+                    {!show ? (
+                      <EyeIcon onClick={() => setShow(true)} />
+                    ) : (
+                      <EyeOffIcon onClick={() => setShow(false)} />
+                    )}
+                  </div>
                   {error === 2 && <InputError>Senhas não coincidem</InputError>}
                   {error === 3 && (
                     <InputError>Senha de no minimo 8 caracteres</InputError>
