@@ -70,7 +70,6 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       });
     } else {
       delCookie(undefined, AUTH_COOKIE_NAME);
-      router.push('/login');
     }
   };
 
@@ -212,6 +211,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       Auth.signOut(Auth.auth)
         .then(() => {
           handleUser(undefined);
+          router.push('/login');
         })
         .catch(() => {
           setErroAuth(true);
