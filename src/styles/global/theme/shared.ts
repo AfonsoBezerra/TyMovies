@@ -11,8 +11,8 @@ export const sharedTheme: iSharedThemeOptions = {
   maxWidth: '1700px',
 
   fonts: {
-    primary: 'Roboto, serif',
-    secondary: 'Roboto, serif',
+    primary: 'Times New Roman, Times, serif',
+    secondary: 'Times New Roman, Times, serif',
   },
   mediaQueries: {
     maxMobile: `${BREAKPOINTS.$MAX_MOBILE}px`,
