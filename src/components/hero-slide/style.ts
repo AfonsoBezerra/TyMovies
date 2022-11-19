@@ -6,13 +6,17 @@ export const Hero = styled.div`
   animation: fadeIn 2s ease-in-out;
   .voltar {
     position: absolute;
-    top: 6rem;
+    top: 7rem;
     left: 1.7rem;
     z-index: 99;
-    width: 100px;
-    height: 100px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
     @media (max-width: 767px) {
       left: 1rem;
+    }
+    :hover {
+      animation: go-back 0.6s infinite alternate;
     }
   }
   .transition {
@@ -120,6 +124,14 @@ export const Container = styled.div`
     }
     to {
       opacity: 1;
+    }
+  }
+  @keyframes go-back {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(-10px);
     }
   }
 `;

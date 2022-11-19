@@ -36,13 +36,17 @@ export const Container = styled.div`
     }
     .voltar {
       position: absolute;
-      top: 6rem;
+      top: 7rem;
       left: 1.7rem;
       z-index: 99;
-      width: 100px;
-      height: 100px;
+      width: auto;
+      height: auto;
+      cursor: pointer;
       @media (max-width: 767px) {
         left: 1rem;
+      }
+      :hover {
+        animation: go-back 0.6s infinite alternate;
       }
     }
 

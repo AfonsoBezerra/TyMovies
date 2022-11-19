@@ -30,7 +30,7 @@ const Header = () => {
       ) : (
         <>
           <button type="button" onClick={() => signOut()}>
-            Logout
+            Desconectar
           </button>
           <TyMoviesLogo />
           <button

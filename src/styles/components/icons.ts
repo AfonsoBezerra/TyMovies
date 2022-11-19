@@ -134,11 +134,9 @@ export const ImageEditIcon = styled(ImageEdit)`
 export const ArrowBackIcon = styled(ArrowBack)`
   width: 30px;
   height: 30px;
-  cursor: pointer;
+
   color: rgba(255, 255, 255, 1);
-  :hover {
-    animation: go-back 0.6s infinite alternate;
-  }
+
   @media (max-width: 767px) {
     width: 25px;
     height: 25px;
