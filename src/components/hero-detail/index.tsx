@@ -15,6 +15,7 @@ import ModalComponent from '@components/modal';
 
 import Header from '@components/header';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Container } from './style';
 
 interface iMovie {
@@ -40,6 +41,9 @@ const HeroDetail = ({ item, type }: iMovie) => {
   const [openModal, setOpenModal] = useState(false);
   const [valueModal, setModal] = useState<any>([]);
   const router = useRouter();
+  const finalSlashIndex = router.asPath.lastIndexOf('/');
+  const previousPath = router.asPath.slice(0, finalSlashIndex);
+
   useEffect(() => {
     const getMoviesCredits = async () => {
       try {
@@ -88,7 +92,9 @@ const HeroDetail = ({ item, type }: iMovie) => {
       <Container>
         <div className="hero">
           <div className="voltar">
-            <ArrowBackIcon onClick={() => router.back()} />
+            <Link href={previousPath}>
+              <ArrowBackIcon />
+            </Link>
           </div>
           <Image
             src={background}

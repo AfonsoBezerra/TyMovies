@@ -45,7 +45,7 @@ const HeroSlideItem = (props: PropsHero) => {
     <Container className={className}>
       {asPath !== '/home' && (
         <div className="voltar">
-          <ArrowBackIcon onClick={() => router.back()} />
+          <ArrowBackIcon onClick={() => router.push('/home')} />
         </div>
       )}
       <Image
