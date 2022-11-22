@@ -70,7 +70,6 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       });
     } else {
       delCookie(undefined, AUTH_COOKIE_NAME);
-      router.push('/');
     }
   };
 
@@ -218,6 +217,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         });
     } finally {
       setLoading(false);
+      router.push('/');
     }
   };
 
