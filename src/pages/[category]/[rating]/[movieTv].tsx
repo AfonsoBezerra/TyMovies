@@ -24,7 +24,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
   return {
     paths: [...PathsMoviesTv],
-    fallback: 'blocking',
+    fallback: false,
   };
 };
 
