@@ -5,7 +5,7 @@ export function middleware(req: NextRequest) {
   if (!cookie) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
-  return null;
+  return NextResponse.next();
 }
 
 export const config = {
