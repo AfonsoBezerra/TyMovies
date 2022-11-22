@@ -210,14 +210,15 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       setLoading(true);
       Auth.signOut(Auth.auth)
         .then(() => {
-          handleUser(undefined);
+          handleUser(undefined).then(() => {
+            router.push('/');
+          });
         })
         .catch(() => {
           setErroAuth(true);
         });
     } finally {
       setLoading(false);
-      router.push('/');
     }
   };
 

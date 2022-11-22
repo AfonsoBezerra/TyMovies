@@ -27,6 +27,7 @@ const Home = (props: any) => {
   const [changeImage, setChangeImage] = useState(false);
   const { haveCookie } = props;
   const [openRow, setOpenRow] = useState(0);
+  console.log('COOKies', haveCookie);
   useEffect(() => {
     const { width } = window.screen;
     if (width >= 760 && width < 1300) {
