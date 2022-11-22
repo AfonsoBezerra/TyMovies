@@ -1,34 +1,19 @@
 import HeroDetail from '@components/hero-detail';
-
-import apiConfig from '@services/api/apiConfig';
 import requestsApi from '@services/api/requestsApi';
+import { getCookie } from '@services/cookies';
 
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetServerSideProps } from 'next';
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { apiKey } = apiConfig;
-  const responsePopular = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`,
-  );
-
-  const dataPopular = await responsePopular.json();
-
-  const PathsMoviesTv = dataPopular.results.map((movies: any) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const cookies = getCookie(context, '__HOST_TYMOVIES_USER_COOKIE');
+  if (!cookies) {
     return {
-      params: {
-        category: 'movie',
-        rating: 'popular',
-        movieTv: `${movies.id}`,
+      redirect: {
+        destination: '/login',
+        permanent: false,
       },
     };
-  });
-  return {
-    paths: [...PathsMoviesTv],
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+  }
   const data = await requestsApi
     .detail(context.params?.category, context.params?.movieTv)
     .then((res) => res)
