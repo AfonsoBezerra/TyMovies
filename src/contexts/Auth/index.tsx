@@ -1,4 +1,4 @@
-import { delCookie, getCookie, setCookie } from '@services/cookies';
+import { delCookie, setCookie } from '@services/cookies';
 import { Auth } from '@services/firebase';
 import axios from 'axios';
 import { NextOrObserver, User } from 'firebase/auth';
@@ -61,13 +61,6 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   const [sucess, setSucess] = useState(false);
   const [imgProp, setImgProp] = useState({} || null);
   const router = useRouter();
-  const cookie = getCookie(undefined, AUTH_COOKIE_NAME);
-  const [delVerify, setDelVerify] = useState(true);
-  useEffect(() => {
-    if (!cookie) {
-      setDelVerify(false);
-    }
-  }, [cookie]);
 
   const setSession = (session: undefined | string) => {
     if (session) {
@@ -224,9 +217,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         });
     } finally {
       setLoading(false);
-      if (!delVerify) {
-        router.push('/');
-      }
+      router.push('/');
     }
   };
 
