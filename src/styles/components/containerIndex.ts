@@ -141,7 +141,7 @@ export const ContainerIndex = styled.div`
         .element {
           width: 100%;
           height: 280px;
-
+          user-select: none;
           position: relative;
           border: 1px solid #7434d1;
           img {
@@ -153,6 +153,9 @@ export const ContainerIndex = styled.div`
             height: 350px;
           }
           @media (min-width: 1300px) {
+            height: 300px;
+          }
+          @media (min-width: 1440px) {
             height: 400px;
           }
         }
