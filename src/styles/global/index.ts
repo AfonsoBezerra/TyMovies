@@ -50,6 +50,10 @@ const RootCSS = createGlobalStyle`
       }
     }
   }
+  
+  #__next{
+    position: relative;
+  }
    
   a {
     text-decoration: none;

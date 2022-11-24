@@ -1,3 +1,4 @@
+import CookiesModal from '@components/cookies';
 import Header from '@components/header';
 import InputError from '@components/inputError';
 import { AUTH_COOKIE_NAME } from '@contexts/Auth';
@@ -10,7 +11,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Loading } from 'react-loading-dot';
 
-const SignIn = () => {
+const SignIn = (props: any) => {
   const {
     signInGoogle,
     createUserWithEmailAndPassword,
@@ -18,6 +19,8 @@ const SignIn = () => {
     errorAuth,
     setErroAuth,
   } = useAuthContext();
+  const { disableButton } = props;
+  const [buttonDisable, setButtonDisable] = useState(!disableButton);
   const [error, setError] = useState<number>();
   const [show, setShow] = useState(false);
   const router = useRouter();
@@ -27,6 +30,7 @@ const SignIn = () => {
 
   return (
     <>
+      {buttonDisable && <CookiesModal setButtonDisable={setButtonDisable} />}
       <Header />
       <FormStyle>
         {loading ? (
@@ -150,7 +154,7 @@ const SignIn = () => {
                   <button
                     style={{ color: 'white', marginRight: '1rem' }}
                     type="submit"
-                    disabled={loading}
+                    disabled={loading || buttonDisable}
                   >
                     Cadastrar
                   </button>
@@ -166,6 +170,7 @@ const SignIn = () => {
                   style={{ color: 'white' }}
                   type="button"
                   onClick={() => signInGoogle()}
+                  disabled={buttonDisable}
                 >
                   <img src="./btn_google_signin.png" alt="buttonGoogle" />
                 </button>
@@ -187,6 +192,7 @@ const SignIn = () => {
 
 export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   const cookie = getCookie(ctx, AUTH_COOKIE_NAME);
+  const cookies = getCookie(ctx, '__VERIFY_COOKIES_MODAL');
   if (cookie) {
     return {
       redirect: {
@@ -195,7 +201,7 @@ export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
       },
     };
   }
-  return { props: {} };
+  return { props: { disableButton: !!cookies } };
 };
 
 export default SignIn;

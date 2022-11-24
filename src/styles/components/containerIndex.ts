@@ -4,7 +4,7 @@ export const ContainerIndex = styled.div`
   width: 100vw;
   min-height: 100vh;
   height: auto;
-
+  position: relative;
   .video {
     width: 100%;
     height: 100vh;

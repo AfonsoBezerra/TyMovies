@@ -18,6 +18,7 @@ import { ImageEdit } from '@styled-icons/fluentui-system-filled/ImageEdit';
 import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
 import { Eye } from '@styled-icons/ionicons-outline/Eye';
 import { EyeOff } from '@styled-icons/ionicons-outline/EyeOff';
+import { Cookies } from '@styled-icons/fluentui-system-filled/Cookies';
 
 export const Facebookicon = styled(Facebook)`
   width: 22px;
@@ -105,7 +106,13 @@ export const SearchIcon = styled(Search)`
 export const CloseIcon = styled(Close)`
   width: 20px;
   height: 20px;
-  color: white;
+  color: black;
+`;
+
+export const CookiesIcon = styled(Cookies)`
+  width: 24px;
+  height: 24px;
+  color: black;
 `;
 
 export const StarIcon = styled(Star)`

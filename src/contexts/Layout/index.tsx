@@ -6,6 +6,7 @@ import { GlobalStyles } from '@globalStyles';
 import { defaultTheme } from '@globalStyles/theme';
 
 import { getCookie } from '@services/cookies';
+
 import type { iLayoutContext } from './iLayoutContext';
 
 export const LayoutContext = createContext<iLayoutContext>(
@@ -48,7 +49,6 @@ export const LayoutProvider = ({ children }: LayoutProviderProps) => {
       <GlobalStyles.ColorsCSS />
       <GlobalStyles.FontsCSS />
       <GlobalStyles.RootCSS />
-
       <LayoutContext.Provider value={contextValue}>
         {children}
       </LayoutContext.Provider>

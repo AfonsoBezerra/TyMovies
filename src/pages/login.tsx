@@ -1,3 +1,4 @@
+import CookiesModal from '@components/cookies';
 import Header from '@components/header';
 import InputError from '@components/inputError';
 import { AUTH_COOKIE_NAME } from '@contexts/Auth';
@@ -11,7 +12,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Loading } from 'react-loading-dot';
 
-const Login = () => {
+const Login = (props: any) => {
   const {
     signInGoogle,
     signInWithEmailAndPassword,
@@ -19,6 +20,8 @@ const Login = () => {
     setErroAuth,
     loading,
   } = useAuthContext();
+  const { disableButton } = props;
+  const [buttonDisable, setButtonDisable] = useState(!disableButton);
   const [show, setShow] = useState(false);
   useEffect(() => {
     setErroAuth(false);
@@ -27,6 +30,7 @@ const Login = () => {
   const router = useRouter();
   return (
     <>
+      {buttonDisable && <CookiesModal setButtonDisable={setButtonDisable} />}
       <Header />
       <FormStyle>
         {loading ? (
@@ -72,21 +76,21 @@ const Login = () => {
                       style={errorAuth ? { border: '1px solid red' } : {}}
                       onInput={() => setErroAuth(false)}
                     />
-                    {errorAuth && (
-                      <InputError>Email ou senha incorretos</InputError>
-                    )}
                     {!show ? (
                       <EyeIcon onClick={() => setShow(true)} />
                     ) : (
                       <EyeOffIcon onClick={() => setShow(false)} />
                     )}
                   </div>
+                  {errorAuth && (
+                    <InputError>Email ou senha incorretos</InputError>
+                  )}
                 </label>
                 <div className="buttonsForm">
                   <button
                     style={{ color: 'white', marginRight: '1rem' }}
                     type="submit"
-                    disabled={loading}
+                    disabled={loading || buttonDisable}
                   >
                     Entrar
                   </button>
@@ -102,6 +106,7 @@ const Login = () => {
                 <button
                   style={{ color: 'white' }}
                   type="button"
+                  disabled={buttonDisable}
                   onClick={() => signInGoogle()}
                 >
                   <img src="./btn_google_signin.png" alt="buttonGoogle" />
@@ -124,6 +129,7 @@ const Login = () => {
 
 export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   const cookie = getCookie(ctx, AUTH_COOKIE_NAME);
+  const cookies = getCookie(ctx, '__VERIFY_COOKIES_MODAL');
   if (cookie) {
     return {
       redirect: {
@@ -132,7 +138,8 @@ export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
       },
     };
   }
-  return { props: {} };
+
+  return { props: { disableButton: !!cookies } };
 };
 
 export default Login;
