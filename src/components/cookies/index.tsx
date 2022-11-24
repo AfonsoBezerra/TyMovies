@@ -4,11 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ModalCookiesStyle } from './style';
 
-interface CookiesModalProps {
-  setButtonDisable?: ((value: boolean) => void) | undefined;
-}
-
-const CookiesModal = ({ setButtonDisable }: CookiesModalProps) => {
+const CookiesModal = () => {
   const [modalCookies, setModalCookies] = useState(true);
 
   function setCookiesModal() {
@@ -17,9 +13,6 @@ const CookiesModal = ({ setButtonDisable }: CookiesModalProps) => {
       path: '/',
     });
     setModalCookies(false);
-    if (setButtonDisable) {
-      setButtonDisable(false);
-    }
   }
   return (
     <>

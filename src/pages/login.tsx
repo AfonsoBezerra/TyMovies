@@ -21,7 +21,7 @@ const Login = (props: any) => {
     loading,
   } = useAuthContext();
   const { disableButton } = props;
-  const [buttonDisable, setButtonDisable] = useState(!disableButton);
+
   const [show, setShow] = useState(false);
   useEffect(() => {
     setErroAuth(false);
@@ -30,7 +30,7 @@ const Login = (props: any) => {
   const router = useRouter();
   return (
     <>
-      {buttonDisable && <CookiesModal setButtonDisable={setButtonDisable} />}
+      {!disableButton && <CookiesModal />}
       <Header />
       <FormStyle>
         {loading ? (
@@ -90,7 +90,7 @@ const Login = (props: any) => {
                   <button
                     style={{ color: 'white', marginRight: '1rem' }}
                     type="submit"
-                    disabled={loading || buttonDisable}
+                    disabled={loading}
                   >
                     Entrar
                   </button>
@@ -106,7 +106,6 @@ const Login = (props: any) => {
                 <button
                   style={{ color: 'white' }}
                   type="button"
-                  disabled={buttonDisable}
                   onClick={() => signInGoogle()}
                 >
                   <img src="./btn_google_signin.png" alt="buttonGoogle" />

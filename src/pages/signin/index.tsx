@@ -20,7 +20,6 @@ const SignIn = (props: any) => {
     setErroAuth,
   } = useAuthContext();
   const { disableButton } = props;
-  const [buttonDisable, setButtonDisable] = useState(!disableButton);
   const [error, setError] = useState<number>();
   const [show, setShow] = useState(false);
   const router = useRouter();
@@ -30,7 +29,7 @@ const SignIn = (props: any) => {
 
   return (
     <>
-      {buttonDisable && <CookiesModal setButtonDisable={setButtonDisable} />}
+      {!disableButton && <CookiesModal />}
       <Header />
       <FormStyle>
         {loading ? (
@@ -154,7 +153,7 @@ const SignIn = (props: any) => {
                   <button
                     style={{ color: 'white', marginRight: '1rem' }}
                     type="submit"
-                    disabled={loading || buttonDisable}
+                    disabled={loading}
                   >
                     Cadastrar
                   </button>
@@ -170,7 +169,6 @@ const SignIn = (props: any) => {
                   style={{ color: 'white' }}
                   type="button"
                   onClick={() => signInGoogle()}
-                  disabled={buttonDisable}
                 >
                   <img src="./btn_google_signin.png" alt="buttonGoogle" />
                 </button>
