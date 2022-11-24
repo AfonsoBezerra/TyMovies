@@ -16,6 +16,9 @@ const ModalComponent = ({ setModalOpen, values, openModal }: iPropsModal) => {
           title="trailer"
           width="100%"
           height="300px"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
         />
       </ModalBody>
     </Modal>
