@@ -1,3 +1,4 @@
+import Footer from '@components/footer';
 import Header from '@components/header';
 import HeroSlide from '@components/hero-slide';
 import { MoviePoster } from '@components/movieList';
@@ -86,7 +87,7 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
           </div>
         </ContainerTable>
       </MovieTableStyle>
-      ;
+      <Footer />
     </>
   );
 };

@@ -16,6 +16,7 @@ import ModalComponent from '@components/modal';
 import Header from '@components/header';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Footer from '@components/footer';
 import { Container } from './style';
 
 interface iMovie {
@@ -162,6 +163,7 @@ const HeroDetail = ({ item, type }: iMovie) => {
           </div>
           <div />
         </div>
+        <Footer />
       </Container>
     </>
   );

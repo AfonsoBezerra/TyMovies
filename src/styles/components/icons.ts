@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Whatsapp } from '@styled-icons/bootstrap/Whatsapp';
-import { Facebook } from '@styled-icons/bootstrap/Facebook';
 import { Instagram } from '@styled-icons/bootstrap/Instagram';
 import { Plus } from '@styled-icons/bootstrap/Plus';
 import { Mention } from '@styled-icons/fluentui-system-filled/Mention';
@@ -19,17 +18,16 @@ import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
 import { Eye } from '@styled-icons/ionicons-outline/Eye';
 import { EyeOff } from '@styled-icons/ionicons-outline/EyeOff';
 import { Cookies } from '@styled-icons/fluentui-system-filled/Cookies';
-
-export const Facebookicon = styled(Facebook)`
-  width: 22px;
-  color: #fff;
-  margin: 0 0.5rem;
-`;
+import { Github } from '@styled-icons/bootstrap/Github';
 
 export const Instagramicon = styled(Instagram)`
-  width: 22px;
-  color: #ffff;
-  margin: 0 0.5rem;
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.5s;
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const Plusicon = styled(Plus)`
@@ -45,8 +43,13 @@ export const MentionIcon = styled(Mention)`
 `;
 
 export const WhatsappiconContact = styled(Whatsapp)`
-  width: 25px;
-  color: #ad2bfdd9;
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.5s;
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const BusinessIcon = styled(Business)`
@@ -170,4 +173,14 @@ export const EyeIcon = styled(Eye)`
   height: 18px !important;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0.5rem;
+`;
+
+export const GithubIcon = styled(Github)`
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.5s;
+  :hover {
+    transform: scale(1.1);
+  }
 `;
