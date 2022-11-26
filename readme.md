@@ -54,7 +54,7 @@ The purpose of the project is to **put my knowledge into practice in order to st
 #### **Utilities**
 
 - API: **[The Moviedb][themoviedb]**  
-- Editor: **[Visual Studio Code][vscode]** &rarr; 
+- Editor: **[Visual Studio Code][vscode]**
 - Commit Conventional: **[Commitlint][commitlint]**
 - Teste de API: **[Insomnia][insomnia]**
 - Ícones: **[Styled Icons][Styled_icons]**
