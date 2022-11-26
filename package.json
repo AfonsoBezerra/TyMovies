@@ -22,7 +22,6 @@
     "@styled-icons/material-outlined": "^10.34.0",
     "axios": "^0.27.2",
     "babel-plugin-styled-components": "^2.0.7",
-    "bootstrap": "^5.2.0",
     "firebase": "^9.13.0",
     "firebase-admin": "^11.2.0",
     "next": "12.2.2",
