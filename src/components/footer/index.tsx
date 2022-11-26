@@ -18,9 +18,9 @@ const Footer = () => {
           <div className="borderColorTitle" />
         </div>
         <div className="icons">
-          <Link href="https://github.com/AfonsoBezerra">
+          <Link href="https://github.com/AfonsoBezerra/TyMovies">
             <a
-              href="https://github.com/AfonsoBezerra"
+              href="https://github.com/AfonsoBezerra/TyMovies"
               target="_blank"
               rel="noreferrer"
             >
