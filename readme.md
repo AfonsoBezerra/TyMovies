@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![BADGE_LICENSE] ![BADGE_NPM_VERSION] ![BADGE_WEB_REACT] ![BADGE_SERVER_NODEJS] ![BADGE_TYPESCRIPT] ![BADGE_OPEN_SOURCE]  ![BADGE_STARS] ![BADGE_FORKS]
+![BADGE_LICENSE] ![BADGE_NPM_VERSION] ![BADGE_WEB_NEXTJS] ![BADGE_SERVER_NODEJS] ![BADGE_TYPESCRIPT] ![BADGE_OPEN_SOURCE]  ![BADGE_STARS] ![BADGE_FORKS]
 
 </div>
 
@@ -136,7 +136,7 @@ Made by ❤️ por <a href="https://www.linkedin.com/in/afonso-bezerra-33b495174
 
 [BADGE_NPM_VERSION]: https://img.shields.io/badge/npm-6.14.4-red
 
-[BADGE_WEB_REACT]: https://img.shields.io/badge/web-nextjs-blue
+[BADGE_WEB_NEXTJS]: https://img.shields.io/badge/web-nextjs-blue
 
 
 [BADGE_SERVER_NODEJS]: https://img.shields.io/badge/server-nodejs-important
