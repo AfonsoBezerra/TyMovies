@@ -104,16 +104,19 @@ const MovieList = ({ category, type }: iPropsMovie) => {
             grabCursor
             spaceBetween={8}
           >
-            {data.map((item: any) => (
-              <SwiperSlide key={item.id}>
-                <MoviePoster
-                  viewButton={false}
-                  props={item}
-                  category={category}
-                  type={type}
-                />
-              </SwiperSlide>
-            ))}
+            {data.map(
+              (item: any) =>
+                item.poster_path && (
+                  <SwiperSlide key={item.id}>
+                    <MoviePoster
+                      viewButton={false}
+                      props={item}
+                      category={category}
+                      type={type}
+                    />
+                  </SwiperSlide>
+                ),
+            )}
           </Swiper>
         </Container>
       )}

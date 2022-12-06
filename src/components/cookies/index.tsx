@@ -28,9 +28,9 @@ const CookiesModal = () => {
             </button>
           </div>
           <div className="body">
-            Nós armazenos dados temporiamente para melhorar a sua experiencia de
-            navegação e recomendar conteúdo de seu interesse. Ao ultilizar
-            nossos serviços, você concorda com tais monitorimentos.
+            Nós armazenamos dados temporiamente para melhorar a sua experiencia
+            de navegação e recomendar conteúdo de seu interesse. Ao utilizar
+            nossos serviços, você concorda com tais monitoramentos.
             <br />
             <Link
               target="_blank"
