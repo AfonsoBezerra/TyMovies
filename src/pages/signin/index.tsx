@@ -95,6 +95,7 @@ const SignIn = (props: any) => {
                       required
                       placeholder="Senha"
                       name="pass"
+                      maxLength={15}
                       autoComplete="off"
                       style={
                         error === 2 || error === 3 || errorAuth
@@ -124,6 +125,7 @@ const SignIn = (props: any) => {
                       id="passConfirm"
                       type={show ? 'text' : 'password'}
                       required
+                      maxLength={15}
                       placeholder="Confirmar senha"
                       name="passConfirm"
                       autoComplete="off"
