@@ -75,6 +75,9 @@ export const FormStyle = styled.div`
         letter-spacing: 0px;
         margin-bottom: 0.5rem;
       }
+      .passWithIcon input {
+        padding-right: 3rem;
+      }
       .buttonsForm {
         display: flex;
         justify-content: space-between;

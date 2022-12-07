@@ -70,7 +70,6 @@ const Login = (props: any) => {
                       id="pass"
                       type={show ? 'text' : 'password'}
                       required
-                      maxLength={15}
                       placeholder="Senha"
                       name="pass"
                       autoComplete="off"
