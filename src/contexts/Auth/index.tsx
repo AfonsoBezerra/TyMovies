@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         const formattedUser = FormatUser(currentUser, {
           name: res.data.name,
           img: res.data.img,
-          userName: res.data.name,
+          userName: res.data.userName ? res.data.userName : res.data.name,
           borderColor: res.data.borderColor,
         });
         setUser(formattedUser);
