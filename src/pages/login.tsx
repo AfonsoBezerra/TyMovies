@@ -77,9 +77,9 @@ const Login = (props: any) => {
                       onInput={() => setErroAuth(false)}
                     />
                     {!show ? (
-                      <EyeIcon onClick={() => setShow(true)} />
+                      <EyeOffIcon onClick={() => setShow(true)} />
                     ) : (
-                      <EyeOffIcon onClick={() => setShow(false)} />
+                      <EyeIcon onClick={() => setShow(false)} />
                     )}
                   </div>
                   {errorAuth && (

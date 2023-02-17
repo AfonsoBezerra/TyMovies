@@ -108,9 +108,9 @@ const SignIn = (props: any) => {
                       }
                     />
                     {!show ? (
-                      <EyeIcon onClick={() => setShow(true)} />
+                      <EyeOffIcon onClick={() => setShow(true)} />
                     ) : (
-                      <EyeOffIcon onClick={() => setShow(false)} />
+                      <EyeIcon onClick={() => setShow(false)} />
                     )}
                   </div>
                   {error === 2 && <InputError>Senhas não coincidem</InputError>}
@@ -139,9 +139,9 @@ const SignIn = (props: any) => {
                       }
                     />
                     {!show ? (
-                      <EyeIcon onClick={() => setShow(true)} />
+                      <EyeOffIcon onClick={() => setShow(true)} />
                     ) : (
-                      <EyeOffIcon onClick={() => setShow(false)} />
+                      <EyeIcon onClick={() => setShow(false)} />
                     )}
                   </div>
                   {error === 2 && <InputError>Senhas não coincidem</InputError>}
