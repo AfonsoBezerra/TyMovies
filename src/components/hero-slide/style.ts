@@ -84,6 +84,7 @@ export const Container = styled.div`
       -webkit-box-orient: vertical;
       font-size: 15px;
       overflow: hidden;
+      opacity: .8;
       color: rgba(255, 255, 255, 0.8);
       text-overflow: ellipsis;
       text-align: center;
@@ -104,7 +105,6 @@ export const Container = styled.div`
       span {
         text-align: start;
         max-width: 70%;
-        font-size: 17px;
       }
       .buttons {
         justify-content: start;
@@ -114,7 +114,7 @@ export const Container = styled.div`
       align-items: start;
       span {
         max-width: 60%;
-        font-size: 18px;
+        
       }
     }
   }

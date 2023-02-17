@@ -45,6 +45,12 @@ const RootCSS = createGlobalStyle`
       top: 10%;
     .modal-content{
       background-color: var(--color-background);
+      width: 650px;
+      height: 450px;
+      @media (max-width: 1024px){
+        width: 100%;
+        height: 300px;
+      }
       .modal-header{
         border: none;
       }

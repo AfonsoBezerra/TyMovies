@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { Loading } from 'react-loading-dot';
 
 const User = () => {
-  const { user, imgProp, setUser } = useAuthContext();
+  const { user, imgProp, setUser, signOut } = useAuthContext();
   const props = user?.img;
   const router = useRouter();
   const arrayColors = [
@@ -95,6 +95,13 @@ const User = () => {
           onClick={() => gerenciarPerfil()}
         >
           Gerenciar Perfil
+        </button>
+        <button
+          type="button"
+          className="gerenciar sair"
+          onClick={() => signOut()}
+        >
+          Sair
         </button>
       </div>
     </ContainerUser>

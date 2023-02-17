@@ -45,17 +45,17 @@ const MovieTable = ({ movies, type, rating }: iMovieTable) => {
               <span />
             </div>
             <form
-              onSubmit={(e) => {
-                Ffilter(e);
-              }}
               className="inputIcon"
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
             >
               <input
                 name="filmefilter"
-                onChange={(e) => !e.target.value && Ffilter('#')}
+                onChange={(e) => Ffilter(e)}
                 placeholder="Search..."
               />
-              <button type="submit">
+              <button type='submit'>
                 <SearchIcon />
               </button>
             </form>

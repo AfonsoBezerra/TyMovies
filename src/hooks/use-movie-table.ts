@@ -14,11 +14,8 @@ export function useMovieTable(movies: any, type: any, rating: any) {
     } ${splitRating[1][0].toUpperCase()}${splitRating[1].substr(1)}`;
   }
   function Ffilter(e: any) {
-    if (e === '#') {
-      return setFilter(movies);
-    }
     e.preventDefault();
-    const filterValue = e.target.filmefilter.value;
+    const filterValue = e.target.value;
     if (filterValue) {
       const nameFilter =
         filterValue.length > 1

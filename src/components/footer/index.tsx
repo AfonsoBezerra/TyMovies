@@ -45,7 +45,7 @@ const Footer = () => {
       </div>
       <div className="direitos">
         <div className="divider" />
-        <span>Afonso Bezerra @2022 | Todos os direitos reservados</span>
+        <span>Afonso Bezerra @2023 | Todos os direitos reservados</span>
       </div>
     </Container>
   );

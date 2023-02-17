@@ -70,12 +70,18 @@ export const ContainerUser = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: .5rem;
 
     .gerenciar {
-      margin-top: 2rem;
+      margin-top: 1rem;
       color: #632883;
       letter-spacing: 1px;
       text-transform: uppercase;
+      opacity: .5;
+      transition: all .5s;
+      :hover{
+        opacity: 1;
+      }
     }
   }
   @keyframes fadeIn {

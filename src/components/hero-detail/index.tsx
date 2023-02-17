@@ -38,7 +38,6 @@ const Stars = ({ nota }: any) => {
 
 const HeroDetail = ({ item, type }: iMovie) => {
   const [movieCredits, setMovieCredits] = useState<any>([]);
-  const [screenSize, setScreenSize] = useState(2.5);
   const [openModal, setOpenModal] = useState(false);
   const [valueModal, setModal] = useState<any>([]);
   const router = useRouter();
@@ -60,16 +59,6 @@ const HeroDetail = ({ item, type }: iMovie) => {
     item?.backdrop_path ? item?.backdrop_path : item?.poster_path,
   );
 
-  useEffect(() => {
-    const { width } = window.screen;
-    if (width >= 760 && width < 1300) {
-      setScreenSize(3.5);
-    } else if (width >= 1300 && width < 1760) {
-      setScreenSize(5.5);
-    } else if (width >= 1760) {
-      setScreenSize(6.5);
-    }
-  }, []);
 
   const setModalActive = async () => {
     const videos = await requestsApi.getVideos(type, item?.id);
@@ -136,8 +125,29 @@ const HeroDetail = ({ item, type }: iMovie) => {
             <Swiper
               grabCursor
               spaceBetween={20}
-              slidesPerView={screenSize}
               effect="fade"
+              breakpoints={
+                {
+                  2000: {
+                    slidesPerView: 7.5
+                  },
+                  1700: {
+                    slidesPerView: 6.5
+                  },
+                  1300: {
+                    slidesPerView: 5.5
+                  },
+                  1024: {
+                    slidesPerView: 4.5
+                  },
+                  500: {
+                    slidesPerView: 3.5
+                  },
+                  320:{
+                    slidesPerView: 2.5
+                  }
+                }
+              }
             >
               {movieCredits.map(
                 (credits: any) =>
@@ -163,7 +173,6 @@ const HeroDetail = ({ item, type }: iMovie) => {
           </div>
           <div />
         </div>
-        <Footer />
       </Container>
     </>
   );

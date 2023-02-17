@@ -29,9 +29,6 @@ const Header = () => {
         <TyMoviesLogo />
       ) : (
         <>
-          <button type="button" onClick={() => signOut()}>
-            Desconectar
-          </button>
           <TyMoviesLogo />
           <button
             type="button"

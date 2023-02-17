@@ -33,7 +33,7 @@ const SignIn = (props: any) => {
       <Header />
       <FormStyle>
         {loading ? (
-          <Loading background="rgb(255, 255,  255)" />
+          <Loading size='12px' background="rgb(255, 255,  255)" />
         ) : (
           <>
             <h1>Cadastrar</h1>

@@ -14,7 +14,7 @@ export const Container = styled.header<iContainer>`
     justCenter
       ? css`
           justify-content: space-between;
-          padding: 2rem;
+          padding: 0.5rem 1rem;
         `
       : css`
           justify-content: center;
@@ -63,7 +63,7 @@ export const Container = styled.header<iContainer>`
     ${({ justCenter }) =>
       justCenter
         ? css`
-            padding: 1rem;
+            padding: 0.5rem 1rem;
           `
         : css`
             justify-content: center;

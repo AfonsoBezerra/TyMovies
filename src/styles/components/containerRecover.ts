@@ -8,7 +8,7 @@ export const PageRecover = styled.div`
   align-items: center;
   .container {
     width: auto;
-    min-width: 400px;
+    min-width: 500px;
     height: auto;
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.05);
@@ -45,6 +45,7 @@ export const PageRecover = styled.div`
         align-items: start;
         height: auto;
         label {
+          width: 100%;
           input {
             width: 90%;
             align-self: center;

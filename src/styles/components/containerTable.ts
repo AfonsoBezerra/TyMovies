@@ -55,7 +55,7 @@ export const ContainerTable = styled.div`
       }
     }
     .inputIcon {
-      width: 20%;
+      width: 30%;
       display: flex;
       align-items: center;
       position: relative;

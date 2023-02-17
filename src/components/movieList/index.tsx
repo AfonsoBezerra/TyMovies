@@ -44,7 +44,6 @@ export const MoviePoster = ({ props, category, type }: any) => {
 
 const MovieList = ({ category, type }: iPropsMovie) => {
   const [data, setData] = useState([]);
-  const [screenSize, setScreenSize] = useState(1.5);
   const [onLoad, setOnload] = useState(false);
 
   SwiperCore.use([Autoplay]);
@@ -66,22 +65,6 @@ const MovieList = ({ category, type }: iPropsMovie) => {
     getMovieList();
   }, []);
 
-  useEffect(() => {
-    const { width } = window.screen;
-    if (width >= 760 && width < 1250) {
-      setScreenSize(3.5);
-    } else if (width >= 1250 && width < 1440) {
-      setScreenSize(4.5);
-    } else if (width >= 1440 && width < 1600) {
-      setScreenSize(4.5);
-    } else if (width >= 1600 && width < 1920) {
-      setScreenSize(5.5);
-    } else if (width >= 1920) {
-      setScreenSize(6.5);
-    } else {
-      setScreenSize(1.5);
-    }
-  }, []);
 
   return (
     <>
@@ -99,10 +82,34 @@ const MovieList = ({ category, type }: iPropsMovie) => {
         <Container>
           <Swiper
             modules={[Autoplay]}
-            slidesPerView={screenSize}
             centeredSlides={false}
             grabCursor
             spaceBetween={8}
+            breakpoints={
+              {
+                2000: {
+                  slidesPerView: 7.5
+                },
+                1800: {
+                  slidesPerView: 5.5
+                },
+                1358: {
+                  slidesPerView: 4.5
+                },
+                1300: {
+                  slidesPerView: 5.5
+                },
+                1024: {
+                  slidesPerView: 4.5
+                },
+                768: {
+                  slidesPerView: 3.5
+                },
+                320:{
+                  slidesPerView: 1.5
+                }
+              }
+            }
           >
             {data.map(
               (item: any) =>

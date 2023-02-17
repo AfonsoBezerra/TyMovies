@@ -32,7 +32,8 @@ const HeroSlideItem = (props: PropsHero) => {
     item.backdrop_path ? item.backdrop_path : item.poster_path,
   );
   const setModalActive = async () => {
-    const videos = await requestsApi.getVideos(category.movie, item.id);
+    const categoryPath = router.asPath.split('/')[1]
+    const videos = await requestsApi.getVideos(categoryPath !== 'home' ? categoryPath : category.movie, item.id);
     setModal(videos);
     setOpenModal(true);
   };
