@@ -11,6 +11,8 @@ import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   const cookie = getCookie(ctx, AUTH_COOKIE_NAME);
@@ -20,19 +22,12 @@ export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
 
 const Home = (props: any) => {
   const router = useRouter();
-  const [screenSize, setScreenSize] = useState(1.5);
   const [changeImage, setChangeImage] = useState(false);
   const { haveCookie, modalCookie } = props;
   const [openRow, setOpenRow] = useState(0);
   useEffect(() => {
-    const { width } = window.screen;
-    if (width >= 760 && width < 1300) {
-      setScreenSize(2.5);
-    } else if (width >= 1300) {
-      setScreenSize(3.5);
-    }
-  }, []);
-
+    AOS.init();
+  } , [])
   useEffect(() => {
     const interval = setInterval(() => {
       setChangeImage((prev) => !prev);
@@ -61,16 +56,28 @@ const Home = (props: any) => {
           </div>
           <div className="transition" />
         </div>
-        <section className="content">
-          <div className="mainMovies">
+        <section className="content" >
+          <div className="mainMovies" data-aos="fade-left"   data-aos-duration="1500">
             <h2>
               Principais filmes, séries e conteúdos disponiveis na TyMovies
             </h2>
             <div className="carrossel">
               <Swiper
-                slidesPerView={screenSize}
                 spaceBetween={30}
                 className="mySwiper"
+                breakpoints={
+                  {
+                    1300: {
+                      slidesPerView: 3.5
+                    },
+                    768: {
+                      slidesPerView: 2.5
+                    },
+                    320:{
+                      slidesPerView: 1.5
+                    }
+                  }
+                }
               >
                 <SwiperSlide>
                   <div
@@ -132,7 +139,7 @@ const Home = (props: any) => {
               explorar mais
             </button>
           </div>
-          <div className="personagens">
+          <div className="personagens" data-aos="fade-right"   data-aos-duration="1500">
             <div className="img">
               <img src="/poo1.png" alt="img" />
               <h2>
@@ -152,7 +159,7 @@ const Home = (props: any) => {
               </h2>
             </div>
           </div>
-          <div className="telas">
+          <div className="telas" data-aos="fade"   data-aos-duration="1500">
             <div className="title">
               <h1>Diversão garantida em todo lugar</h1>
               <p>
@@ -160,7 +167,7 @@ const Home = (props: any) => {
                 momento.
               </p>
             </div>
-            <div className="image">
+            <div className="image" >
               <div className="img">
                 <img src="/devicem.png" alt="device" />
               </div>
@@ -172,9 +179,21 @@ const Home = (props: any) => {
             </div>
             <div className="carrosel">
               <Swiper
-                slidesPerView={screenSize}
                 spaceBetween={30}
                 className="mySwiper"
+                breakpoints={
+                  {
+                    1300: {
+                      slidesPerView: 3.5
+                    },
+                    768: {
+                      slidesPerView: 2.5
+                    },
+                    320:{
+                      slidesPerView: 1.5
+                    }
+                  }
+                }
               >
                 <SwiperSlide>
                   <div
@@ -238,7 +257,7 @@ const Home = (props: any) => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div className="grid">
+            <div className="grid"  data-aos="fade-up"   data-aos-duration="1500">
               <div
                 className="element"
                 aria-hidden
