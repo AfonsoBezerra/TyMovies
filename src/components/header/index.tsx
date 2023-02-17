@@ -6,7 +6,7 @@ import ProfileImg from '@components/profileImg';
 import { Container } from './style';
 
 const Header = () => {
-  const { signOut, user } = useAuthContext();
+  const { user } = useAuthContext();
   const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
   const { asPath } = useRouter();

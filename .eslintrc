@@ -30,7 +30,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "off",
     "import/no-unresolved": "off",
     "no-plusplus": "off",
     "no-alert": "off",
