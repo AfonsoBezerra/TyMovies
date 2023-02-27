@@ -62,16 +62,16 @@ export const ContainerTable = styled.div`
       input {
         width: 100%;
         background-color: transparent;
-        border-radius: 7px;
+        border-radius: 5px;
         border: 1px solid rgba(255, 255, 255, 0.7);
         font-size: 14px;
         color: white;
         outline: none;
-        padding: 0.3rem 0.5rem;
+        padding: 0.5rem 0.5rem;
       }
       > button {
         position: absolute;
-        right: 0.4rem;
+        right: 0.5rem;
       }
     }
     @media (max-width: 1024px) {
